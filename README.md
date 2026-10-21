@@ -15,7 +15,7 @@ night into a tested **dbt** warehouse on **DuckDB**, and serves suppressed aggre
 | Terminology | Local labs to LOINC, ICD 9 to ICD 10 (CMS GEMs), published as FHIR ConceptMaps | LLM ranker on a 316 item holdout: 66% top 1 against a 53% lexical baseline |
 | Patient matching | EMPI with blocking, Jaro Winkler, nicknames; links, never merges | precision 1.0, recall 0.95, 0 of 10 hard negatives linked, same on a held out set |
 | Extract | Paged FHIR search or Bulk Data `$export` (incremental, resumable, SMART Backend Services) | NDJSON landing files with a manifest and a completeness check |
-| Warehouse | dbt: Bronze, Silver, Gold, a star schema (7 dims, 5 facts), SCD2, contracts | 406 data tests, source freshness, a baseline guard, a build log |
+| Warehouse | dbt: Bronze, Silver, Gold, a star schema (7 dims, 5 facts), SCD2, contracts | 406 data tests, source freshness, a baseline guard; [dbt docs and lineage](https://nischaldinesh.github.io/fhir-patient-explorer/) |
 | Semantic layer | dbt MetricFlow, 7 metrics, 2 saved queries | parity checked against hand written SQL |
 | Governance | Salted pseudonyms, CMS small cell rule (1 to 10) with complementary suppression | a guard refuses any export with an id or a small count |
 | Serving | FastAPI metrics API, serving snapshot (11 tables), Google Sheets export, Tableau Public | [Pipeline health dashboard](https://public.tableau.com/views/FHIRExplorerPipelineHealth/Pipelinehealth) |
@@ -94,6 +94,9 @@ erDiagram
     dim_location ||--o{ fact_bed_capacity_day : location_sk
     dim_patient ||--o{ dim_patient_history : patient_sk
 ```
+
+Browse every model, column, test and the lineage graph in the
+**[dbt docs](https://nischaldinesh.github.io/fhir-patient-explorer/)** (rebuilt by GitHub Actions on every push).
 
 Quality measures (`mart_quality_monthly`, `mart_quality_period`): 30 day all cause readmission rate, average and median
 length of stay, emergency department median length of stay, diabetes HbA1c under 8 percent (HEDIS style, not

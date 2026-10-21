@@ -347,6 +347,9 @@ dbt docs generate --project-dir analytics/dbt --profiles-dir analytics/dbt
 dbt docs serve --project-dir analytics/dbt --profiles-dir analytics/dbt --port 8081   # lineage graph at http://localhost:8081
 ```
 
+The same docs are published to GitHub Pages at https://nischaldinesh.github.io/fhir-patient-explorer/ by
+`.github/workflows/dbt-docs.yml` on every push to main that touches the dbt project (empty catalog, no data).
+
 Port 8081 because HAPI already uses dbt's default 8080. `build.py build` is the normal way: it fills in the vars.
 
 **Data quality checks on the Analytics page.** The page lists seven named checks. Each is a dbt test with

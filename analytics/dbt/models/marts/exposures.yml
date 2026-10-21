@@ -73,6 +73,7 @@ exposures:
     label: Tableau Public BI (Operations, Quality, Population and data quality)
     type: dashboard
     maturity: medium
+    url: https://public.tableau.com/views/FHIRExplorerPipelineHealth/Pipelinehealth
     description: >
       Three Tableau Public dashboards (demo, built by hand from docs/tableau/DASHBOARD_SPEC.md) on a Google Sheet that
       analytics/export_bi.py fills from the serving snapshot, with suppressed aggregates only. Sheet tabs:
