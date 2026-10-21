@@ -1,0 +1,55 @@
+version: 2
+
+# What an analyst may see. The pseudonym is 'P-' || UPPER(SUBSTR(MD5(salt || patient_id), 1, 10)), the same in
+# DuckDB and Snowflake (macros/pseudonym.sql). Snowflake enforces the same rules natively with masking policies
+# and secure views in sql/snowflake/30_governance.sql, which is not a dbt model.
+
+models:
+  - name: governance_roles
+    description: The roles and whether each sees identifiers.
+    columns:
+      - name: role
+        description: Primary key.
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [clinician, analyst]
+
+  - name: analyst_patient
+    description: Patients for analysts. No name, MRN, city, postal code or full birth date; ages 90 and over grouped.
+    columns:
+      - name: patient_key
+        description: Stable salted pseudonym of the patient id. Primary key.
+        data_tests: [unique, not_null]
+      - name: age_band
+        description: Decade band, 0-17, 90+ or unknown.
+      - name: birth_year
+        description: Birth year, withheld for ages 90 and over.
+
+  - name: analyst_patient_summary
+    description: gold_patient_summary by pseudonym; ages 90 and over withheld.
+    columns:
+      - name: patient_key
+        description: Primary key.
+        data_tests: [unique, not_null]
+
+  - name: analyst_cohort_members
+    description: Cohort membership by pseudonym, so analysts can join cohorts without seeing ids.
+    columns:
+      - name: patient_key
+        description: Pseudonym, the same as in analyst_patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('analyst_patient')
+                field: patient_key
+
+  - name: analyst_aki_signal
+    description: The kidney injury signal list by pseudonym only. The app's Analytics page reads this view.
+    columns:
+      - name: patient_key
+        description: Primary key.
+        data_tests: [unique, not_null]

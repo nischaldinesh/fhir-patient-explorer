@@ -1,0 +1,69 @@
+-- Gold daily census: one row per day of the live Riverside General feed, the numbers of the morning bed meeting.
+--   in_house_at_midnight  inpatients in hospital at the midnight that ends the day (the classic midnight census)
+--   admissions, discharges  inpatient admissions that started and ended that day
+--   ed_visits             emergency department visits that went home without admission
+--   transfers             bed moves that day (HL7 v2 ADT^A02): every bed of a visit after its first one
+--   avg_los_discharged_days  average length of stay of the patients discharged that day
+-- Days run from the first day with feed traffic to the data date (gold_feed_freshness).
+WITH live AS (
+    SELECT * FROM {{ ref('gold_live_encounter') }}
+),
+fresh AS (
+    SELECT data_date FROM {{ ref('gold_feed_freshness') }}
+),
+days AS (
+    SELECT DISTINCT start_date AS census_date FROM live
+    UNION
+    SELECT DISTINCT end_date FROM live WHERE end_date IS NOT NULL
+),
+moves AS (
+    SELECT CAST(b.start_at AS DATE) AS move_date
+    FROM (
+        SELECT el.encounter_id, el.start_at,
+               ROW_NUMBER() OVER (PARTITION BY el.encounter_id ORDER BY el.entry_index) AS bed_number
+        FROM {{ ref('silver_encounter_location') }} el
+        JOIN live ON live.encounter_id = el.encounter_id
+        WHERE el.physical_type = 'bd' AND el.start_at IS NOT NULL
+    ) b
+    WHERE b.bed_number > 1
+),
+in_house AS (
+    SELECT d.census_date, COUNT(*) AS n
+    FROM days d
+    JOIN live a
+      ON a.is_admission
+     AND a.start_at < CAST(d.census_date + 1 AS TIMESTAMP)
+     AND (a.end_at IS NULL OR a.end_at >= CAST(d.census_date + 1 AS TIMESTAMP))
+    GROUP BY d.census_date
+),
+started AS (
+    SELECT start_date AS census_date,
+           SUM(CASE WHEN is_admission THEN 1 ELSE 0 END)     AS admissions,
+           SUM(CASE WHEN NOT is_admission THEN 1 ELSE 0 END) AS ed_visits
+    FROM live
+    GROUP BY start_date
+),
+ended AS (
+    SELECT end_date AS census_date, COUNT(*) AS discharges, ROUND(AVG(length_of_stay_days), 2) AS avg_los
+    FROM live
+    WHERE is_admission AND end_date IS NOT NULL
+    GROUP BY end_date
+),
+moved AS (
+    SELECT move_date AS census_date, COUNT(*) AS transfers FROM moves GROUP BY move_date
+)
+SELECT
+    d.census_date,
+    COALESCE(h.n, 0)            AS in_house_at_midnight,
+    COALESCE(s.admissions, 0)   AS admissions,
+    COALESCE(e.discharges, 0)   AS discharges,
+    COALESCE(s.ed_visits, 0)    AS ed_visits,
+    COALESCE(m.transfers, 0)    AS transfers,
+    e.avg_los                   AS avg_los_discharged_days
+FROM days d
+CROSS JOIN fresh f
+LEFT JOIN in_house h ON h.census_date = d.census_date
+LEFT JOIN started s  ON s.census_date = d.census_date
+LEFT JOIN ended e    ON e.census_date = d.census_date
+LEFT JOIN moved m    ON m.census_date = d.census_date
+WHERE d.census_date <= f.data_date

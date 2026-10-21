@@ -1,0 +1,178 @@
+version: 2
+
+# The semantic layer (dbt MetricFlow): the star schema described once as entities, dimensions and measures, so every
+# consumer (BI export, the metrics API, Airflow) asks for a metric by name and gets the same SQL. Internal: what leaves
+# the warehouse goes through analytics/metrics.py, which applies small cell suppression. See analytics/SEMANTIC_LAYER.md.
+#
+# Entities are the join keys: encounter (fact_encounter), patient (dim_patient), location (dim_location), plus the
+# primary keys of the bed facts. A dimension is asked for as entity__dimension, for example encounter__source,
+# patient__age_band or location__unit_name.
+
+semantic_models:
+  - name: encounters
+    description: >
+      One row per encounter (visit) of every source, from fact_encounter. Admissions and emergency visits are dated by
+      the day the visit started; index stays, readmissions and length of stay by the day of discharge, like the
+      quality marts.
+    model: ref('fact_encounter')
+    defaults:
+      agg_time_dimension: admit_date
+    entities:
+      - name: encounter
+        type: primary
+        expr: encounter_sk
+      - name: patient
+        type: foreign
+        expr: patient_sk
+    dimensions:
+      - name: admit_date
+        description: Day the visit started.
+        type: time
+        expr: CAST(admit_at AS DATE)
+        type_params:
+          time_granularity: day
+      - name: discharge_date
+        description: Day the visit ended; NULL while in progress.
+        type: time
+        expr: CAST(discharge_at AS DATE)
+        type_params:
+          time_granularity: day
+      - name: source
+        description: Source of the patient record (mimic, synthea, hl7v2).
+        type: categorical
+      - name: class_code
+        description: Encounter class as sent (IMP, EMER, AMB ...; for MIMIC the admission type).
+        type: categorical
+      - name: encounter_kind
+        description: hospital admission, emergency visit, part of another stay, other.
+        type: categorical
+      - name: is_live_feed
+        description: True for a visit of the live Riverside General feed (demo).
+        type: categorical
+    measures:
+      - name: encounters
+        description: Every visit.
+        agg: sum
+        expr: "1"
+      - name: admissions
+        description: Hospital admissions (is_admission), by admission day.
+        agg: sum
+        expr: CASE WHEN is_admission THEN 1 ELSE 0 END
+      - name: ed_visits
+        description: Emergency department visits that went home (kind emergency visit), by arrival day.
+        agg: sum
+        expr: CASE WHEN encounter_kind = 'emergency visit' THEN 1 ELSE 0 END
+      - name: index_stays
+        description: Hospital admissions with a discharge and a length of stay, by discharge day (the quality marts' index stays).
+        agg: sum
+        expr: CASE WHEN is_admission AND discharge_at IS NOT NULL AND length_of_stay_days IS NOT NULL THEN 1 ELSE 0 END
+        agg_time_dimension: discharge_date
+      - name: readmissions_30d
+        description: Index stays followed by another admission of the same record within 30 days, by discharge day.
+        agg: sum
+        expr: >
+          CASE WHEN is_admission AND discharge_at IS NOT NULL AND length_of_stay_days IS NOT NULL AND readmitted_30d
+               THEN 1 ELSE 0 END
+        agg_time_dimension: discharge_date
+      - name: length_of_stay_days_total
+        description: Total length of stay in days of the index stays, by discharge day.
+        agg: sum
+        expr: >
+          CASE WHEN is_admission AND discharge_at IS NOT NULL AND length_of_stay_days IS NOT NULL
+               THEN length_of_stay_days ELSE 0 END
+        agg_time_dimension: discharge_date
+
+  - name: patients
+    description: One row per person (dim_patient), records the EMPI linked counted once. No identifiers.
+    model: ref('dim_patient')
+    entities:
+      - name: patient
+        type: primary
+        expr: patient_sk
+    dimensions:
+      - name: sex
+        description: Sex as sent (female, male, other, unknown).
+        type: categorical
+      - name: age_band
+        description: 0-17, 10 year bands, 90+ (HIPAA Safe Harbor), unknown.
+        type: categorical
+      - name: state
+        description: State of the address, nothing finer.
+        type: categorical
+      - name: source_count
+        description: Number of sources the person has records in (1 to 3).
+        type: categorical
+
+  - name: locations
+    description: One row per place (dim_location), master data of the invented Riverside General (demo).
+    model: ref('dim_location')
+    entities:
+      - name: location
+        type: primary
+        expr: location_sk
+    dimensions:
+      - name: unit_name
+        description: The unit the place belongs to, such as Medical Unit.
+        type: categorical
+      - name: unit_bed_capacity
+        description: Beds in the place's unit.
+        type: categorical
+      - name: location_level
+        description: site, unit, room, bed, clinic, other, unknown.
+        type: categorical
+
+  - name: bed_days
+    description: >
+      One row per occupied bed per midnight (fact_bed_day), dated by the day that midnight closes. Only the
+      Riverside General feed sends beds.
+    model: ref('fact_bed_day')
+    defaults:
+      agg_time_dimension: census_date
+    entities:
+      - name: bed_day
+        type: primary
+        expr: bed_day_sk
+      - name: encounter
+        type: foreign
+        expr: encounter_sk
+      - name: patient
+        type: foreign
+        expr: patient_sk
+      - name: location
+        type: foreign
+        expr: location_sk
+    dimensions:
+      - name: census_date
+        description: The day whose closing midnight the bed was occupied.
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: bed_days
+        description: Occupied beds at midnight, summed over the days.
+        agg: sum
+        expr: "1"
+
+  - name: bed_capacity
+    description: One row per bed of the hospital per day (fact_bed_capacity_day), over the days fact_bed_day covers.
+    model: ref('fact_bed_capacity_day')
+    defaults:
+      agg_time_dimension: capacity_date
+    entities:
+      - name: bed_capacity_day
+        type: primary
+        expr: bed_capacity_day_sk
+      - name: location
+        type: foreign
+        expr: location_sk
+    dimensions:
+      - name: capacity_date
+        description: The day whose closing midnight the bed was available.
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: capacity_bed_days
+        description: Beds available at midnight, summed over the days.
+        agg: sum
+        expr: "1"

@@ -1,0 +1,297 @@
+category,weight,superseded_by,code_system,code_prefix,description
+myocardial_infarction,1,,icd10,I21,Myocardial infarction
+myocardial_infarction,1,,icd10,I22,Myocardial infarction
+myocardial_infarction,1,,icd10,I252,Myocardial infarction
+heart_failure,1,,icd10,I099,Congestive heart failure
+heart_failure,1,,icd10,I110,Congestive heart failure
+heart_failure,1,,icd10,I130,Congestive heart failure
+heart_failure,1,,icd10,I132,Congestive heart failure
+heart_failure,1,,icd10,I255,Congestive heart failure
+heart_failure,1,,icd10,I420,Congestive heart failure
+heart_failure,1,,icd10,I425,Congestive heart failure
+heart_failure,1,,icd10,I426,Congestive heart failure
+heart_failure,1,,icd10,I427,Congestive heart failure
+heart_failure,1,,icd10,I428,Congestive heart failure
+heart_failure,1,,icd10,I429,Congestive heart failure
+heart_failure,1,,icd10,I43,Congestive heart failure
+heart_failure,1,,icd10,I50,Congestive heart failure
+heart_failure,1,,icd10,P290,Congestive heart failure
+peripheral_vascular,1,,icd10,I70,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I71,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I731,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I738,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I739,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I771,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I790,Peripheral vascular disease
+peripheral_vascular,1,,icd10,I792,Peripheral vascular disease
+peripheral_vascular,1,,icd10,K551,Peripheral vascular disease
+peripheral_vascular,1,,icd10,K558,Peripheral vascular disease
+peripheral_vascular,1,,icd10,K559,Peripheral vascular disease
+peripheral_vascular,1,,icd10,Z958,Peripheral vascular disease
+peripheral_vascular,1,,icd10,Z959,Peripheral vascular disease
+cerebrovascular,1,,icd10,G45,Cerebrovascular disease
+cerebrovascular,1,,icd10,G46,Cerebrovascular disease
+cerebrovascular,1,,icd10,H340,Cerebrovascular disease
+cerebrovascular,1,,icd10,I60,Cerebrovascular disease
+cerebrovascular,1,,icd10,I61,Cerebrovascular disease
+cerebrovascular,1,,icd10,I62,Cerebrovascular disease
+cerebrovascular,1,,icd10,I63,Cerebrovascular disease
+cerebrovascular,1,,icd10,I64,Cerebrovascular disease
+cerebrovascular,1,,icd10,I65,Cerebrovascular disease
+cerebrovascular,1,,icd10,I66,Cerebrovascular disease
+cerebrovascular,1,,icd10,I67,Cerebrovascular disease
+cerebrovascular,1,,icd10,I68,Cerebrovascular disease
+cerebrovascular,1,,icd10,I69,Cerebrovascular disease
+dementia,1,,icd10,F00,Dementia
+dementia,1,,icd10,F01,Dementia
+dementia,1,,icd10,F02,Dementia
+dementia,1,,icd10,F03,Dementia
+dementia,1,,icd10,F051,Dementia
+dementia,1,,icd10,G30,Dementia
+dementia,1,,icd10,G311,Dementia
+chronic_pulmonary,1,,icd10,I278,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,I279,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J40,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J41,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J42,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J43,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J44,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J45,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J46,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J47,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J60,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J61,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J62,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J63,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J64,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J65,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J66,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J67,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J684,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J701,Chronic pulmonary disease
+chronic_pulmonary,1,,icd10,J703,Chronic pulmonary disease
+rheumatic,1,,icd10,M05,Rheumatic disease
+rheumatic,1,,icd10,M06,Rheumatic disease
+rheumatic,1,,icd10,M315,Rheumatic disease
+rheumatic,1,,icd10,M32,Rheumatic disease
+rheumatic,1,,icd10,M33,Rheumatic disease
+rheumatic,1,,icd10,M34,Rheumatic disease
+rheumatic,1,,icd10,M351,Rheumatic disease
+rheumatic,1,,icd10,M353,Rheumatic disease
+rheumatic,1,,icd10,M360,Rheumatic disease
+peptic_ulcer,1,,icd10,K25,Peptic ulcer disease
+peptic_ulcer,1,,icd10,K26,Peptic ulcer disease
+peptic_ulcer,1,,icd10,K27,Peptic ulcer disease
+peptic_ulcer,1,,icd10,K28,Peptic ulcer disease
+mild_liver,1,severe_liver,icd10,B18,Mild liver disease
+mild_liver,1,severe_liver,icd10,K700,Mild liver disease
+mild_liver,1,severe_liver,icd10,K701,Mild liver disease
+mild_liver,1,severe_liver,icd10,K702,Mild liver disease
+mild_liver,1,severe_liver,icd10,K703,Mild liver disease
+mild_liver,1,severe_liver,icd10,K709,Mild liver disease
+mild_liver,1,severe_liver,icd10,K713,Mild liver disease
+mild_liver,1,severe_liver,icd10,K714,Mild liver disease
+mild_liver,1,severe_liver,icd10,K715,Mild liver disease
+mild_liver,1,severe_liver,icd10,K717,Mild liver disease
+mild_liver,1,severe_liver,icd10,K73,Mild liver disease
+mild_liver,1,severe_liver,icd10,K74,Mild liver disease
+mild_liver,1,severe_liver,icd10,K760,Mild liver disease
+mild_liver,1,severe_liver,icd10,K762,Mild liver disease
+mild_liver,1,severe_liver,icd10,K763,Mild liver disease
+mild_liver,1,severe_liver,icd10,K764,Mild liver disease
+mild_liver,1,severe_liver,icd10,K768,Mild liver disease
+mild_liver,1,severe_liver,icd10,K769,Mild liver disease
+mild_liver,1,severe_liver,icd10,Z944,Mild liver disease
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E100,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E101,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E106,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E108,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E109,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E110,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E111,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E116,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E118,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E119,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E120,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E121,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E126,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E128,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E129,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E130,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E131,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E136,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E138,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E139,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E140,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E141,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E146,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E148,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd10,E149,Diabetes without chronic complication
+diabetes_complicated,2,,icd10,E102,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E103,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E104,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E105,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E107,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E112,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E113,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E114,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E115,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E117,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E122,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E123,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E124,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E125,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E127,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E132,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E133,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E134,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E135,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E137,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E142,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E143,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E144,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E145,Diabetes with chronic complication
+diabetes_complicated,2,,icd10,E147,Diabetes with chronic complication
+hemiplegia,2,,icd10,G041,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G114,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G801,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G802,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G81,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G82,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G830,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G831,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G832,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G833,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G834,Hemiplegia or paraplegia
+hemiplegia,2,,icd10,G839,Hemiplegia or paraplegia
+renal,2,,icd10,I120,Renal disease
+renal,2,,icd10,I131,Renal disease
+renal,2,,icd10,N032,Renal disease
+renal,2,,icd10,N033,Renal disease
+renal,2,,icd10,N034,Renal disease
+renal,2,,icd10,N035,Renal disease
+renal,2,,icd10,N036,Renal disease
+renal,2,,icd10,N037,Renal disease
+renal,2,,icd10,N052,Renal disease
+renal,2,,icd10,N053,Renal disease
+renal,2,,icd10,N054,Renal disease
+renal,2,,icd10,N055,Renal disease
+renal,2,,icd10,N056,Renal disease
+renal,2,,icd10,N057,Renal disease
+renal,2,,icd10,N18,Renal disease
+renal,2,,icd10,N19,Renal disease
+renal,2,,icd10,N250,Renal disease
+renal,2,,icd10,Z490,Renal disease
+renal,2,,icd10,Z491,Renal disease
+renal,2,,icd10,Z492,Renal disease
+renal,2,,icd10,Z940,Renal disease
+renal,2,,icd10,Z992,Renal disease
+malignancy,2,metastatic,icd10,C00,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C01,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C02,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C03,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C04,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C05,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C06,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C07,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C08,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C09,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C10,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C11,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C12,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C13,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C14,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C15,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C16,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C17,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C18,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C19,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C20,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C21,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C22,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C23,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C24,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C25,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C26,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C30,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C31,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C32,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C33,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C34,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C37,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C38,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C39,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C40,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C41,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C43,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C45,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C46,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C47,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C48,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C49,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C50,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C51,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C52,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C53,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C54,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C55,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C56,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C57,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C58,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C60,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C61,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C62,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C63,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C64,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C65,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C66,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C67,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C68,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C69,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C70,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C71,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C72,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C73,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C74,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C75,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C76,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C81,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C82,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C83,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C84,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C85,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C88,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C90,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C91,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C92,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C93,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C94,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C95,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C96,"Any malignancy, including lymphoma and leukemia"
+malignancy,2,metastatic,icd10,C97,"Any malignancy, including lymphoma and leukemia"
+severe_liver,3,,icd10,I850,Moderate or severe liver disease
+severe_liver,3,,icd10,I859,Moderate or severe liver disease
+severe_liver,3,,icd10,I864,Moderate or severe liver disease
+severe_liver,3,,icd10,I982,Moderate or severe liver disease
+severe_liver,3,,icd10,K704,Moderate or severe liver disease
+severe_liver,3,,icd10,K711,Moderate or severe liver disease
+severe_liver,3,,icd10,K721,Moderate or severe liver disease
+severe_liver,3,,icd10,K729,Moderate or severe liver disease
+severe_liver,3,,icd10,K765,Moderate or severe liver disease
+severe_liver,3,,icd10,K766,Moderate or severe liver disease
+severe_liver,3,,icd10,K767,Moderate or severe liver disease
+metastatic,6,,icd10,C77,Metastatic solid tumor
+metastatic,6,,icd10,C78,Metastatic solid tumor
+metastatic,6,,icd10,C79,Metastatic solid tumor
+metastatic,6,,icd10,C80,Metastatic solid tumor
+hiv_aids,6,,icd10,B20,AIDS/HIV
+hiv_aids,6,,icd10,B21,AIDS/HIV
+hiv_aids,6,,icd10,B22,AIDS/HIV
+hiv_aids,6,,icd10,B24,AIDS/HIV
+heart_failure,1,,icd9,428,Congestive heart failure
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2500,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2501,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2502,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2503,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2508,Diabetes without chronic complication
+diabetes_uncomplicated,1,diabetes_complicated,icd9,2509,Diabetes without chronic complication

@@ -1,0 +1,74 @@
+-- Gold bed board: one row per bed of the hospital (Riverside General reference data, demo), with the patient in it
+-- now. Bed status comes from the Location (operationalStatus, kept up to date by the feed); the patient is the live
+-- visit still in progress whose current bed entry (Encounter.location, no end) is this bed. Day of stay counts the
+-- admission day as day 1, up to the data date. Lab flags come from the latest key labs of the current stay only:
+--   kidney_signal       creatinine up 0.3 mg/dL or more within 48 hours during the stay (gold_aki_rise)
+--   low_sodium          latest sodium below 135 mmol/L, the same cut off as the low sodium cohort
+--   abnormal_potassium  latest potassium outside the reference range the lab sent
+-- Identifying (patient name, MRN): for the care team, never for analysts.
+WITH beds AS (
+    SELECT b.location_id AS bed_location_id, b.name AS bed_name, b.operational_status,
+           b.unit_location_id, u.name AS unit_name
+    FROM {{ ref('silver_location') }} b
+    JOIN {{ ref('silver_location') }} u ON u.location_id = b.unit_location_id
+    WHERE b.physical_type = 'bd'
+),
+fresh AS (
+    SELECT data_date FROM {{ ref('gold_feed_freshness') }}
+),
+current_stay AS (
+    SELECT el.location_id AS bed_location_id, el.start_at AS in_bed_since, e.*
+    FROM {{ ref('silver_encounter_location') }} el
+    JOIN {{ ref('gold_live_encounter') }} e ON e.encounter_id = el.encounter_id
+    WHERE el.physical_type = 'bd' AND el.end_at IS NULL AND COALESCE(el.status, 'active') = 'active'
+      AND e.end_at IS NULL
+),
+stay_labs AS (
+    SELECT o.encounter_id, k.lab, o.value_num, o.range_flag,
+           ROW_NUMBER() OVER (PARTITION BY o.encounter_id, k.lab ORDER BY o.effective_at DESC, o.observation_id DESC) AS rn
+    FROM {{ ref('silver_observation') }} o
+    JOIN {{ ref('key_labs') }} k ON k.loinc = o.loinc
+    JOIN current_stay c ON c.encounter_id = o.encounter_id
+    WHERE k.lab IN ('sodium', 'potassium', 'creatinine')
+      AND o.value_num IS NOT NULL AND o.comparator IS NULL AND o.effective_at IS NOT NULL
+),
+latest AS (
+    SELECT
+        encounter_id,
+        MAX(CASE WHEN lab = 'sodium' THEN value_num END)        AS latest_sodium,
+        MAX(CASE WHEN lab = 'potassium' THEN value_num END)     AS latest_potassium,
+        MAX(CASE WHEN lab = 'potassium' THEN range_flag END)    AS potassium_flag,
+        MAX(CASE WHEN lab = 'creatinine' THEN value_num END)    AS latest_creatinine
+    FROM stay_labs
+    WHERE rn = 1
+    GROUP BY encounter_id
+)
+SELECT
+    b.unit_location_id,
+    b.unit_name,
+    b.bed_location_id,
+    b.bed_name,
+    b.operational_status                                                    AS bed_status,
+    CASE WHEN b.operational_status = 'O' THEN TRUE ELSE FALSE END          AS is_occupied,
+    c.encounter_id,
+    c.visit_number,
+    c.patient_id,
+    NULLIF(TRIM(COALESCE(p.given_name || ' ', '') || COALESCE(p.family_name, '')), '') AS patient_name,
+    p.mrn,
+    c.encounter_kind,
+    c.start_at                                                              AS admit_at,
+    c.in_bed_since,
+    CASE WHEN c.encounter_id IS NOT NULL THEN DATEDIFF('day', c.start_date, f.data_date) + 1 END AS day_of_stay,
+    c.attending_practitioner_id,
+    c.attending_name,
+    l.latest_sodium,
+    l.latest_potassium,
+    l.latest_creatinine,
+    CASE WHEN c.encounter_id IS NULL THEN NULL WHEN c.has_kidney_signal THEN TRUE ELSE FALSE END              AS kidney_signal,
+    CASE WHEN c.encounter_id IS NULL THEN NULL WHEN l.latest_sodium < 135 THEN TRUE ELSE FALSE END            AS low_sodium,
+    CASE WHEN c.encounter_id IS NULL THEN NULL WHEN l.potassium_flag IN ('high', 'low') THEN TRUE ELSE FALSE END AS abnormal_potassium
+FROM beds b
+CROSS JOIN fresh f
+LEFT JOIN current_stay c                   ON c.bed_location_id = b.bed_location_id
+LEFT JOIN latest l                         ON l.encounter_id = c.encounter_id
+LEFT JOIN {{ ref('silver_patient') }} p    ON p.patient_id = c.patient_id

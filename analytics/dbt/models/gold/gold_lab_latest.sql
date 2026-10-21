@@ -1,0 +1,34 @@
+-- Gold latest labs: for each patient and key lab (seed_key_labs), the latest value plus range and history.
+-- Results like "<0.01" have a comparator and are left out: they are not the number they contain.
+WITH results AS (
+    SELECT
+        o.patient_id,
+        k.lab,
+        o.loinc,
+        o.value_num,
+        o.unit,
+        o.range_flag,
+        o.effective_at,
+        ROW_NUMBER() OVER (PARTITION BY o.patient_id, k.lab ORDER BY o.effective_at DESC, o.observation_id DESC) AS rn,
+        COUNT(*)         OVER (PARTITION BY o.patient_id, k.lab) AS n_results,
+        MIN(o.value_num) OVER (PARTITION BY o.patient_id, k.lab) AS min_value,
+        MAX(o.value_num) OVER (PARTITION BY o.patient_id, k.lab) AS max_value,
+        SUM(CASE WHEN o.range_flag IN ('high', 'low') THEN 1 ELSE 0 END) OVER (PARTITION BY o.patient_id, k.lab) AS n_out_of_range
+    FROM {{ ref('silver_observation') }} o
+    JOIN {{ ref('key_labs') }} k ON k.loinc = o.loinc
+    WHERE o.value_num IS NOT NULL AND o.comparator IS NULL AND o.effective_at IS NOT NULL
+)
+SELECT
+    patient_id,
+    lab,
+    loinc,
+    value_num    AS latest_value,
+    unit,
+    range_flag   AS latest_flag,
+    effective_at AS latest_at,
+    n_results,
+    min_value,
+    max_value,
+    n_out_of_range
+FROM results
+WHERE rn = 1

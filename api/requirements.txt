@@ -1,0 +1,4 @@
+# The metrics API (api/), on top of analytics/requirements.txt (the semantic layer it reads through)
+fastapi==0.149.0
+uvicorn==0.54.0
+httpx==0.28.1  # only for the tests (FastAPI TestClient)

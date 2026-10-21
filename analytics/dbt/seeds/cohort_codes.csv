@@ -1,0 +1,16 @@
+cohort,code_system,code_pattern,description
+diabetes_type2,icd10,E11%,Type 2 diabetes mellitus
+diabetes_type2,icd9,250%,Diabetes mellitus (ICD 9 does not always separate type 1 and 2)
+diabetes_type2,snomed,44054006,Diabetes mellitus type 2
+heart_failure,icd10,I50%,Heart failure
+heart_failure,icd9,428%,Heart failure (works even when the ICD 10 upgrade needs review)
+heart_failure,snomed,84114007,Heart failure
+heart_failure,snomed,88805009,Chronic congestive heart failure
+hypertension,icd10,I10%,Essential (primary) hypertension
+hypertension,icd9,401%,Essential hypertension
+hypertension,snomed,59621000,Essential hypertension
+sepsis,icd10,A41%,Sepsis due to other organisms
+sepsis,icd10,R652%,Severe sepsis
+sepsis,icd9,038%,Septicemia
+sepsis,icd9,99591,Sepsis
+sepsis,icd9,99592,Severe sepsis

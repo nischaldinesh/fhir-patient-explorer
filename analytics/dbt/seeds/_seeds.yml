@@ -1,0 +1,212 @@
+version: 2
+
+seeds:
+  - name: lab_loinc_map
+    description: >
+      Curated map from MIMIC local lab codes to LOINC. A link to terminology/lab_loinc_map.csv, the same file
+      the FHIR ConceptMap is built from. Loaded as seed_lab_loinc.
+    config:
+      alias: seed_lab_loinc
+      column_types: {mimic_code: varchar, mimic_display: varchar, loinc: varchar, loinc_display: varchar,
+                     unit: varchar, equivalence: varchar, note: varchar}
+    columns:
+      - name: mimic_code
+        description: MIMIC d_labitems item id.
+        data_tests: [unique, not_null]
+      - name: loinc
+        description: Target LOINC code.
+        data_tests: [not_null]
+      - name: equivalence
+        description: How close the mapping is (FHIR ConceptMap equivalence).
+
+  - name: icd9_to_icd10
+    description: >
+      ICD 9 to ICD 10 for the MIMIC diagnoses, from the CMS General Equivalence Mappings. A link to
+      terminology/out/icd9_to_icd10.csv. Loaded as seed_icd9_icd10.
+    config:
+      alias: seed_icd9_icd10
+      column_types: {icd9: varchar, icd9_display: varchar, rows: varchar, category: varchar,
+                     needs_review: varchar, icd10: varchar, icd10_display: varchar}
+    columns:
+      - name: icd9
+        description: ICD 9 code without the dot.
+        data_tests: [unique, not_null]
+      - name: category
+        description: exact, approximate, one_to_many or no_match. Silver uses the ICD 10 code only for exact and approximate.
+      - name: needs_review
+        description: "'yes' when CMS lists several ICD 10 options, so a coder has to choose."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["yes", "no"]
+      - name: icd10
+        description: ICD 10 code without the dot (several separated by | when one to many).
+
+  - name: key_labs
+    description: The labs that matter for the Gold tables, by LOINC code. Loaded as seed_key_labs.
+    config:
+      alias: seed_key_labs
+      column_types: {loinc: varchar, lab: varchar, unit: varchar, note: varchar}
+    columns:
+      - name: loinc
+        description: LOINC code; several codes can share one lab (serum and whole blood).
+        data_tests: [unique, not_null]
+      - name: lab
+        description: Short lab name used in gold_lab_latest and the cohorts (sodium, creatinine ...).
+        data_tests: [not_null]
+
+  - name: cohort_codes
+    description: >
+      Diagnosis cohorts defined once across ICD 10, ICD 9 and SNOMED CT, as LIKE patterns on codes without
+      dots. Loaded as seed_cohort_codes.
+    config:
+      alias: seed_cohort_codes
+      column_types: {cohort: varchar, code_system: varchar, code_pattern: varchar, description: varchar}
+    columns:
+      - name: cohort
+        description: Cohort name.
+        data_tests: [not_null]
+      - name: code_system
+        description: Code system of the pattern.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [icd10, icd9, snomed]
+      - name: code_pattern
+        description: SQL LIKE pattern, for example E11%.
+        data_tests: [not_null]
+
+  - name: charlson_codes
+    description: >
+      Charlson comorbidity conditions with their weights, for the C of the LACE readmission index. ICD 10 prefixes
+      (no dots) follow the enhanced ICD 10 coding of Quan et al. 2005 (Medical Care 43:1130), with the original
+      Charlson weights. The few ICD 9 codes the live feed sends that are Charlson conditions are listed too, so a
+      diagnosis counts even when its ICD 10 upgrade still needs a coder. When a patient has both a condition and its
+      more severe form (superseded_by), only the more severe one counts. Loaded as seed_charlson_codes.
+    config:
+      alias: seed_charlson_codes
+      column_types: {category: varchar, weight: integer, superseded_by: varchar, code_system: varchar,
+                     code_prefix: varchar, description: varchar}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "code_system || '|' || code_prefix"
+    columns:
+      - name: category
+        description: Charlson condition, such as heart_failure.
+        data_tests: [not_null]
+      - name: weight
+        description: Charlson weight (1, 2, 3 or 6).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 6]
+      - name: superseded_by
+        description: The more severe category that replaces this one when both are present, or empty.
+      - name: code_system
+        description: Code system of the prefix.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [icd10, icd9]
+      - name: code_prefix
+        description: Code prefix without dots; a diagnosis matches when its code starts with it.
+        data_tests: [not_null]
+
+  - name: unmapped_labs
+    description: >
+      Lab names known to arrive without a LOINC code, reviewed and accepted for now (kept as text). The live feed
+      data quality test fails on any lab result that has no LOINC and is not listed here. Loaded as seed_unmapped_labs.
+    config:
+      alias: seed_unmapped_labs
+      column_types: {match_type: varchar, match: varchar, reason: varchar}
+    columns:
+      - name: match_type
+        description: code (the local code as sent) or text (the lab name, lower case).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [code, text]
+      - name: match
+        description: The local code or the lower case lab name.
+        data_tests: [not_null]
+
+  - name: icd10_chapters
+    description: >
+      The 22 chapters of ICD 10 CM as ranges of 3 character categories (CDC NCHS, FY2025 tabular list), for
+      dim_diagnosis. A category belongs to the chapter whose first_category to last_category range holds it, compared
+      as text (O9A sorts after O99). Loaded as seed_icd10_chapters.
+    config:
+      alias: seed_icd10_chapters
+      column_types: {chapter: integer, first_category: varchar, last_category: varchar, title: varchar}
+    columns:
+      - name: chapter
+        description: Chapter number, 1 to 22.
+        data_tests: [unique, not_null]
+      - name: first_category
+        description: First 3 character category of the chapter.
+        data_tests: [unique, not_null]
+      - name: last_category
+        description: Last 3 character category of the chapter.
+        data_tests: [unique, not_null]
+      - name: title
+        description: Chapter title.
+        data_tests: [not_null]
+
+  - name: staff_roles
+    description: >
+      Role, specialty and service of each member of the invented Riverside General staff (demo), for dim_practitioner.
+      The same list as STAFF in hl7v2/reference.py, which publishes it as PractitionerRole; the extract does not pull
+      PractitionerRole, so the warehouse reads it from here, and a test keeps the two equal. Loaded as seed_staff_roles.
+    config:
+      alias: seed_staff_roles
+      column_types: {practitioner_id: varchar, role: varchar, specialty: varchar, service_name: varchar}
+    columns:
+      - name: practitioner_id
+        description: Practitioner id (riverside-pract-<staff number>).
+        data_tests: [unique, not_null]
+      - name: role
+        description: doctor, nurse or care manager.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [doctor, nurse, care manager]
+      - name: specialty
+        description: Job title as the hospital uses it (Hospitalist, Intensivist, RN Care Manager ...).
+        data_tests: [not_null]
+      - name: service_name
+        description: The HealthcareService the person works for.
+        data_tests: [not_null]
+
+  - name: quality_measures
+    description: >
+      The hospital quality measures of mart_quality_monthly and mart_quality_period: name, kind and what they count.
+      The definitions are in models/marts/int_quality_events.sql and analytics/README.md. Loaded as seed_quality_measures.
+    config:
+      alias: seed_quality_measures
+      column_types: {measure_id: varchar, measure_name: varchar, kind: varchar, unit: varchar, counts: varchar}
+    columns:
+      - name: measure_id
+        description: Measure id.
+        data_tests: [unique, not_null]
+      - name: measure_name
+        description: Plain English name; the diabetes measure says "HEDIS style, not certified".
+        data_tests: [not_null]
+      - name: kind
+        description: proportion (numerator is a count, rate filled), mean (numerator is a total) or median (no numerator).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [proportion, mean, median]
+      - name: unit
+        description: proportion, days or hours.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [proportion, days, hours]
+      - name: counts
+        description: What the denominator counts, stays (visits) or people (dim_patient members).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [stays, people]

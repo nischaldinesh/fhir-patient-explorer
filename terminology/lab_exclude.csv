@@ -1,0 +1,5 @@
+mimic_code,mimic_display,reason
+50934,H,"Hemolysis index: measures sample quality, not the patient"
+50947,I,"Icterus index: measures sample quality, not the patient"
+51678,L,"Lipemia index: measures sample quality, not the patient"
+52033,Specimen Type,"Describes the specimen (arterial, venous) for blood gas rows; context, not a result"

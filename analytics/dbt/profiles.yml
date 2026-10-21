@@ -1,0 +1,20 @@
+# Connection profiles. No secrets here: Snowflake reads everything from environment variables.
+fhir_explorer:
+  target: duckdb
+  outputs:
+    duckdb:
+      type: duckdb
+      # Relative to the folder dbt runs from; build.py always passes an absolute path.
+      path: "{{ env_var('DBT_DUCKDB_PATH', 'data/analytics/warehouse.duckdb') }}"
+      threads: 4
+    snowflake:
+      # Needs `pip install dbt-snowflake` (not in requirements.txt: heavy, and not used by the nightly job).
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+      threads: 4

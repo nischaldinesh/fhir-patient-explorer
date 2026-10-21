@@ -1,0 +1,28 @@
+{
+  "thresholds": {
+    "auto_link": 90,
+    "review": 70
+  },
+  "weights": {
+    "last_name": 23,
+    "first_name": 19,
+    "middle_name": 4,
+    "birth_date": 32,
+    "sex": 4,
+    "phone": 9,
+    "postal_code": 4,
+    "address": 5
+  },
+  "partial": {
+    "nickname": 0.8,
+    "close_spelling": 0.8,
+    "sounds_alike": 0.6,
+    "transposed_birth_date": 0.75,
+    "address_written_differently": 0.8
+  },
+  "jaro_winkler": {
+    "close_spelling": 0.9,
+    "sounds_alike": 0.8,
+    "same_street": 0.85
+  }
+}

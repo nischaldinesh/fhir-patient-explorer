@@ -1,0 +1,46 @@
+-- Gold EMPI quality: how well the automatic links agree with the seeded test set (silver_empi_truth). Only pairs with
+-- a test set record count. Precision: of the pairs linked automatically, the share that are true matches. Recall: of
+-- the true matches, the share linked automatically. Pairs in review are waiting for a person. One row; the counts are
+-- 0 and the rates NULL before the test set is loaded.
+WITH truth AS (
+    SELECT LEAST(seed_patient_id, existing_patient_id) AS a, GREATEST(seed_patient_id, existing_patient_id) AS b, kind
+    FROM {{ ref('silver_empi_truth') }}
+),
+test_ids AS (
+    SELECT DISTINCT seed_patient_id AS patient_id FROM {{ ref('silver_empi_truth') }}
+),
+scoped AS (
+    SELECT LEAST(patient_a_id, patient_b_id) AS a, GREATEST(patient_a_id, patient_b_id) AS b, status
+    FROM {{ ref('silver_empi_pair') }}
+    WHERE patient_a_id IN (SELECT patient_id FROM test_ids) OR patient_b_id IN (SELECT patient_id FROM test_ids)
+),
+judged AS (
+    SELECT s.status, t.kind
+    FROM scoped s
+    LEFT JOIN truth t ON t.a = s.a AND t.b = s.b
+),
+n AS (
+    SELECT
+        (SELECT COUNT(*) FROM truth WHERE kind = 'match')                                   AS true_match_pairs,
+        (SELECT COUNT(*) FROM truth WHERE kind = 'hard_negative')                           AS hard_negative_pairs,
+        (SELECT COUNT(*) FROM judged WHERE status = 'auto_link')                            AS auto_linked,
+        (SELECT COUNT(*) FROM judged WHERE status = 'auto_link' AND kind = 'match')         AS true_positives,
+        (SELECT COUNT(*) FROM judged WHERE status = 'auto_link' AND kind = 'hard_negative') AS hard_negatives_auto_linked,
+        (SELECT COUNT(*) FROM judged WHERE status = 'review')                               AS pairs_in_review,
+        (SELECT COUNT(*) FROM judged WHERE status = 'review' AND kind = 'match')            AS true_matches_in_review,
+        (SELECT COUNT(*) FROM judged WHERE status = 'review' AND kind = 'hard_negative')    AS hard_negatives_in_review
+)
+SELECT
+    true_match_pairs,
+    hard_negative_pairs,
+    auto_linked,
+    true_positives,
+    auto_linked - true_positives                                                             AS false_positives,
+    true_match_pairs - true_positives                                                        AS false_negatives,
+    CASE WHEN auto_linked > 0 THEN ROUND(CAST(true_positives AS DOUBLE) / auto_linked, 3) END AS precision,
+    CASE WHEN true_match_pairs > 0 THEN ROUND(CAST(true_positives AS DOUBLE) / true_match_pairs, 3) END AS recall,
+    hard_negatives_auto_linked,
+    pairs_in_review,
+    true_matches_in_review,
+    hard_negatives_in_review
+FROM n

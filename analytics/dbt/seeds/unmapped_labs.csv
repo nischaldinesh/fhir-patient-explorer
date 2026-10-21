@@ -1,0 +1,2 @@
+match_type,match,reason
+text,pain score,"Ordinal nursing score sent as free text (None, Mild, Moderate); no LOINC chosen yet, kept as text"

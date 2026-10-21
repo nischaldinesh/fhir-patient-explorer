@@ -1,0 +1,2277 @@
+{
+ "labs": {
+  "MIMIC | http://mimic.mit.edu/fhir/mimic/CodeSystem/mimic-d-labitems": {
+   "distinct_codes": 498,
+   "results": 107727,
+   "top": [
+    {
+     "code": "50971",
+     "display": "Potassium",
+     "results": 3022,
+     "numeric": 3019,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50983",
+     "display": "Sodium",
+     "results": 3007,
+     "numeric": 3007,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50912",
+     "display": "Creatinine",
+     "results": 3003,
+     "numeric": 3003,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50902",
+     "display": "Chloride",
+     "results": 2981,
+     "numeric": 2981,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "51006",
+     "display": "Urea Nitrogen",
+     "results": 2974,
+     "numeric": 2973,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51221",
+     "display": "Hematocrit",
+     "results": 2913,
+     "numeric": 2908,
+     "unit": "%"
+    },
+    {
+     "code": "50882",
+     "display": "Bicarbonate",
+     "results": 2863,
+     "numeric": 2863,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50868",
+     "display": "Anion Gap",
+     "results": 2860,
+     "numeric": 2860,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "51265",
+     "display": "Platelet Count",
+     "results": 2827,
+     "numeric": 2820,
+     "unit": "K/uL"
+    },
+    {
+     "code": "51222",
+     "display": "Hemoglobin",
+     "results": 2787,
+     "numeric": 2785,
+     "unit": "g/dL"
+    },
+    {
+     "code": "51279",
+     "display": "Red Blood Cells",
+     "results": 2760,
+     "numeric": 2748,
+     "unit": "m/uL"
+    },
+    {
+     "code": "51250",
+     "display": "MCV",
+     "results": 2760,
+     "numeric": 2748,
+     "unit": "fL"
+    },
+    {
+     "code": "51277",
+     "display": "RDW",
+     "results": 2760,
+     "numeric": 2747,
+     "unit": "%"
+    },
+    {
+     "code": "51248",
+     "display": "MCH",
+     "results": 2760,
+     "numeric": 2748,
+     "unit": "pg"
+    },
+    {
+     "code": "51249",
+     "display": "MCHC",
+     "results": 2760,
+     "numeric": 2748,
+     "unit": "g/dL"
+    },
+    {
+     "code": "51301",
+     "display": "White Blood Cells",
+     "results": 2760,
+     "numeric": 2759,
+     "unit": "K/uL"
+    },
+    {
+     "code": "50931",
+     "display": "Glucose",
+     "results": 2711,
+     "numeric": 2711,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50960",
+     "display": "Magnesium",
+     "results": 2470,
+     "numeric": 2470,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50893",
+     "display": "Calcium, Total",
+     "results": 2377,
+     "numeric": 2377,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50970",
+     "display": "Phosphate",
+     "results": 2337,
+     "numeric": 2337,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "52172",
+     "display": "RDW-SD",
+     "results": 1555,
+     "numeric": 1542,
+     "unit": "fL"
+    },
+    {
+     "code": "51275",
+     "display": "PTT",
+     "results": 1500,
+     "numeric": 1483,
+     "unit": "sec"
+    },
+    {
+     "code": "51237",
+     "display": "INR(PT)",
+     "results": 1481,
+     "numeric": 1464,
+     "unit": ""
+    },
+    {
+     "code": "51274",
+     "display": "PT",
+     "results": 1481,
+     "numeric": 1464,
+     "unit": "sec"
+    },
+    {
+     "code": "50934",
+     "display": "H",
+     "results": 1300,
+     "numeric": 1300,
+     "unit": ""
+    },
+    {
+     "code": "50947",
+     "display": "I",
+     "results": 1300,
+     "numeric": 1300,
+     "unit": ""
+    },
+    {
+     "code": "51678",
+     "display": "L",
+     "results": 1300,
+     "numeric": 1300,
+     "unit": ""
+    },
+    {
+     "code": "50878",
+     "display": "Asparate Aminotransferase (AST)",
+     "results": 1165,
+     "numeric": 1165,
+     "unit": "IU/L"
+    },
+    {
+     "code": "50885",
+     "display": "Bilirubin, Total",
+     "results": 1164,
+     "numeric": 1146,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50861",
+     "display": "Alanine Aminotransferase (ALT)",
+     "results": 1163,
+     "numeric": 1159,
+     "unit": "IU/L"
+    },
+    {
+     "code": "50863",
+     "display": "Alkaline Phosphatase",
+     "results": 1138,
+     "numeric": 1138,
+     "unit": "IU/L"
+    },
+    {
+     "code": "52033",
+     "display": "Specimen Type",
+     "results": 1033,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50820",
+     "display": "pH",
+     "results": 966,
+     "numeric": 966,
+     "unit": "units"
+    },
+    {
+     "code": "51146",
+     "display": "Basophils",
+     "results": 943,
+     "numeric": 938,
+     "unit": "%"
+    },
+    {
+     "code": "51200",
+     "display": "Eosinophils",
+     "results": 943,
+     "numeric": 939,
+     "unit": "%"
+    },
+    {
+     "code": "51256",
+     "display": "Neutrophils",
+     "results": 943,
+     "numeric": 939,
+     "unit": "%"
+    },
+    {
+     "code": "51244",
+     "display": "Lymphocytes",
+     "results": 943,
+     "numeric": 939,
+     "unit": "%"
+    },
+    {
+     "code": "51254",
+     "display": "Monocytes",
+     "results": 943,
+     "numeric": 939,
+     "unit": "%"
+    },
+    {
+     "code": "50802",
+     "display": "Base Excess",
+     "results": 889,
+     "numeric": 889,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50818",
+     "display": "pCO2",
+     "results": 889,
+     "numeric": 889,
+     "unit": "mm Hg"
+    },
+    {
+     "code": "50804",
+     "display": "Calculated Total CO2",
+     "results": 889,
+     "numeric": 889,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50821",
+     "display": "pO2",
+     "results": 889,
+     "numeric": 889,
+     "unit": "mm Hg"
+    },
+    {
+     "code": "50813",
+     "display": "Lactate",
+     "results": 758,
+     "numeric": 758,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "50920",
+     "display": "Estimated GFR (MDRD equation)",
+     "results": 739,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50954",
+     "display": "Lactate Dehydrogenase (LD)",
+     "results": 663,
+     "numeric": 663,
+     "unit": "IU/L"
+    },
+    {
+     "code": "50862",
+     "display": "Albumin",
+     "results": 625,
+     "numeric": 625,
+     "unit": "g/dL"
+    },
+    {
+     "code": "52074",
+     "display": "Absolute Monocyte Count",
+     "results": 569,
+     "numeric": 565,
+     "unit": "K/uL"
+    },
+    {
+     "code": "52069",
+     "display": "Absolute Basophil Count",
+     "results": 569,
+     "numeric": 565,
+     "unit": "K/uL"
+    },
+    {
+     "code": "52073",
+     "display": "Absolute Eosinophil Count",
+     "results": 569,
+     "numeric": 565,
+     "unit": "K/uL"
+    },
+    {
+     "code": "51133",
+     "display": "Absolute Lymphocyte Count",
+     "results": 569,
+     "numeric": 565,
+     "unit": "K/uL"
+    },
+    {
+     "code": "52075",
+     "display": "Absolute Neutrophil Count",
+     "results": 569,
+     "numeric": 565,
+     "unit": "K/uL"
+    },
+    {
+     "code": "50808",
+     "display": "Free Calcium",
+     "results": 509,
+     "numeric": 509,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "51266",
+     "display": "Platelet Smear",
+     "results": 454,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51267",
+     "display": "Poikilocytosis",
+     "results": 433,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51137",
+     "display": "Anisocytosis",
+     "results": 427,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51268",
+     "display": "Polychromasia",
+     "results": 426,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51252",
+     "display": "Microcytes",
+     "results": 418,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51233",
+     "display": "Hypochromia",
+     "results": 417,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51246",
+     "display": "Macrocytes",
+     "results": 415,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51143",
+     "display": "Atypical Lymphocytes",
+     "results": 404,
+     "numeric": 404,
+     "unit": "%"
+    },
+    {
+     "code": "51251",
+     "display": "Metamyelocytes",
+     "results": 397,
+     "numeric": 397,
+     "unit": "%"
+    },
+    {
+     "code": "51255",
+     "display": "Myelocytes",
+     "results": 396,
+     "numeric": 396,
+     "unit": "%"
+    },
+    {
+     "code": "51144",
+     "display": "Bands",
+     "results": 395,
+     "numeric": 395,
+     "unit": "%"
+    },
+    {
+     "code": "51464",
+     "display": "Bilirubin",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51492",
+     "display": "Protein",
+     "results": 339,
+     "numeric": 182,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51466",
+     "display": "Blood",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51478",
+     "display": "Glucose",
+     "results": 339,
+     "numeric": 68,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51508",
+     "display": "Urine Color",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51484",
+     "display": "Ketone",
+     "results": 339,
+     "numeric": 47,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51506",
+     "display": "Urine Appearance",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51514",
+     "display": "Urobilinogen",
+     "results": 339,
+     "numeric": 61,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51491",
+     "display": "pH",
+     "results": 339,
+     "numeric": 339,
+     "unit": "units"
+    },
+    {
+     "code": "51486",
+     "display": "Leukocytes",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51498",
+     "display": "Specific Gravity",
+     "results": 339,
+     "numeric": 331,
+     "unit": ""
+    },
+    {
+     "code": "51487",
+     "display": "Nitrite",
+     "results": 339,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50822",
+     "display": "Potassium, Whole Blood",
+     "results": 302,
+     "numeric": 302,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "51087",
+     "display": "Length of Urine Collection",
+     "results": 302,
+     "numeric": 3,
+     "unit": ""
+    },
+    {
+     "code": "51007",
+     "display": "Uric Acid",
+     "results": 282,
+     "numeric": 278,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51003",
+     "display": "Troponin T",
+     "results": 278,
+     "numeric": 133,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "50812",
+     "display": "Intubated",
+     "results": 274,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51476",
+     "display": "Epithelial Cells",
+     "results": 267,
+     "numeric": 208,
+     "unit": "#/hpf"
+    },
+    {
+     "code": "51463",
+     "display": "Bacteria",
+     "results": 267,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51519",
+     "display": "Yeast",
+     "results": 267,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51493",
+     "display": "RBC",
+     "results": 267,
+     "numeric": 214,
+     "unit": "#/hpf"
+    },
+    {
+     "code": "51516",
+     "display": "WBC",
+     "results": 267,
+     "numeric": 207,
+     "unit": "#/hpf"
+    },
+    {
+     "code": "50809",
+     "display": "Glucose",
+     "results": 262,
+     "numeric": 260,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "52135",
+     "display": "Immature Granulocytes",
+     "results": 227,
+     "numeric": 226,
+     "unit": "%"
+    },
+    {
+     "code": "50817",
+     "display": "Oxygen Saturation",
+     "results": 223,
+     "numeric": 223,
+     "unit": "%"
+    },
+    {
+     "code": "51260",
+     "display": "Ovalocytes",
+     "results": 218,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50825",
+     "display": "Temperature",
+     "results": 201,
+     "numeric": 201,
+     "unit": ""
+    },
+    {
+     "code": "50910",
+     "display": "Creatine Kinase (CK)",
+     "results": 200,
+     "numeric": 200,
+     "unit": "IU/L"
+    },
+    {
+     "code": "50911",
+     "display": "Creatine Kinase, MB Isoenzyme",
+     "results": 187,
+     "numeric": 179,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "50976",
+     "display": "Protein, Total",
+     "results": 181,
+     "numeric": 181,
+     "unit": "g/dL"
+    },
+    {
+     "code": "51512",
+     "display": "Urine Mucous",
+     "results": 179,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51296",
+     "display": "Teardrop Cells",
+     "results": 171,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51214",
+     "display": "Fibrinogen, Functional",
+     "results": 166,
+     "numeric": 164,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50930",
+     "display": "Globulin",
+     "results": 163,
+     "numeric": 163,
+     "unit": "g/dL"
+    },
+    {
+     "code": "51009",
+     "display": "Vancomycin",
+     "results": 153,
+     "numeric": 152,
+     "unit": "ug/mL"
+    },
+    {
+     "code": "50811",
+     "display": "Hemoglobin",
+     "results": 143,
+     "numeric": 143,
+     "unit": "g/dL"
+    },
+    {
+     "code": "50810",
+     "display": "Hematocrit, Calculated",
+     "results": 143,
+     "numeric": 143,
+     "unit": "%"
+    },
+    {
+     "code": "50824",
+     "display": "Sodium, Whole Blood",
+     "results": 141,
+     "numeric": 141,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50933",
+     "display": "Green Top Hold (plasma)",
+     "results": 137,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50816",
+     "display": "Oxygen",
+     "results": 137,
+     "numeric": 137,
+     "unit": "%"
+    },
+    {
+     "code": "50979",
+     "display": "Red Top Hold",
+     "results": 133,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50819",
+     "display": "PEEP",
+     "results": 130,
+     "numeric": 130,
+     "unit": ""
+    },
+    {
+     "code": "50956",
+     "display": "Lipase",
+     "results": 126,
+     "numeric": 126,
+     "unit": "IU/L"
+    },
+    {
+     "code": "50993",
+     "display": "Thyroid Stimulating Hormone",
+     "results": 120,
+     "numeric": 116,
+     "unit": "uIU/mL"
+    },
+    {
+     "code": "50852",
+     "display": "% Hemoglobin A1c",
+     "results": 117,
+     "numeric": 117,
+     "unit": "%"
+    },
+    {
+     "code": "51613",
+     "display": "eAG",
+     "results": 117,
+     "numeric": 117,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51257",
+     "display": "Nucleated Red Cells",
+     "results": 115,
+     "numeric": 115,
+     "unit": "%"
+    },
+    {
+     "code": "50887",
+     "display": "Blue Top Hold",
+     "results": 114,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50827",
+     "display": "Ventilation Rate",
+     "results": 109,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51148",
+     "display": "Blasts",
+     "results": 107,
+     "numeric": 107,
+     "unit": "%"
+    },
+    {
+     "code": "51082",
+     "display": "Creatinine, Urine",
+     "results": 106,
+     "numeric": 106,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50955",
+     "display": "Light Green Top Hold",
+     "results": 101,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50806",
+     "display": "Chloride, Whole Blood",
+     "results": 101,
+     "numeric": 101,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "51482",
+     "display": "Hyaline Casts",
+     "results": 97,
+     "numeric": 97,
+     "unit": "#/lpf"
+    },
+    {
+     "code": "50826",
+     "display": "Tidal Volume",
+     "results": 96,
+     "numeric": 96,
+     "unit": ""
+    },
+    {
+     "code": "51287",
+     "display": "Schistocytes",
+     "results": 89,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51100",
+     "display": "Sodium, Urine",
+     "results": 87,
+     "numeric": 67,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "51103",
+     "display": "Uhold",
+     "results": 83,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50828",
+     "display": "Ventilator",
+     "results": 82,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51000",
+     "display": "Triglycerides",
+     "results": 78,
+     "numeric": 78,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50924",
+     "display": "Ferritin",
+     "results": 76,
+     "numeric": 76,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "50963",
+     "display": "NTproBNP",
+     "results": 76,
+     "numeric": 74,
+     "unit": "pg/mL"
+    },
+    {
+     "code": "50935",
+     "display": "Haptoglobin",
+     "results": 75,
+     "numeric": 55,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51093",
+     "display": "Osmolality, Urine",
+     "results": 69,
+     "numeric": 69,
+     "unit": "mOsm/kg"
+    },
+    {
+     "code": "52111",
+     "display": "Echinocytes",
+     "results": 67,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50919",
+     "display": "EDTA Hold",
+     "results": 62,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50904",
+     "display": "Cholesterol, HDL",
+     "results": 61,
+     "numeric": 59,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50907",
+     "display": "Cholesterol, Total",
+     "results": 61,
+     "numeric": 61,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51259",
+     "display": "Other Cells",
+     "results": 60,
+     "numeric": 60,
+     "unit": "%"
+    },
+    {
+     "code": "50952",
+     "display": "Iron",
+     "results": 58,
+     "numeric": 58,
+     "unit": "ug/dL"
+    },
+    {
+     "code": "50903",
+     "display": "Cholesterol Ratio (Total/HDL)",
+     "results": 58,
+     "numeric": 58,
+     "unit": "Ratio"
+    },
+    {
+     "code": "51078",
+     "display": "Chloride, Urine",
+     "results": 56,
+     "numeric": 48,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50998",
+     "display": "Transferrin",
+     "results": 53,
+     "numeric": 53,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50953",
+     "display": "Iron Binding Capacity, Total",
+     "results": 53,
+     "numeric": 53,
+     "unit": "ug/dL"
+    },
+    {
+     "code": "50883",
+     "display": "Bilirubin, Direct",
+     "results": 53,
+     "numeric": 53,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51107",
+     "display": "Urine tube, held",
+     "results": 53,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "51097",
+     "display": "Potassium, Urine",
+     "results": 53,
+     "numeric": 52,
+     "unit": "mEq/L"
+    },
+    {
+     "code": "50905",
+     "display": "Cholesterol, LDL, Calculated",
+     "results": 52,
+     "numeric": 52,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51104",
+     "display": "Urea Nitrogen, Urine",
+     "results": 51,
+     "numeric": 51,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "51010",
+     "display": "Vitamin B12",
+     "results": 49,
+     "numeric": 43,
+     "unit": "pg/mL"
+    },
+    {
+     "code": "50981",
+     "display": "Salicylate",
+     "results": 48,
+     "numeric": 1,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50884",
+     "display": "Bilirubin, Indirect",
+     "results": 47,
+     "numeric": 45,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50922",
+     "display": "Ethanol",
+     "results": 46,
+     "numeric": 12,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "50856",
+     "display": "Acetaminophen",
+     "results": 46,
+     "numeric": 1,
+     "unit": "ug/mL"
+    },
+    {
+     "code": "50999",
+     "display": "Tricyclic Antidepressant Screen",
+     "results": 45,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "50889",
+     "display": "C-Reactive Protein",
+     "results": 44,
+     "numeric": 42,
+     "unit": "mg/L"
+    },
+    {
+     "code": "51197",
+     "display": "Elliptocytes",
+     "results": 44,
+     "numeric": 0,
+     "unit": ""
+    }
+   ]
+  },
+  "Synthea | http://loinc.org": {
+   "distinct_codes": 138,
+   "results": 29260,
+   "top": [
+    {
+     "code": "33914-3",
+     "display": "Glomerular filtration rate [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)/1.73 sq M",
+     "results": 977,
+     "numeric": 977,
+     "unit": "mL/min/{1.73_m2}"
+    },
+    {
+     "code": "4548-4",
+     "display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+     "results": 732,
+     "numeric": 732,
+     "unit": "%"
+    },
+    {
+     "code": "2339-0",
+     "display": "Glucose [Mass/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "6299-2",
+     "display": "Urea nitrogen [Mass/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "38483-4",
+     "display": "Creatinine [Mass/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "49765-1",
+     "display": "Calcium [Mass/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2947-0",
+     "display": "Sodium [Moles/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "6298-4",
+     "display": "Potassium [Moles/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2069-3",
+     "display": "Chloride [Moles/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "20565-8",
+     "display": "Carbon dioxide, total [Moles/volume] in Blood",
+     "results": 639,
+     "numeric": 639,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2345-7",
+     "display": "Glucose [Mass/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "3094-0",
+     "display": "Urea nitrogen [Mass/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2160-0",
+     "display": "Creatinine [Mass/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "17861-6",
+     "display": "Calcium [Mass/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2951-2",
+     "display": "Sodium [Moles/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2823-3",
+     "display": "Potassium [Moles/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2075-0",
+     "display": "Chloride [Moles/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2028-9",
+     "display": "Carbon dioxide, total [Moles/volume] in Serum or Plasma",
+     "results": 602,
+     "numeric": 602,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2514-8",
+     "display": "Ketones [Presence] in Urine by Test strip",
+     "results": 568,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5811-5",
+     "display": "Specific gravity of Urine by Test strip",
+     "results": 568,
+     "numeric": 568,
+     "unit": "{nominal}"
+    },
+    {
+     "code": "5803-2",
+     "display": "pH of Urine by Test strip",
+     "results": 568,
+     "numeric": 568,
+     "unit": "pH"
+    },
+    {
+     "code": "5802-4",
+     "display": "Nitrite [Presence] in Urine by Test strip",
+     "results": 568,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5794-3",
+     "display": "Hemoglobin [Presence] in Urine by Test strip",
+     "results": 568,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5799-2",
+     "display": "Leukocyte esterase [Presence] in Urine by Test strip",
+     "results": 568,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5792-7",
+     "display": "Glucose [Mass/volume] in Urine by Test strip",
+     "results": 560,
+     "numeric": 560,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "5804-0",
+     "display": "Protein [Mass/volume] in Urine by Test strip",
+     "results": 560,
+     "numeric": 560,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "25428-4",
+     "display": "Glucose [Presence] in Urine by Test strip",
+     "results": 557,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5770-3",
+     "display": "Bilirubin.total [Presence] in Urine by Test strip",
+     "results": 557,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "20454-5",
+     "display": "Protein [Presence] in Urine by Test strip",
+     "results": 557,
+     "numeric": 8,
+     "unit": "{presence}"
+    },
+    {
+     "code": "5767-9",
+     "display": "Appearance of Urine",
+     "results": 551,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "32167-9",
+     "display": "Clarity of Urine",
+     "results": 549,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "5778-6",
+     "display": "Color of Urine",
+     "results": 549,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "20505-4",
+     "display": "Bilirubin.total [Mass/volume] in Urine by Test strip",
+     "results": 549,
+     "numeric": 549,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "5797-6",
+     "display": "Ketones [Mass/volume] in Urine by Test strip",
+     "results": 549,
+     "numeric": 549,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "34533-0",
+     "display": "Odor of Urine",
+     "results": 547,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "2093-3",
+     "display": "Cholesterol [Mass/volume] in Serum or Plasma",
+     "results": 538,
+     "numeric": 538,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2571-8",
+     "display": "Triglyceride [Mass/volume] in Serum or Plasma",
+     "results": 538,
+     "numeric": 538,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "18262-6",
+     "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay",
+     "results": 538,
+     "numeric": 538,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2085-9",
+     "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+     "results": 538,
+     "numeric": 538,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "718-7",
+     "display": "Hemoglobin [Mass/volume] in Blood",
+     "results": 304,
+     "numeric": 304,
+     "unit": "g/dL"
+    },
+    {
+     "code": "6690-2",
+     "display": "Leukocytes [#/volume] in Blood by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "789-8",
+     "display": "Erythrocytes [#/volume] in Blood by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "10*6/uL"
+    },
+    {
+     "code": "787-2",
+     "display": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "fL"
+    },
+    {
+     "code": "785-6",
+     "display": "MCH [Entitic mass] by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "pg"
+    },
+    {
+     "code": "786-4",
+     "display": "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "g/dL"
+    },
+    {
+     "code": "788-0",
+     "display": "Erythrocyte [DistWidth] in Blood by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "fL"
+    },
+    {
+     "code": "777-3",
+     "display": "Platelets [#/volume] in Blood by Automated count",
+     "results": 302,
+     "numeric": 302,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "14959-1",
+     "display": "Microalbumin/Creatinine [Mass Ratio] in Urine",
+     "results": 299,
+     "numeric": 299,
+     "unit": "mg/g"
+    },
+    {
+     "code": "4544-3",
+     "display": "Hematocrit [Volume Fraction] of Blood by Automated count",
+     "results": 291,
+     "numeric": 291,
+     "unit": "%"
+    },
+    {
+     "code": "32207-3",
+     "display": "Platelet distribution width [Entitic volume] in Blood by Automated count",
+     "results": 213,
+     "numeric": 213,
+     "unit": "fL"
+    },
+    {
+     "code": "32623-1",
+     "display": "Platelet [Entitic mean volume] in Blood by Automated count",
+     "results": 213,
+     "numeric": 213,
+     "unit": "fL"
+    },
+    {
+     "code": "2885-2",
+     "display": "Protein [Mass/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "g/dL"
+    },
+    {
+     "code": "1751-7",
+     "display": "Albumin [Mass/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "g/dL"
+    },
+    {
+     "code": "1975-2",
+     "display": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "6768-6",
+     "display": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "U/L"
+    },
+    {
+     "code": "1742-6",
+     "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "U/L"
+    },
+    {
+     "code": "1920-8",
+     "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+     "results": 163,
+     "numeric": 163,
+     "unit": "U/L"
+    },
+    {
+     "code": "10834-0",
+     "display": "Globulin [Mass/volume] in Serum by calculation",
+     "results": 74,
+     "numeric": 74,
+     "unit": "g/L"
+    },
+    {
+     "code": "6301-6",
+     "display": "INR in Platelet poor plasma by Coagulation assay",
+     "results": 69,
+     "numeric": 69,
+     "unit": "{INR}"
+    },
+    {
+     "code": "5902-2",
+     "display": "Prothrombin time (PT)",
+     "results": 67,
+     "numeric": 67,
+     "unit": "s"
+    },
+    {
+     "code": "19123-9",
+     "display": "Magnesium [Mass/volume] in Serum or Plasma",
+     "results": 50,
+     "numeric": 50,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "2744-1",
+     "display": "pH of Arterial blood",
+     "results": 50,
+     "numeric": 50,
+     "unit": "[pH]"
+    },
+    {
+     "code": "2019-8",
+     "display": "Carbon dioxide [Partial pressure] in Arterial blood",
+     "results": 50,
+     "numeric": 50,
+     "unit": "mm[Hg]"
+    },
+    {
+     "code": "2703-7",
+     "display": "Oxygen [Partial pressure] in Arterial blood",
+     "results": 50,
+     "numeric": 50,
+     "unit": "mm[Hg]"
+    },
+    {
+     "code": "1960-4",
+     "display": "Bicarbonate [Moles/volume] in Arterial blood",
+     "results": 50,
+     "numeric": 50,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "3173-2",
+     "display": "aPTT in Blood by Coagulation assay",
+     "results": 48,
+     "numeric": 48,
+     "unit": "s"
+    },
+    {
+     "code": "2777-1",
+     "display": "Phosphate [Mass/volume] in Serum or Plasma",
+     "results": 46,
+     "numeric": 46,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "770-8",
+     "display": "Neutrophils/Leukocytes in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "%"
+    },
+    {
+     "code": "736-9",
+     "display": "Lymphocytes/Leukocytes in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "%"
+    },
+    {
+     "code": "5905-5",
+     "display": "Monocytes/Leukocytes in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "%"
+    },
+    {
+     "code": "713-8",
+     "display": "Eosinophils/Leukocytes in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "%"
+    },
+    {
+     "code": "706-2",
+     "display": "Basophils/Leukocytes in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "%"
+    },
+    {
+     "code": "751-8",
+     "display": "Neutrophils [#/volume] in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "731-0",
+     "display": "Lymphocytes [#/volume] in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "742-7",
+     "display": "Monocytes [#/volume] in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "711-2",
+     "display": "Eosinophils [#/volume] in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "704-7",
+     "display": "Basophils [#/volume] in Blood by Automated count",
+     "results": 41,
+     "numeric": 41,
+     "unit": "10*3/uL"
+    },
+    {
+     "code": "89579-7",
+     "display": "Troponin I.cardiac [Mass/volume] in Serum or Plasma by High sensitivity method",
+     "results": 27,
+     "numeric": 27,
+     "unit": "pg/mL"
+    },
+    {
+     "code": "48065-7",
+     "display": "Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma",
+     "results": 21,
+     "numeric": 21,
+     "unit": "ug/mL"
+    },
+    {
+     "code": "2276-4",
+     "display": "Ferritin [Mass/volume] in Serum or Plasma",
+     "results": 21,
+     "numeric": 21,
+     "unit": "ug/L"
+    },
+    {
+     "code": "14804-9",
+     "display": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma by Lactate to pyruvate reaction",
+     "results": 21,
+     "numeric": 21,
+     "unit": "U/L"
+    },
+    {
+     "code": "2157-6",
+     "display": "Creatine kinase [Enzymatic activity/volume] in Serum or Plasma",
+     "results": 21,
+     "numeric": 21,
+     "unit": "U/L"
+    },
+    {
+     "code": "1988-5",
+     "display": "C reactive protein [Mass/volume] in Serum or Plasma",
+     "results": 21,
+     "numeric": 21,
+     "unit": "mg/L"
+    },
+    {
+     "code": "33959-8",
+     "display": "Procalcitonin [Mass/volume] in Serum or Plasma",
+     "results": 21,
+     "numeric": 21,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "94531-1",
+     "display": "SARS-CoV-2 (COVID-19) RNA panel - Respiratory system specimen by NAA with probe detection",
+     "results": 15,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "6206-7",
+     "display": "Peanut IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6273-7",
+     "display": "Walnut IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6082-2",
+     "display": "Codfish IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6246-3",
+     "display": "Shrimp IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6276-0",
+     "display": "Wheat IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6106-9",
+     "display": "Egg white IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6248-9",
+     "display": "Soybean IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "7258-7",
+     "display": "Cow milk IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6189-5",
+     "display": "White oak IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6085-5",
+     "display": "Common Ragweed IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6833-8",
+     "display": "Cat dander IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6095-4",
+     "display": "American house dust mite IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6075-6",
+     "display": "Cladosporium herbarum IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6844-5",
+     "display": "Honey bee IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "6158-0",
+     "display": "Latex IgE Ab [Units/volume] in Serum",
+     "results": 14,
+     "numeric": 14,
+     "unit": "kU/L"
+    },
+    {
+     "code": "20570-8",
+     "display": "Hematocrit [Volume Fraction] of Blood by calculation",
+     "results": 13,
+     "numeric": 13,
+     "unit": "%"
+    },
+    {
+     "code": "5821-4",
+     "display": "Leukocytes [#/area] in Urine sediment by Microscopy high power field",
+     "results": 11,
+     "numeric": 11,
+     "unit": "/[HPF]"
+    },
+    {
+     "code": "13945-1",
+     "display": "Erythrocytes [#/area] in Urine sediment by Microscopy high power field",
+     "results": 11,
+     "numeric": 11,
+     "unit": "/[HPF]"
+    },
+    {
+     "code": "5787-7",
+     "display": "Epithelial cells [#/area] in Urine sediment by Microscopy high power field",
+     "results": 11,
+     "numeric": 11,
+     "unit": "/[HPF]"
+    },
+    {
+     "code": "24124-0",
+     "display": "Casts [Presence] in Urine sediment by Light microscopy",
+     "results": 11,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "8247-9",
+     "display": "Mucus [Presence] in Urine sediment by Light microscopy",
+     "results": 11,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "5769-5",
+     "display": "Bacteria [#/area] in Urine sediment by Microscopy high power field",
+     "results": 11,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "630-4",
+     "display": "Bacteria identified in Urine by Culture",
+     "results": 11,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92142-9",
+     "display": "Influenza virus A RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92141-1",
+     "display": "Influenza virus B RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92131-2",
+     "display": "Respiratory syncytial virus RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92140-3",
+     "display": "Parainfluenza virus 1 RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92139-5",
+     "display": "Parainfluenza virus 2 RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92138-7",
+     "display": "Parainfluenza virus 3 RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92130-4",
+     "display": "Rhinovirus RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "92134-6",
+     "display": "Human metapneumovirus RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "94040-3",
+     "display": "Adenovirus A+B+C+D+E DNA [Presence] in Respiratory system specimen by NAA with probe detection",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "65750-2",
+     "display": "Drugs of abuse 5 panel - Urine by Screen method",
+     "results": 8,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "2857-1",
+     "display": "Prostate specific Ag [Mass/volume] in Serum or Plasma",
+     "results": 6,
+     "numeric": 6,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "57905-2",
+     "display": "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay --1st specimen",
+     "results": 5,
+     "numeric": 5,
+     "unit": "ng/mL"
+    },
+    {
+     "code": "3184-9",
+     "display": "Activated clotting time (ACT) of Blood by Coagulation assay",
+     "results": 4,
+     "numeric": 4,
+     "unit": "s"
+    },
+    {
+     "code": "2746-6",
+     "display": "pH of Venous blood",
+     "results": 4,
+     "numeric": 4,
+     "unit": "[pH]"
+    },
+    {
+     "code": "2021-4",
+     "display": "Carbon dioxide [Partial pressure] in Venous blood",
+     "results": 4,
+     "numeric": 4,
+     "unit": "mm[Hg]"
+    },
+    {
+     "code": "2705-2",
+     "display": "Oxygen [Partial pressure] in Venous blood",
+     "results": 4,
+     "numeric": 4,
+     "unit": "mm[Hg]"
+    },
+    {
+     "code": "14627-4",
+     "display": "Bicarbonate [Moles/volume] in Venous blood",
+     "results": 4,
+     "numeric": 4,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "2027-1",
+     "display": "Carbon dioxide, total [Moles/volume] in Venous blood",
+     "results": 4,
+     "numeric": 4,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "3016-3",
+     "display": "Thyrotropin [Units/volume] in Serum or Plasma",
+     "results": 3,
+     "numeric": 3,
+     "unit": "m[IU]/L"
+    },
+    {
+     "code": "10230-1",
+     "display": "Left ventricular Ejection fraction",
+     "results": 3,
+     "numeric": 3,
+     "unit": "%"
+    },
+    {
+     "code": "32693-4",
+     "display": "Lactate [Moles/volume] in Blood",
+     "results": 2,
+     "numeric": 2,
+     "unit": "mmol/L"
+    },
+    {
+     "code": "21377-7",
+     "display": "Magnesium [Mass/volume] in Blood",
+     "results": 2,
+     "numeric": 2,
+     "unit": "mg/dL"
+    },
+    {
+     "code": "21908-9",
+     "display": "Stage group.clinical Cancer",
+     "results": 2,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "80382-5",
+     "display": "Influenza virus A Ag [Presence] in Upper respiratory specimen by Rapid immunoassay",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "80383-3",
+     "display": "Influenza virus B Ag [Presence] in Upper respiratory specimen by Rapid immunoassay",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "88262-1",
+     "display": "Gram positive blood culture panel by Probe in Positive blood culture",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "85319-2",
+     "display": "HER2 [Presence] in Breast cancer specimen by Immune stain",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "85318-4",
+     "display": "ERBB2 gene duplication [Presence] in Breast cancer specimen by FISH",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "85337-4",
+     "display": "Estrogen receptor Ag [Presence] in Breast cancer specimen by Immune stain",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    },
+    {
+     "code": "85339-0",
+     "display": "Progesterone receptor Ag [Presence] in Breast cancer specimen by Immune stain",
+     "results": 1,
+     "numeric": 0,
+     "unit": ""
+    }
+   ]
+  }
+ },
+ "conditions": {
+  "MIMIC | http://mimic.mit.edu/fhir/mimic/CodeSystem/mimic-diagnosis-icd10": {
+   "distinct_codes": 791,
+   "rows": 2609,
+   "examples": [
+    {
+     "code": "E785",
+     "display": "Hyperlipidemia, unspecified",
+     "rows": 58
+    },
+    {
+     "code": "Z794",
+     "display": "Long term (current) use of insulin",
+     "rows": 56
+    },
+    {
+     "code": "E039",
+     "display": "Hypothyroidism, unspecified",
+     "rows": 51
+    },
+    {
+     "code": "I10",
+     "display": "Essential (primary) hypertension",
+     "rows": 45
+    },
+    {
+     "code": "N179",
+     "display": "Acute kidney failure, unspecified",
+     "rows": 38
+    },
+    {
+     "code": "Z87891",
+     "display": "Personal history of nicotine dependence",
+     "rows": 35
+    },
+    {
+     "code": "E119",
+     "display": "Type 2 diabetes mellitus without complications",
+     "rows": 35
+    },
+    {
+     "code": "F329",
+     "display": "Major depressive disorder, single episode, unspecified",
+     "rows": 34
+    },
+    {
+     "code": "I2510",
+     "display": "Atherosclerotic heart disease of native coronary artery without angina pectoris",
+     "rows": 33
+    },
+    {
+     "code": "I4891",
+     "display": "Unspecified atrial fibrillation",
+     "rows": 29
+    },
+    {
+     "code": "F419",
+     "display": "Anxiety disorder, unspecified",
+     "rows": 27
+    },
+    {
+     "code": "Z7901",
+     "display": "Long term (current) use of anticoagulants",
+     "rows": 24
+    },
+    {
+     "code": "Z955",
+     "display": "Presence of coronary angioplasty implant and graft",
+     "rows": 24
+    },
+    {
+     "code": "E669",
+     "display": "Obesity, unspecified",
+     "rows": 22
+    },
+    {
+     "code": "F17210",
+     "display": "Nicotine dependence, cigarettes, uncomplicated",
+     "rows": 21
+    }
+   ]
+  },
+  "MIMIC | http://mimic.mit.edu/fhir/mimic/CodeSystem/mimic-diagnosis-icd9": {
+   "distinct_codes": 784,
+   "rows": 2442,
+   "examples": [
+    {
+     "code": "4019",
+     "display": "Unspecified essential hypertension",
+     "rows": 89
+    },
+    {
+     "code": "2724",
+     "display": "Other and unspecified hyperlipidemia",
+     "rows": 56
+    },
+    {
+     "code": "25000",
+     "display": "Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled",
+     "rows": 45
+    },
+    {
+     "code": "42731",
+     "display": "Atrial fibrillation",
+     "rows": 39
+    },
+    {
+     "code": "V1582",
+     "display": "Personal history of tobacco use",
+     "rows": 31
+    },
+    {
+     "code": "311",
+     "display": "Depressive disorder, not elsewhere classified",
+     "rows": 31
+    },
+    {
+     "code": "5849",
+     "display": "Acute kidney failure, unspecified",
+     "rows": 31
+    },
+    {
+     "code": "4280",
+     "display": "Congestive heart failure, unspecified",
+     "rows": 31
+    },
+    {
+     "code": "V5867",
+     "display": "Long-term (current) use of insulin",
+     "rows": 30
+    },
+    {
+     "code": "V5861",
+     "display": "Long-term (current) use of anticoagulants",
+     "rows": 28
+    },
+    {
+     "code": "41401",
+     "display": "Coronary atherosclerosis of native coronary artery",
+     "rows": 28
+    },
+    {
+     "code": "40390",
+     "display": "Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage I through stage IV, or unspecified",
+     "rows": 27
+    },
+    {
+     "code": "5990",
+     "display": "Urinary tract infection, site not specified",
+     "rows": 26
+    },
+    {
+     "code": "2720",
+     "display": "Pure hypercholesterolemia",
+     "rows": 25
+    },
+    {
+     "code": "3051",
+     "display": "Tobacco use disorder",
+     "rows": 24
+    }
+   ]
+  },
+  "Synthea | http://snomed.info/sct": {
+   "distinct_codes": 184,
+   "rows": 3618,
+   "examples": [
+    {
+     "code": "314529007",
+     "display": "Medication review due (situation)",
+     "rows": 746
+    },
+    {
+     "code": "73595000",
+     "display": "Stress (finding)",
+     "rows": 266
+    },
+    {
+     "code": "66383009",
+     "display": "Gingivitis (disorder)",
+     "rows": 258
+    },
+    {
+     "code": "160903007",
+     "display": "Full-time employment (finding)",
+     "rows": 239
+    },
+    {
+     "code": "160904001",
+     "display": "Part-time employment (finding)",
+     "rows": 144
+    },
+    {
+     "code": "444814009",
+     "display": "Viral sinusitis (disorder)",
+     "rows": 118
+    },
+    {
+     "code": "422650009",
+     "display": "Social isolation (finding)",
+     "rows": 106
+    },
+    {
+     "code": "423315002",
+     "display": "Limited social contact (finding)",
+     "rows": 104
+    },
+    {
+     "code": "741062008",
+     "display": "Not in labor force (finding)",
+     "rows": 104
+    },
+    {
+     "code": "18718003",
+     "display": "Gingival disease (disorder)",
+     "rows": 83
+    },
+    {
+     "code": "195662009",
+     "display": "Acute viral pharyngitis (disorder)",
+     "rows": 76
+    },
+    {
+     "code": "706893006",
+     "display": "Victim of intimate partner abuse (finding)",
+     "rows": 74
+    },
+    {
+     "code": "109570002",
+     "display": "Primary dental caries (disorder)",
+     "rows": 73
+    },
+    {
+     "code": "424393004",
+     "display": "Reports of violence in the environment (finding)",
+     "rows": 55
+    },
+    {
+     "code": "10509002",
+     "display": "Acute bronchitis (disorder)",
+     "rows": 49
+    }
+   ]
+  }
+ }
+}

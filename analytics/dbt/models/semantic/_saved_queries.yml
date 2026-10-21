@@ -1,0 +1,25 @@
+version: 2
+
+# Saved queries: named metric sets for the BI export (Airflow export_bi) and the metrics API. Run one with
+#   python3 analytics/metrics.py query --saved-query ops_daily
+# which suppresses small cells before anything is printed or written.
+
+saved_queries:
+  - name: ops_daily
+    label: Operations, daily (live feed, demo)
+    description: Admissions, emergency department visits and occupied bed days per day and source, live Riverside General feed only.
+    query_params:
+      metrics: [admissions, ed_visits, bed_days]
+      group_by:
+        - "TimeDimension('metric_time', 'day')"
+        - "Dimension('encounter__source')"
+      where:
+        - "{{ Dimension('encounter__is_live_feed') }} = TRUE"
+
+  - name: quality_all_time
+    label: Quality, all time by source
+    description: 30 day readmission rate and average length of stay over all time, per source.
+    query_params:
+      metrics: [readmission_rate_30d, average_length_of_stay_days]
+      group_by:
+        - "Dimension('encounter__source')"

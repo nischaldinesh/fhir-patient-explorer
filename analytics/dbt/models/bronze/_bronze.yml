@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: bronze_resources
+    description: >
+      Every FHIR resource exactly as extracted (Patient, Encounter, Condition, Observation, Location,
+      Practitioner, CareTeam, and the EMPI's two Binaries), one row per line of
+      the landing NDJSON files, with lineage. Nothing is transformed. In DuckDB it reads the landing folder
+      directly; in Snowflake it reads the landing stage.
+    columns:
+      - name: bronze_id
+        description: Row id, numbered by landing file.
+        data_tests: [unique, not_null]
+      - name: resource_type
+        description: FHIR resource type.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [Patient, Encounter, Condition, Observation, Location, Practitioner, CareTeam, Binary]
+      - name: resource_id
+        description: FHIR resource id. A resource extracted twice appears twice here; Silver keeps the newest.
+        data_tests: [not_null]
+      - name: source_file
+        description: Landing file the row came from.
+      - name: loaded_at
+        description: When the landing files were extracted (manifest.json), the same for every row of one load.
+      - name: raw
+        description: The resource as JSON (VARIANT in Snowflake).

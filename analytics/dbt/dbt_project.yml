@@ -1,0 +1,53 @@
+# dbt project for the analytics warehouse: Bronze, Silver, Gold and governed analyst views.
+# Run it through `python3 analytics/build.py build`, which sets the vars below from the landing files.
+name: fhir_explorer
+version: "1.0.0"
+config-version: 2
+profile: fhir_explorer
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "logs"]
+
+flags:
+  send_anonymous_usage_stats: false
+
+vars:
+  # Folder with the extracted *.ndjson files (DuckDB reads them directly) and the time of that extract.
+  landing_path: data/analytics/landing
+  loaded_at: "1970-01-01 00:00:00"
+  # Name of the Snowflake stage holding the landing files (see analytics/sql/snowflake/00_setup_and_load.sql).
+  snowflake_landing_stage: fhir_landing
+
+models:
+  fhir_explorer:
+    +materialized: table
+    governance:
+      analyst_patient:
+        +materialized: view
+      analyst_patient_summary:
+        +materialized: view
+      analyst_cohort_members:
+        +materialized: view
+      analyst_aki_signal:
+        +materialized: view
+
+seeds:
+  fhir_explorer:
+    +quote_columns: false
+
+data_tests:
+  fhir_explorer:
+    # A failing check is reported but never stops the rest of the warehouse from building, as before;
+    # build.py still exits non zero when any test does not pass.
+    +severity: warn
+
+on-run-start:
+  - "{{ duckdb_setting('memory_limit', 'DUCKDB_MEMORY_LIMIT') }}"
+  - "{{ duckdb_setting('threads', 'DUCKDB_THREADS') }}"
+
+on-run-end:
+  - "{{ save_dq_checks(results) }}"

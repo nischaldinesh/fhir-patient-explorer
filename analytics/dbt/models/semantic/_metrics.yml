@@ -1,0 +1,114 @@
+version: 2
+
+# The metrics catalog. Each metric carries in config.meta who owns it (invented demo personas) and how
+# analytics/metrics.py suppresses it before it leaves the warehouse:
+#   count  the value is a count of people, stays or bed days: 1 to 10 is hidden
+#   rate   numerator / denominator, both counts: hidden when either, or the denominator minus the numerator, is 1 to 10
+#   mean   a total over a count of stays: hidden when the denominator is 1 to 10 (the numerator is not a count)
+# The same rule as is_small_cell in macros/marts.sql. A zero is shown. The four component metrics (index_stays,
+# readmissions_30d, length_of_stay_days_total, capacity_bed_days) exist so the ratios can be built and suppressed.
+
+metrics:
+  - name: admissions
+    label: Admissions
+    description: Hospital admissions that started in the period (inpatient stays; ICU stays inside a stay are not counted again).
+    type: simple
+    type_params:
+      measure: admissions
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: count}
+
+  - name: ed_visits
+    label: Emergency department visits
+    description: Emergency department visits that went home, by the day of arrival.
+    type: simple
+    type_params:
+      measure: ed_visits
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: count}
+
+  - name: index_stays
+    label: Index stays (component)
+    description: Hospital admissions discharged in the period with a length of stay; the denominator of the stay metrics.
+    type: simple
+    type_params:
+      measure: index_stays
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: count}
+
+  - name: readmissions_30d
+    label: 30 day readmissions (component)
+    description: Index stays discharged in the period that were followed by another admission within 30 days.
+    type: simple
+    type_params:
+      measure: readmissions_30d
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: count}
+
+  - name: length_of_stay_days_total
+    label: Total length of stay in days (component)
+    description: Days in hospital of the index stays discharged in the period, added up.
+    type: simple
+    type_params:
+      measure: length_of_stay_days_total
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: mean, denominator: index_stays}
+
+  - name: average_length_of_stay_days
+    label: Average length of stay (days)
+    description: Mean days from admission to discharge of hospital stays discharged in the period.
+    type: ratio
+    type_params:
+      numerator: length_of_stay_days_total
+      denominator: index_stays
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: mean, numerator: length_of_stay_days_total, denominator: index_stays}
+
+  - name: readmission_rate_30d
+    label: 30 day all cause readmission rate
+    description: Share of hospital stays discharged in the period followed by another admission within 30 days (all cause, not risk adjusted).
+    type: ratio
+    type_params:
+      numerator: readmissions_30d
+      denominator: index_stays
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: rate, numerator: readmissions_30d, denominator: index_stays}
+
+  - name: bed_days
+    label: Occupied bed days
+    description: Beds occupied at midnight, added up over the days of the period (Riverside General feed, demo).
+    type: simple
+    type_params:
+      measure: bed_days
+    config:
+      meta: {owner: "Alex Kim, Data Engineer (invented demo persona)", suppression: count}
+
+  - name: capacity_bed_days
+    label: Available bed days (component)
+    description: Beds of the hospital available at midnight, added up over the days of the period; master data, not people.
+    type: simple
+    type_params:
+      measure: capacity_bed_days
+    config:
+      meta: {owner: "Alex Kim, Data Engineer (invented demo persona)", suppression: none}
+
+  - name: bed_occupancy_rate
+    label: Bed occupancy rate
+    description: Occupied bed days out of available bed days in the period (Riverside General feed, demo).
+    type: ratio
+    type_params:
+      numerator: bed_days
+      denominator: capacity_bed_days
+    config:
+      meta: {owner: "Alex Kim, Data Engineer (invented demo persona)", suppression: rate, numerator: bed_days, denominator: capacity_bed_days}
+
+  - name: admissions_rolling_28d
+    label: Admissions, rolling 28 days
+    description: Hospital admissions in the 28 days ending on each day of the period.
+    type: cumulative
+    type_params:
+      measure: admissions
+      cumulative_type_params:
+        window: 28 days
+    config:
+      meta: {owner: "Priya Shah, Quality Analyst (invented demo persona)", suppression: count}

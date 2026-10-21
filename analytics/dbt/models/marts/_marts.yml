@@ -1,0 +1,1149 @@
+version: 2
+
+# The star schema (Kimball) for BI tools: dimensions dim_*, facts fact_*, the quality mart mart_quality_monthly, and two
+# internal models (int_*) that build them. Every model has an enforced contract: dbt checks the column names and types
+# below before it writes the table. No names, MRNs, addresses or exact birth dates of patients, and no FHIR ids of
+# patients or their records: every key that stands for a patient or a record is salted (macros/marts.sql). Dates of
+# service are kept, so the marts are a limited data set, for analysts under a data use agreement, not a public extract.
+# Every dimension except dim_date and dim_patient has an Unknown member (key 'unknown'), so facts can join inner.
+
+models:
+  # ---------- internal ----------
+  - name: int_patient_key
+    description: >
+      Internal. One row per patient record with its salted keys: patient_record_sk for the record, patient_sk for the
+      person (gold_patient_crosswalk.master_id). Holds the FHIR patient id: for building the marts only, not for BI.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: patient_id
+        data_type: varchar
+        description: FHIR Patient id. Primary key.
+        data_tests: [unique, not_null]
+      - name: source
+        data_type: varchar
+        description: Source of the record (mimic, synthea, hl7v2).
+      - name: master_id
+        data_type: varchar
+        description: The person's master id from gold_patient_crosswalk.
+        data_tests: [not_null]
+      - name: patient_record_sk
+        data_type: varchar
+        description: Salted key of the record.
+        data_tests: [unique, not_null]
+      - name: patient_sk
+        data_type: varchar
+        description: Salted key of the person (the master id); the key of dim_patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+
+  - name: int_patient_demographics
+    description: >
+      Internal. The demographics snap_patient_demographics tracks, one row per patient record as of the extract:
+      address (identifying), sex and the deceased flag. For building the snapshot only, not for BI.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: patient_id
+        data_type: varchar
+        description: FHIR Patient id. Primary key.
+        data_tests: [unique, not_null]
+      - name: source
+        data_type: varchar
+        description: Source of the record.
+      - name: address_line
+        data_type: varchar
+        description: First line of the first address. Identifying.
+      - name: city
+        data_type: varchar
+        description: City. Identifying.
+      - name: state
+        data_type: varchar
+        description: State.
+      - name: postal_code
+        data_type: varchar
+        description: Postal code. Identifying.
+      - name: sex
+        data_type: varchar
+        description: FHIR administrative gender.
+      - name: is_deceased
+        data_type: boolean
+        description: True when the record says the patient died.
+      - name: loaded_at
+        data_type: timestamp
+        description: Extract time; the snapshot dates its versions with it.
+        data_tests: [not_null]
+
+  - name: int_quality_events
+    description: >
+      Internal. The events the quality measures count, one row per measure and counted unit (a stay, or each HbA1c
+      result of a person), dated so it falls in a period. The definitions of the measures live here.
+    config:
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "measure_id || '|' || event_sk"
+    columns:
+      - name: measure_id
+        data_type: varchar
+        description: The measure (seed quality_measures).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('quality_measures')
+                field: measure_id
+      - name: source
+        data_type: varchar
+        description: Source of the record.
+      - name: patient_sk
+        data_type: varchar
+        description: The person.
+      - name: unit_sk
+        data_type: varchar
+        description: What the measure counts once per period (the stay, or the person for the diabetes measure).
+        data_tests: [not_null]
+      - name: event_sk
+        data_type: varchar
+        description: The event itself (the stay, or the lab result).
+        data_tests: [not_null]
+      - name: event_date
+        data_type: date
+        description: The day that puts the event in a period (discharge, departure, admission or result).
+        data_tests: [not_null]
+      - name: event_at
+        data_type: timestamp
+        description: The time of that event; the latest result of a person in a period is the one counted.
+      - name: meets
+        data_type: boolean
+        description: For proportions, whether the unit meets the measure; NULL for means and medians.
+      - name: amount
+        data_type: double
+        description: Length of stay (days or hours), or the result value; NULL for the readmission measure.
+
+  - name: int_quality_cells
+    description: >
+      Internal. Every quality measure aggregated before suppression, per period (month, quarter, year, all_time) and
+      source (mimic, synthea, hl7v2, and all). Holds the small counts the marts hide: for building them only.
+    config:
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "period_type || '|' || CAST(period_start AS VARCHAR) || '|' || measure_id || '|' || source"
+    columns:
+      - name: period_type
+        data_type: varchar
+        description: month, quarter, year or all_time.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [month, quarter, year, all_time]
+      - name: period_start
+        data_type: date
+        description: First day of the period (all_time starts on the first day of dim_date).
+        data_tests: [not_null]
+      - name: measure_id
+        data_type: varchar
+        description: The measure.
+        data_tests: [not_null]
+      - name: source
+        data_type: varchar
+        description: mimic, synthea, hl7v2, or all (pooled).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2, all]
+      - name: quarter_start_date
+        data_type: date
+        description: For a month, its quarter; for a quarter, itself.
+      - name: year_start_date
+        data_type: date
+        description: For a month or quarter, its year; for a year, itself.
+      - name: numerator
+        data_type: double
+        description: Proportion, units meeting the measure; mean, the total; median, NULL.
+      - name: denominator
+        data_type: bigint
+        description: Units counted.
+        data_tests: [not_null]
+      - name: statistic
+        data_type: double
+        description: Mean or median; NULL for proportions.
+
+  # ---------- dimensions ----------
+  - name: dim_date
+    description: >
+      One row per calendar day, from 1 January of the year of the earliest date in the data to 31 December of the year
+      of the latest. MIMIC dates are shifted into the 2100s, so the calendar runs that far. Also the time spine of
+      the semantic layer (models/semantic/): MetricFlow joins to calendar_date for cumulative metrics and empty days.
+    config:
+      contract: {enforced: true}
+    time_spine:
+      standard_granularity_column: calendar_date
+    columns:
+      - name: date_key
+        data_type: integer
+        description: YYYYMMDD as an integer. Primary key.
+        data_tests: [unique, not_null]
+      - name: calendar_date
+        data_type: date
+        description: The day.
+        granularity: day
+        data_tests: [unique, not_null]
+      - name: year
+        data_type: integer
+        description: Calendar year.
+      - name: quarter
+        data_type: integer
+        description: Calendar quarter, 1 to 4.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+      - name: month
+        data_type: integer
+        description: Month number, 1 to 12.
+      - name: month_name
+        data_type: varchar
+        description: Month name in English.
+      - name: month_key
+        data_type: integer
+        description: YYYYMM as an integer.
+      - name: month_start_date
+        data_type: date
+        description: First day of the month.
+      - name: quarter_start_date
+        data_type: date
+        description: First day of the quarter.
+      - name: year_start_date
+        data_type: date
+        description: 1 January of the year.
+      - name: day_of_month
+        data_type: integer
+        description: Day of the month, 1 to 31.
+      - name: iso_year
+        data_type: integer
+        description: ISO 8601 week numbering year (the year of the week's Thursday).
+      - name: iso_week
+        data_type: integer
+        description: ISO 8601 week number, 1 to 53.
+      - name: iso_week_start_date
+        data_type: date
+        description: Monday of the ISO week.
+      - name: iso_weekday
+        data_type: integer
+        description: ISO weekday, 1 Monday to 7 Sunday.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5, 6, 7]
+      - name: weekday_name
+        data_type: varchar
+        description: Weekday name in English.
+      - name: is_weekend
+        data_type: boolean
+        description: True on Saturday and Sunday.
+        data_tests: [not_null]
+
+  - name: dim_patient
+    description: >
+      One row per person: the master id of gold_patient_crosswalk, so records the EMPI linked across sources are one
+      member. No name, MRN, address below the state, exact birth date or FHIR id. Attributes come from the group's
+      representative record (its smallest patient id), with the other records as fallback; deceased when any record says
+      so. Age band and birth year follow the analyst views (HIPAA Safe Harbor: ages 90 and over grouped, no birth year).
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: patient_sk
+        data_type: varchar
+        description: Salted key of the person. Primary key.
+        data_tests: [unique, not_null]
+      - name: source_list
+        data_type: varchar
+        description: The sources the person has records in, comma separated in a fixed order (hl7v2,mimic,synthea).
+        data_tests: [not_null]
+      - name: source_count
+        data_type: integer
+        description: Number of sources, 1 to 3.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+      - name: record_count
+        data_type: integer
+        description: Number of patient records of the person.
+        data_tests: [not_null]
+      - name: sex
+        data_type: varchar
+        description: FHIR administrative gender, unknown when no record says.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [female, male, other, unknown]
+      - name: birth_year
+        data_type: integer
+        description: Birth year, withheld for ages 90 and over. MIMIC birth years are shifted like its other dates.
+      - name: age_band
+        data_type: varchar
+        description: "Age band as in analyst_patient: 0-17, a decade such as 40s, 90+, or unknown (living MIMIC patients, whose dates are shifted)."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["0-17", 10s, 20s, 30s, 40s, 50s, 60s, 70s, 80s, "90+", unknown]
+      - name: is_deceased
+        data_type: boolean
+        description: True when any record of the person says the patient died.
+        data_tests: [not_null]
+      - name: state
+        data_type: varchar
+        description: State of residence (no smaller area).
+
+  - name: dim_patient_history
+    description: >
+      The SCD type 2 history of each patient record's demographics, from the snapshot snap_patient_demographics: one row
+      per record and version, with valid_from, valid_to and is_current. Sex, the deceased flag and the state are shown;
+      the address is not (identifying), only its version number and whether this version changed it. Versions are dated
+      with the extract time, so valid_from says when a change was first seen. A view on the snapshot.
+    config:
+      materialized: view
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "patient_record_sk || '|' || CAST(version_number AS VARCHAR)"
+    columns:
+      - name: patient_version_sk
+        data_type: varchar
+        description: Salted key of the version. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_sk
+        data_type: varchar
+        description: The person (dim_patient); NULL when the record is no longer on the server.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+      - name: patient_record_sk
+        data_type: varchar
+        description: Salted key of the record.
+        data_tests: [not_null]
+      - name: source
+        data_type: varchar
+        description: Source of the record.
+      - name: version_number
+        data_type: integer
+        description: 1 for the first version of the record, then 2, 3 ...
+        data_tests: [not_null]
+      - name: sex
+        data_type: varchar
+        description: FHIR administrative gender in this version.
+      - name: is_deceased
+        data_type: boolean
+        description: The deceased flag in this version.
+      - name: state
+        data_type: varchar
+        description: State in this version.
+      - name: address_version
+        data_type: integer
+        description: 1 for the first address seen, plus one for every change of address.
+        data_tests: [not_null]
+      - name: address_changed
+        data_type: boolean
+        description: True when this version has a different address from the version before it.
+        data_tests: [not_null]
+      - name: valid_from
+        data_type: timestamp
+        description: Extract time the version was first seen.
+        data_tests: [not_null]
+      - name: valid_to
+        data_type: timestamp
+        description: Extract time it was replaced; NULL for the current version.
+      - name: is_current
+        data_type: boolean
+        description: True for the current version.
+        data_tests: [not_null]
+
+  - name: dim_location
+    description: >
+      One row per place (site, unit, room, bed, clinic, and the locations other sources send) plus the Unknown member,
+      with its unit, room and bed and the bed capacity of its unit and room (Riverside General reference data, demo).
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: location_sk
+        data_type: varchar
+        description: Key of the place ('unknown' for the Unknown member). Primary key.
+        data_tests: [unique, not_null]
+      - name: location_id
+        data_type: varchar
+        description: FHIR Location id (master data, not about a patient); NULL for the Unknown member.
+      - name: location_name
+        data_type: varchar
+        description: Name, such as "Room 214, bed A".
+      - name: location_level
+        data_type: varchar
+        description: What the place is.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [site, unit, room, bed, clinic, other, unknown]
+      - name: unit_name
+        data_type: varchar
+        description: The unit the place belongs to (itself for a unit), such as "Medical Unit".
+      - name: room_name
+        data_type: varchar
+        description: The room, for rooms and beds.
+      - name: bed_name
+        data_type: varchar
+        description: The bed, for beds.
+      - name: is_bed
+        data_type: boolean
+        description: True for a bed.
+        data_tests: [not_null]
+      - name: unit_bed_capacity
+        data_type: integer
+        description: Beds in the place's unit (0 when it has no unit).
+        data_tests: [not_null]
+      - name: room_bed_capacity
+        data_type: integer
+        description: Beds in the room, for rooms and beds; 0 otherwise.
+        data_tests: [not_null]
+      - name: bed_status
+        data_type: varchar
+        description: For beds, occupied or unoccupied now (Location.operationalStatus); not historical.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [occupied, unoccupied, unknown]
+
+  - name: dim_practitioner
+    description: >
+      One row per member of staff plus the Unknown member. Names are kept: staff, not patients, and the Riverside General
+      staff are invented (demo). Role and specialty from seed staff_roles; Synthea sends neither.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: practitioner_sk
+        data_type: varchar
+        description: Key of the practitioner ('unknown' for the Unknown member). Primary key.
+        data_tests: [unique, not_null]
+      - name: practitioner_id
+        data_type: varchar
+        description: FHIR Practitioner id; NULL for the Unknown member.
+      - name: display_name
+        data_type: varchar
+        description: Name with prefix, such as "Dr Dana Morgan".
+      - name: practitioner_source
+        data_type: varchar
+        description: Where the practitioner comes from.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [riverside reference, synthea, unknown]
+      - name: role
+        data_type: varchar
+        description: doctor, nurse, care manager or unknown.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [doctor, nurse, care manager, unknown]
+      - name: specialty
+        data_type: varchar
+        description: Specialty or job title (Hospitalist, Intensivist ...), not recorded when the source has none.
+        data_tests: [not_null]
+      - name: service_name
+        data_type: varchar
+        description: The service the person works for (Riverside General only).
+
+  - name: dim_diagnosis
+    description: >
+      One row per ICD 10 code seen in the data plus the Unknown member (diagnoses without an ICD 10 code). With the 3
+      character category, the ICD 10 CM chapter (seed icd10_chapters) and the cohort flags of seed cohort_codes.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: diagnosis_sk
+        data_type: varchar
+        description: Key of the code ('unknown' for the Unknown member). Primary key.
+        data_tests: [unique, not_null]
+      - name: icd10_code
+        data_type: varchar
+        description: ICD 10 code without the dot; NULL for the Unknown member.
+        data_tests: [unique]
+      - name: description
+        data_type: varchar
+        description: Description sent with the code (the most frequent one).
+      - name: category_3char
+        data_type: varchar
+        description: The first 3 characters, the ICD 10 category (E11, I50 ...).
+      - name: chapter
+        data_type: integer
+        description: ICD 10 CM chapter number, 1 to 22.
+      - name: chapter_title
+        data_type: varchar
+        description: ICD 10 CM chapter title.
+      - name: is_diabetes_type2
+        data_type: boolean
+        description: Code is in the diabetes_type2 cohort (ICD 10 E11).
+        data_tests: [not_null]
+      - name: is_heart_failure
+        data_type: boolean
+        description: Code is in the heart_failure cohort (ICD 10 I50).
+        data_tests: [not_null]
+      - name: is_hypertension
+        data_type: boolean
+        description: Code is in the hypertension cohort (ICD 10 I10).
+        data_tests: [not_null]
+      - name: is_sepsis
+        data_type: boolean
+        description: Code is in the sepsis cohort (ICD 10 A41, R652).
+        data_tests: [not_null]
+
+  - name: dim_lab
+    description: >
+      One row per LOINC code of the numeric lab results plus the Unknown member (results without a LOINC code), with the
+      most frequent display and unit and the key lab flag (seed key_labs).
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: lab_sk
+        data_type: varchar
+        description: Key of the code ('unknown' for the Unknown member). Primary key.
+        data_tests: [unique, not_null]
+      - name: loinc
+        data_type: varchar
+        description: LOINC code; NULL for the Unknown member.
+        data_tests: [unique]
+      - name: display
+        data_type: varchar
+        description: The test's name as sent most often.
+      - name: unit
+        data_type: varchar
+        description: The unit sent most often.
+      - name: is_key_lab
+        data_type: boolean
+        description: True for the labs in seed key_labs (sodium, potassium, creatinine ...).
+        data_tests: [not_null]
+      - name: key_lab_name
+        data_type: varchar
+        description: Short name of the key lab (sodium ...); NULL for other labs.
+
+  # ---------- facts ----------
+  - name: fact_encounter
+    description: >
+      Grain: one row per encounter (visit) of every source, from gold_encounter_summary (its admission and readmission
+      rules). Keys to dim_patient, dim_date (admit, discharge), dim_practitioner (attending) and dim_location (last place).
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: encounter_sk
+        data_type: varchar
+        description: Salted key of the visit. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_sk
+        data_type: varchar
+        description: The person.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+      - name: patient_record_sk
+        data_type: varchar
+        description: Salted key of the patient record the visit belongs to.
+        data_tests: [not_null]
+      - name: admit_date_key
+        data_type: integer
+        description: Day the visit started.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: discharge_date_key
+        data_type: integer
+        description: Day the visit ended; NULL while in progress.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: attending_practitioner_sk
+        data_type: varchar
+        description: The attending physician ('unknown' when the source sends none).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_practitioner')
+                field: practitioner_sk
+      - name: last_location_sk
+        data_type: varchar
+        description: Where the patient was last placed ('unknown' when the source sends no location).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk
+      - name: source
+        data_type: varchar
+        description: Source of the patient record.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: class_code
+        data_type: varchar
+        description: Encounter class as sent (IMP, EMER, AMB ...; for MIMIC the admission type).
+      - name: encounter_kind
+        data_type: varchar
+        description: What the visit is, per the Gold rules.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [hospital admission, emergency visit, part of another stay, other]
+      - name: status
+        data_type: varchar
+        description: Encounter status as sent.
+      - name: is_admission
+        data_type: boolean
+        description: True for a hospital admission.
+        data_tests: [not_null]
+      - name: is_emergency
+        data_type: boolean
+        description: >
+          True for an emergency department visit, and for a hospital admission that came in as an emergency
+          (priority EM from HL7 v2 PV1-4, or the MIMIC admission type EMER).
+        data_tests: [not_null]
+      - name: is_live_feed
+        data_type: boolean
+        description: True for a visit of the live Riverside General feed (gold_live_encounter).
+        data_tests: [not_null]
+      - name: admit_at
+        data_type: timestamp
+        description: Start, clock time as sent.
+      - name: discharge_at
+        data_type: timestamp
+        description: End, clock time as sent; NULL while in progress.
+      - name: length_of_stay_hours
+        data_type: double
+        description: Hours from start to end, 2 decimals; NULL without an end.
+      - name: length_of_stay_days
+        data_type: double
+        description: Days from start to end, 2 decimals (gold_encounter_summary); NULL without an end.
+      - name: readmitted_30d
+        data_type: boolean
+        description: True when the next admission of the same record starts within 30 days after this admission ended.
+        data_tests: [not_null]
+      - name: bed_moves
+        data_type: integer
+        description: Bed changes during the visit (transfers, ADT^A02).
+        data_tests: [not_null]
+
+  - name: fact_diagnosis
+    description: >
+      Grain: one row per encounter diagnosis, a Condition that points at a known encounter. Diagnoses without an ICD 10
+      code point at the Unknown member of dim_diagnosis and keep their code system and code.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: diagnosis_fact_sk
+        data_type: varchar
+        description: Salted key of the Condition. Primary key.
+        data_tests: [unique, not_null]
+      - name: encounter_sk
+        data_type: varchar
+        description: The visit.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_encounter')
+                field: encounter_sk
+      - name: patient_sk
+        data_type: varchar
+        description: The person.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+      - name: diagnosis_sk
+        data_type: varchar
+        description: The ICD 10 code ('unknown' without one).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_diagnosis')
+                field: diagnosis_sk
+      - name: recorded_date_key
+        data_type: integer
+        description: Day of onset or recording; NULL when the source gives neither.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: source
+        data_type: varchar
+        description: Source of the patient record.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: code_system
+        data_type: varchar
+        description: Code system the diagnosis came in.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [icd9, icd10, snomed, none, other]
+      - name: source_code
+        data_type: varchar
+        description: The code as sent.
+      - name: icd10_code
+        data_type: varchar
+        description: Standardized ICD 10 code without the dot, when known.
+      - name: icd10_origin
+        data_type: varchar
+        description: Where the ICD 10 code came from (source, hl7v2_pipeline, cms_gem_exact, cms_gem_approximate).
+      - name: needs_review
+        data_type: boolean
+        description: True when a coder has to choose the ICD 10 code.
+        data_tests: [not_null]
+
+  - name: fact_lab_result
+    description: >
+      Grain: one row per numeric lab result (category laboratory, a number and an effective time). Incremental on the
+      effective date with a watermark per source and a 3 day lookback; records whose person changed are reloaded.
+      A result changed more than 3 days after its effective date needs dbt build --full-refresh.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: lab_result_sk
+        data_type: varchar
+        description: Salted key of the Observation. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_sk
+        data_type: varchar
+        description: The person.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+      - name: patient_record_sk
+        data_type: varchar
+        description: Salted key of the patient record.
+        data_tests: [not_null]
+      - name: encounter_sk
+        data_type: varchar
+        description: The visit, when the result names one.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('fact_encounter')
+                field: encounter_sk
+      - name: lab_sk
+        data_type: varchar
+        description: The LOINC code ('unknown' without one).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_lab')
+                field: lab_sk
+      - name: effective_date_key
+        data_type: integer
+        description: Day of the result.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: effective_date
+        data_type: date
+        description: Day of the result; the incremental watermark.
+        data_tests: [not_null]
+      - name: effective_at
+        data_type: timestamp
+        description: Time of the result, clock time as sent.
+        data_tests: [not_null]
+      - name: source
+        data_type: varchar
+        description: Source of the patient record.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: loinc
+        data_type: varchar
+        description: LOINC code, when known.
+      - name: value_num
+        data_type: double
+        description: The number.
+        data_tests: [not_null]
+      - name: comparator
+        data_type: varchar
+        description: "<, <=, >= or > when the result was not an exact number (such as <0.01)."
+      - name: unit
+        data_type: varchar
+        description: Unit as sent.
+      - name: ref_low
+        data_type: double
+        description: Low end of the reference range sent with the result.
+      - name: ref_high
+        data_type: double
+        description: High end of the reference range.
+      - name: range_flag
+        data_type: varchar
+        description: high, low or normal against that range; NULL without a range or with a comparator.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [high, low, normal]
+
+  - name: fact_bed_day
+    description: >
+      Grain: one row per occupied bed per midnight: a visit was in a bed of the hospital at the midnight that ends
+      census_date. The same midnight rule as gold_daily_census; only the Riverside General feed sends beds.
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: bed_day_sk
+        data_type: varchar
+        description: Salted key of visit, bed and day. Primary key.
+        data_tests: [unique, not_null]
+      - name: census_date_key
+        data_type: integer
+        description: The day whose closing midnight the bed was occupied.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: census_date
+        data_type: date
+        description: The same day as a date.
+        data_tests: [not_null]
+      - name: encounter_sk
+        data_type: varchar
+        description: The visit.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_encounter')
+                field: encounter_sk
+      - name: patient_sk
+        data_type: varchar
+        description: The person.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_patient')
+                field: patient_sk
+      - name: location_sk
+        data_type: varchar
+        description: The bed.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk
+      - name: source
+        data_type: varchar
+        description: Source of the patient record.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: is_admission
+        data_type: boolean
+        description: True when the visit is a hospital admission (the census counts only these).
+        data_tests: [not_null]
+      - name: is_live_feed
+        data_type: boolean
+        description: True for a visit of the live Riverside General feed.
+        data_tests: [not_null]
+
+  - name: fact_bed_capacity_day
+    description: >
+      Grain: one row per bed of the hospital per day, from the first day of fact_bed_day to the live feed's data date.
+      The beds that could be occupied at each midnight: the denominator of the semantic layer's bed occupancy rate.
+      Master data only, no patient. Capacity is the beds known now (the reference data keeps no history of beds).
+    config:
+      contract: {enforced: true}
+    columns:
+      - name: bed_capacity_day_sk
+        data_type: varchar
+        description: Key of bed and day. Primary key.
+        data_tests: [unique, not_null]
+      - name: capacity_date_key
+        data_type: integer
+        description: The day whose closing midnight the bed was available.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: capacity_date
+        data_type: date
+        description: The same day as a date.
+        data_tests: [not_null]
+      - name: location_sk
+        data_type: varchar
+        description: The bed.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk
+
+  # ---------- quality measures ----------
+  - name: mart_quality_monthly
+    description: >
+      Grain: one row per month, measure and source, for months in which the measure has a denominator. Six hospital
+      quality measures with exact definitions in analytics/README.md (and the model's header). Small cell suppression
+      (CMS cell size rule): when the denominator, a count numerator, or the denominator minus that numerator is 1 to 10,
+      the counts, rate and value are NULL and is_suppressed is true. Sources are kept apart and there is no total row, so
+      a suppressed cell cannot be worked out by subtraction.
+    config:
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "CAST(month_key AS VARCHAR) || '|' || measure_id || '|' || source"
+    columns:
+      - name: month_key
+        data_type: integer
+        description: YYYYMM as an integer.
+        data_tests: [not_null]
+      - name: month_start_date_key
+        data_type: integer
+        description: First day of the month (key to dim_date).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: month_start_date
+        data_type: date
+        description: First day of the month.
+        data_tests: [not_null]
+      - name: measure_id
+        data_type: varchar
+        description: The measure.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [readmission_30d, los_mean_days, los_median_days, ed_los_median_hours, diabetes_a1c_under_8,
+                         potassium_abnormal_on_admission]
+      - name: measure_name
+        data_type: varchar
+        description: Plain English name; the diabetes measure says "HEDIS style, not certified".
+        data_tests: [not_null]
+      - name: source
+        data_type: varchar
+        description: Source the stays or people come from.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: unit
+        data_type: varchar
+        description: proportion (rate is filled), days or hours (value is a mean or median).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [proportion, days, hours]
+      - name: counts
+        data_type: varchar
+        description: What the denominator counts, stays (visits) or people (dim_patient members).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [stays, people]
+      - name: numerator
+        data_type: double
+        description: >
+          For a proportion, the count meeting the measure; for the mean length of stay, the total days; NULL for a median
+          and when suppressed.
+      - name: denominator
+        data_type: bigint
+        description: Stays or people counted; NULL when suppressed.
+      - name: rate
+        data_type: double
+        description: numerator / denominator for proportions, 4 decimals, 0 to 1; NULL otherwise and when suppressed.
+      - name: value
+        data_type: double
+        description: The measure's value, the rate, the mean or the median; NULL when suppressed.
+      - name: is_suppressed
+        data_type: boolean
+        description: True when the cell was suppressed (small cell rule).
+        data_tests: [not_null]
+
+  - name: mart_quality_period
+    description: >
+      Grain: one row per period type (quarter, year, all_time), period start, measure and source (mimic, synthea, hl7v2,
+      and all, the sources pooled). The measures of mart_quality_monthly over longer periods. Suppression: the small
+      cell rule, plus complementary suppression so that no hidden cell can be worked out by subtracting shown ones (by
+      source the periods nest like a tree and each residual is checked; "all" for a quarter or year is shown only when
+      every source of the period is shown; "all" for all_time is checked against the sources, with secondary
+      suppression of one source to keep the total visible). suppression_reason says which rule hid a cell.
+    config:
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "period_type || '|' || CAST(period_start AS VARCHAR) || '|' || measure_id || '|' || source"
+    columns:
+      - name: period_type
+        data_type: varchar
+        description: quarter, year or all_time.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [quarter, year, all_time]
+      - name: period_start
+        data_type: date
+        description: First day of the period; for all_time, the first day of dim_date.
+        data_tests: [not_null]
+      - name: period_end
+        data_type: date
+        description: Last day of the period; for all_time, the last day of dim_date.
+        data_tests: [not_null]
+      - name: period_start_date_key
+        data_type: integer
+        description: First day of the period (key to dim_date).
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: measure_id
+        data_type: varchar
+        description: The measure.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('quality_measures')
+                field: measure_id
+      - name: measure_name
+        data_type: varchar
+        description: Plain English name; the diabetes measure says "HEDIS style, not certified".
+        data_tests: [not_null]
+      - name: source
+        data_type: varchar
+        description: mimic, synthea, hl7v2, or all (the sources pooled; a person linked across sources counts once).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2, all]
+      - name: unit
+        data_type: varchar
+        description: proportion (rate is filled), days or hours (value is a mean or median).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [proportion, days, hours]
+      - name: counts
+        data_type: varchar
+        description: What the denominator counts, stays or people.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [stays, people]
+      - name: numerator
+        data_type: double
+        description: For a proportion the count meeting the measure, for a mean the total; NULL for a median and when suppressed.
+      - name: denominator
+        data_type: bigint
+        description: Stays or people counted; NULL when suppressed.
+      - name: rate
+        data_type: double
+        description: numerator / denominator for proportions, 4 decimals, 0 to 1; NULL otherwise and when suppressed.
+      - name: value
+        data_type: double
+        description: The rate, mean or median; NULL when suppressed.
+      - name: is_suppressed
+        data_type: boolean
+        description: True when the cell is hidden.
+        data_tests: [not_null]
+      - name: suppression_reason
+        data_type: varchar
+        description: small cell (its own counts) or complementary (it would give another hidden cell back); NULL when shown.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [small cell, complementary]
+
+  - name: mart_suppression_report
+    description: >
+      Grain: one row per quality mart and grain (month by source; quarter, year and all time, by source and all
+      sources): cells, how many are suppressed (and how many of those by the complementary rule), and the share.
+      build.py status prints it.
+    config:
+      contract: {enforced: true}
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "mart || '|' || grain"
+    columns:
+      - name: mart
+        data_type: varchar
+        description: mart_quality_monthly or mart_quality_period.
+        data_tests: [not_null]
+      - name: grain
+        data_type: varchar
+        description: Period and whether by source or all sources, such as "year all sources".
+        data_tests: [not_null]
+      - name: grain_order
+        data_type: integer
+        description: Sort order, from month to all time.
+        data_tests: [not_null]
+      - name: cells
+        data_type: bigint
+        description: Cells in the grain.
+        data_tests: [not_null]
+      - name: suppressed
+        data_type: bigint
+        description: Cells hidden.
+        data_tests: [not_null]
+      - name: suppressed_complementary
+        data_type: bigint
+        description: Cells hidden by the complementary rule only (their own counts were not small).
+        data_tests: [not_null]
+      - name: pct_suppressed
+        data_type: double
+        description: Share of cells hidden, in percent, 1 decimal.
+        data_tests: [not_null]

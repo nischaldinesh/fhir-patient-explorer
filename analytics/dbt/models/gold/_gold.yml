@@ -1,0 +1,547 @@
+version: 2
+
+models:
+  - name: gold_encounter_summary
+    description: >
+      Length of stay and 30 day readmissions per visit. Hospital admissions are inpatient classes for Synthea and
+      HL7 v2, and encounter-hosp identifiers for MIMIC. A stay inside another one (FHIR partOf, such as an ICU
+      stay) is never an admission.
+    columns:
+      - name: encounter_id
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: source
+        description: Source of the patient.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: encounter_kind
+        description: What the visit is, per source rules.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [hospital admission, emergency visit, part of another stay, other]
+      - name: is_admission
+        description: True for a hospital admission.
+        data_tests: [not_null]
+      - name: length_of_stay_days
+        description: Days from start to end, 2 decimals; NULL without an end.
+      - name: days_to_next_admission
+        description: Days from this visit's end to the patient's next admission.
+      - name: readmitted_30d
+        description: True when the next admission starts within 30 days after this admission ended.
+        data_tests: [not_null]
+      - name: attending_practitioner_id
+        description: The attending physician (Encounter.participant type ATND); NULL when the source sends none.
+      - name: attending_name
+        description: The attending physician's name, from silver_practitioner. Staff, not a patient identifier.
+      - name: last_location_id
+        description: Where the patient was last placed during the visit (the bed when beds are given).
+      - name: last_location_name
+        description: Name of that location, such as "Room 214, bed A".
+      - name: last_unit_name
+        description: The unit that location belongs to, such as "Medical Unit"; NULL when there is no unit.
+      - name: bed_moves
+        description: How many times the patient changed beds during the visit (transfers, ADT^A02).
+        data_tests: [not_null]
+
+  - name: gold_lab_latest
+    description: >
+      For each patient and key lab (seed key_labs): the latest value, its range flag and the history. Results
+      with a comparator (like <0.01) are left out.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "patient_id || '|' || lab"
+    columns:
+      - name: patient_id
+        description: The patient.
+        data_tests: [not_null]
+      - name: lab
+        description: Key lab name.
+        data_tests: [not_null]
+      - name: latest_value
+        description: Latest numeric value.
+      - name: latest_flag
+        description: Range flag of the latest value.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [high, low, normal]
+      - name: n_results
+        description: Number of results for this lab.
+      - name: n_out_of_range
+        description: Results flagged high or low.
+
+  - name: gold_bmi
+    description: >
+      BMI from each patient's latest weight (LOINC 29463-7) and the height (8302-2) measured closest to it, next
+      to the BMI the source reported (39156-5) as a cross check. Under 20s are labelled, not given an adult category.
+    columns:
+      - name: patient_id
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: bmi_computed
+        description: Weight in kg over height in metres squared, 1 decimal.
+      - name: bmi_reported
+        description: BMI as the source reported it, if any.
+      - name: bmi_category
+        description: Adult category, or a note for patients under 20.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["under 20: use growth percentiles", underweight, healthy weight, overweight, obesity]
+
+  - name: gold_aki_signal
+    description: >
+      Kidney injury screening signal: serum creatinine (2160-0) up 0.3 mg/dL or more within 48 hours. One KDIGO
+      criterion, simplified; a signal for review, not a diagnosis.
+    columns:
+      - name: patient_id
+        description: Primary key.
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: n_signal_results
+        description: Creatinine results that rose enough.
+      - name: first_signal_at
+        description: First result that raised the signal.
+      - name: max_rise_mg_dl
+        description: Largest rise within 48 hours.
+
+  - name: gold_patient_summary
+    description: >
+      One row per patient, everything an analyst asks first. Age is at death for deceased patients, hidden for
+      living MIMIC patients (dates are shifted) and otherwise as of the extract date.
+    columns:
+      - name: patient_id
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: source
+        description: Source of the patient.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: age_years
+        description: Age in whole years, see age_basis.
+      - name: age_basis
+        description: How age_years was computed.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [at death, "hidden: dates shifted", as of extract]
+      - name: n_admissions
+        description: Hospital admissions.
+      - name: readmissions_30d
+        description: Admissions followed by another within 30 days.
+      - name: n_diagnoses_need_review
+        description: Diagnoses waiting for a coder.
+      - name: has_aki_signal
+        description: True when the patient is in gold_aki_signal.
+
+  - name: gold_cohort_members
+    description: >
+      Who is in each cohort. Diagnosis cohorts come from seed cohort_codes across ICD 10, ICD 9 and SNOMED CT;
+      plus low sodium, the kidney signal and 30 day readmission.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "cohort || '|' || patient_id"
+    columns:
+      - name: cohort
+        description: Cohort name.
+        data_tests: [not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+
+  - name: gold_cohorts
+    description: Cohort sizes, split by source, and the share of all patients.
+    columns:
+      - name: cohort
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: patients
+        description: Patient records in the cohort (the same as records, kept for older readers).
+      - name: pct_of_patients
+        description: Share of all Silver patient records, 1 decimal.
+      - name: people
+        description: Persons in the cohort, one per master id of gold_patient_crosswalk. Never more than records.
+        data_tests: [not_null]
+      - name: records
+        description: Patient records in the cohort. More than people when the EMPI linked two records of one person.
+        data_tests: [not_null]
+      - name: pct_of_people
+        description: People in the cohort as a share of all people in gold_patient_crosswalk, 1 decimal.
+
+  - name: gold_terminology_quality
+    description: Per source, how much arrived in or was mapped to a standard code (LOINC, ICD 10), and the review backlog.
+    columns:
+      - name: source
+        description: Primary key.
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+      - name: pct_loinc
+        description: Share of numeric lab results with a LOINC code.
+      - name: pct_icd10
+        description: Share of diagnoses with an ICD 10 code.
+      - name: need_review
+        description: Diagnoses waiting for a coder.
+
+  # ---------- operational tables: the live Riverside General feed (demo) ----------
+
+  - name: gold_aki_rise
+    description: >
+      One row per serum creatinine result that is 0.3 mg/dL or more above a result of the same patient from the
+      48 hours before it, with the visit it belongs to. gold_aki_signal sums it up per patient.
+    columns:
+      - name: observation_id
+        description: The later creatinine result. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests: [not_null]
+      - name: encounter_id
+        description: The visit of the result, when the source says.
+      - name: signal_at
+        description: Time of the result that rose.
+      - name: rise
+        description: Largest rise against any result of the 48 hours before, mg/dL.
+
+  - name: gold_live_encounter
+    description: >
+      The hospital admissions and emergency visits of the live Riverside General feed (invented patients on real
+      dates), the base of the operational tables. The original 25 patient feed, MIMIC and Synthea are archives and
+      are left out.
+    columns:
+      - name: encounter_id
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: visit_number
+        description: HL7 v2 visit number, V<yyyymmdd><nn>.
+        data_tests: [not_null]
+      - name: encounter_kind
+        description: hospital admission or emergency visit (went home from the ED).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [hospital admission, emergency visit]
+      - name: is_admission
+        description: True for a hospital admission.
+        data_tests: [not_null]
+      - name: priority_code
+        description: "Encounter.priority: EM emergency, UR urgent, EL elective (HL7 v2 PV1-4)."
+      - name: is_emergency_admission
+        description: An admission with priority EM, the A of LACE.
+        data_tests: [not_null]
+      - name: start_date
+        description: Admission or arrival date.
+        data_tests: [not_null]
+      - name: end_date
+        description: Discharge date; NULL while in hospital.
+      - name: has_kidney_signal
+        description: True when a creatinine result of this visit raised the kidney injury signal.
+        data_tests: [not_null]
+
+  - name: gold_feed_freshness
+    description: >
+      One row: how current the live feed data is. The nightly job loads yesterday, so the data date (the "today" of
+      the operational pages) is the day of the last feed event, never later than the extract.
+    columns:
+      - name: first_day
+        description: Day of the first live feed event.
+      - name: last_event_at
+        description: Time of the last live feed event (admission, discharge or lab result), at most the extract time.
+      - name: data_date
+        description: The day the live feed data runs to.
+      - name: extracted_at
+        description: When the FHIR data was extracted.
+        data_tests: [not_null]
+      - name: extract_date
+        description: The extract day.
+
+  - name: gold_daily_census
+    description: >
+      One row per day of the live feed up to the data date: the midnight census, admissions, discharges, ED visits,
+      transfers and the average length of stay of that day's discharges. The numbers of the daily bed meeting.
+    columns:
+      - name: census_date
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: in_house_at_midnight
+        description: Inpatients in hospital at the midnight that ends the day.
+        data_tests: [not_null]
+      - name: admissions
+        description: Inpatient admissions that day.
+      - name: discharges
+        description: Inpatient discharges that day.
+      - name: ed_visits
+        description: ED visits that went home without admission.
+      - name: transfers
+        description: Bed moves that day (HL7 v2 ADT^A02).
+      - name: avg_los_discharged_days
+        description: Average length of stay of that day's discharges, days; NULL with no discharge.
+
+  - name: gold_bed_board
+    description: >
+      One row per bed with the patient in it now, for bed management and the daily safety huddle: bed status from
+      the Location, the live visit in the bed, day of stay, attending and lab flags from the latest key labs of the
+      stay. Identifying (patient name, MRN), for the care team only.
+    columns:
+      - name: bed_location_id
+        description: The bed. Primary key (a second current patient is caught by a live feed test).
+        data_tests: [not_null]
+      - name: unit_location_id
+        description: The unit the bed belongs to.
+        data_tests: [not_null]
+      - name: bed_status
+        description: "operationalStatus of the bed: O occupied, U unoccupied (HL7 v2 table 0116)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [C, H, I, K, O, U]
+      - name: is_occupied
+        description: True when the bed status is O.
+      - name: encounter_id
+        description: The live visit in the bed now; NULL for an empty bed.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('gold_live_encounter')
+                field: encounter_id
+      - name: patient_name
+        description: Patient name. Identifying.
+      - name: mrn
+        description: Medical record number. Identifying.
+      - name: day_of_stay
+        description: Day of the stay on the data date, the admission day being day 1.
+      - name: attending_practitioner_id
+        description: The attending physician's Practitioner, for "my patients".
+      - name: kidney_signal
+        description: Creatinine up 0.3 mg/dL or more within 48 hours during this stay.
+      - name: low_sodium
+        description: Latest sodium of the stay below 135 mmol/L.
+      - name: abnormal_potassium
+        description: Latest potassium of the stay outside the lab's reference range.
+
+  - name: gold_unit_occupancy
+    description: Per unit, beds occupied out of capacity (bed status), and beds a live visit is in right now.
+    columns:
+      - name: unit_location_id
+        description: Primary key.
+        data_tests: [unique, not_null]
+      - name: capacity
+        description: Beds in the unit.
+      - name: occupied_beds
+        description: Beds with status O.
+      - name: beds_with_patient
+        description: Beds a live visit in progress is in.
+      - name: occupancy_pct
+        description: occupied_beds out of capacity, percent with 1 decimal.
+
+  - name: gold_weekly_metrics
+    description: >
+      The live feed per ISO week (Monday to Sunday): admissions, discharges, ED visits, 30 day readmissions of the
+      week's discharges and their rate, median and 90th percentile length of stay, abnormal lab rate, LOINC and
+      ICD 10 coverage, diagnoses waiting for a coder, kidney signals. For the monthly quality committee.
+    columns:
+      - name: week_start
+        description: Monday of the week. Primary key.
+        data_tests: [unique, not_null]
+      - name: week_end
+        description: Sunday of the week.
+      - name: days_with_data
+        description: Days of the week the feed covers (7 for a full week).
+      - name: is_complete_week
+        description: False for a week the feed has not fully covered (the current one, or the first one).
+        data_tests: [not_null]
+      - name: readmissions_30d
+        description: Discharges of the week followed by another admission within 30 days.
+      - name: readmission_rate_pct
+        description: readmissions_30d out of the week's discharges, percent.
+      - name: readmission_window_complete
+        description: True once 30 days have passed since the end of the week, so the rate can no longer rise.
+      - name: median_los_days
+        description: Median length of stay of the week's discharges, days.
+      - name: p90_los_days
+        description: 90th percentile length of stay of the week's discharges, days.
+      - name: abnormal_lab_rate_pct
+        description: Numeric lab results with a reference range that were flagged high or low, percent.
+      - name: loinc_coverage_pct
+        description: Numeric lab results with a LOINC code, percent.
+      - name: icd10_coverage_pct
+        description: Diagnoses of the week's visits with an ICD 10 code, percent.
+      - name: needs_review
+        description: Diagnoses of the week's visits waiting for a coder.
+      - name: kidney_signals
+        description: Visits whose first kidney injury signal fell in the week.
+
+  - name: gold_readmission_risk
+    description: >
+      LACE readmission risk for every live feed discharge in the 30 days up to the extract date, with the care
+      manager, whether a readmission already happened, Transitional Care Management due dates and a suggested
+      follow up service. Identifying (patient name, MRN), for the care team only.
+    columns:
+      - name: encounter_id
+        description: The index admission. Primary key.
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('gold_live_encounter')
+                field: encounter_id
+      - name: patient_name
+        description: Patient name. Identifying.
+      - name: mrn
+        description: Medical record number. Identifying.
+      - name: lace_l
+        description: "L, length of stay points: under 1 day 0, 1 day 1, 2 days 2, 3 days 3, 4 to 6 days 4, 7 to 13 days 5, 14 or more 7."
+      - name: lace_a
+        description: A, 3 for an emergency admission.
+      - name: charlson_score
+        description: Charlson comorbidity score from the diagnoses up to this discharge (seed charlson_codes).
+      - name: lace_c
+        description: C, the Charlson score with 4 or more counting 5.
+      - name: ed_visits_6m
+        description: ED visits in the 182 days before the admission.
+      - name: lace_e
+        description: E, ED visits capped at 4.
+      - name: lace_score
+        description: L + A + C + E, 0 to 19.
+        data_tests: [not_null]
+      - name: risk_band
+        description: high (10 or more), moderate (5 to 9) or low (under 5).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [high, moderate, low]
+      - name: days_since_discharge
+        description: Days from discharge to the data date.
+      - name: readmitted
+        description: True when the patient has already been admitted again within 30 days.
+        data_tests: [not_null]
+      - name: care_manager_name
+        description: The care manager on the visit's CareTeam (joins at discharge). Staff.
+      - name: contact_due_date
+        description: Transitional Care Management contact due date, 2 business days after discharge.
+        data_tests: [not_null]
+      - name: contact_overdue
+        description: The data date is past the contact due date (the feed has no record of calls).
+      - name: visit_due_date
+        description: Follow up visit due date, 7 days after discharge for high risk, 14 otherwise.
+        data_tests: [not_null]
+      - name: visit_overdue
+        description: The data date is past the visit due date (the feed has no record of visits).
+      - name: suggested_service_id
+        description: HealthcareService to book the follow up with.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [riverside-hcs-cardiology-clinic, riverside-hcs-discharge-follow-up]
+
+  - name: gold_patient_crosswalk
+    description: >
+      One row per patient record with one master id per person across sources: records joined by Patient.link (the
+      EMPI) share the master id. A real hospital uses this to count people instead of records and to put the
+      history from every system on one chart.
+    columns:
+      - name: master_id
+        description: The person, MPI- and a stable hash of the group's representative record.
+        data_tests: [not_null]
+      - name: master_patient_id
+        description: The group's representative record, its smallest patient id.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: patient_id
+        description: The record. Primary key.
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: source
+        description: Source of the record.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2, unknown]
+      - name: mrn
+        description: The record's MRN in its source.
+      - name: records_in_group
+        description: How many records the person has, 1 when nothing is linked.
+        data_tests: [not_null]
+      - name: sources_in_group
+        description: In how many sources the person is known.
+        data_tests: [not_null]
+
+  - name: gold_empi_quality
+    description: >
+      How well the EMPI's automatic links agree with the seeded test set (silver_empi_truth), on the pairs with a
+      test set record. One row; counts are 0 and the rates NULL before the test set is loaded.
+    columns:
+      - name: true_match_pairs
+        description: Test set records that are copies of a Synthea patient.
+        data_tests: [not_null]
+      - name: hard_negative_pairs
+        description: Test set records that only share a name with a Synthea patient.
+        data_tests: [not_null]
+      - name: auto_linked
+        description: Pairs with a test set record linked automatically (score 90 or more).
+        data_tests: [not_null]
+      - name: true_positives
+        description: Automatic links that are true matches.
+      - name: false_positives
+        description: Automatic links that are not true matches.
+      - name: false_negatives
+        description: True matches not linked automatically (in review, or scored too low).
+      - name: precision
+        description: true_positives / auto_linked, 3 decimals.
+      - name: recall
+        description: true_positives / true_match_pairs, 3 decimals.
+      - name: hard_negatives_auto_linked
+        description: Hard negatives linked automatically. Should be 0.
+        data_tests: [not_null]
+      - name: pairs_in_review
+        description: Pairs with a test set record waiting for a person.
+      - name: true_matches_in_review
+        description: Of those, true matches.
+      - name: hard_negatives_in_review
+        description: Of those, hard negatives.

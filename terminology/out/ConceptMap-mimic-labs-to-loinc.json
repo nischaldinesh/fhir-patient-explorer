@@ -1,0 +1,630 @@
+{
+ "resourceType": "ConceptMap",
+ "id": "mimic-labs-to-loinc",
+ "url": "https://github.com/nischaldinesh/fhir-patient-explorer/ConceptMap/mimic-labs-to-loinc",
+ "version": "1",
+ "name": "mimic_labs_to_loinc",
+ "title": "MIMIC IV lab items to LOINC",
+ "status": "draft",
+ "experimental": true,
+ "description": "Curated map from MIMIC IV local lab item codes to LOINC. Judgment calls are recorded in each target comment.",
+ "sourceUri": "http://mimic.mit.edu/fhir/mimic/CodeSystem/mimic-d-labitems",
+ "targetUri": "http://loinc.org",
+ "group": [
+  {
+   "source": "http://mimic.mit.edu/fhir/mimic/CodeSystem/mimic-d-labitems",
+   "target": "http://loinc.org",
+   "element": [
+    {
+     "code": "50983",
+     "display": "Sodium",
+     "target": [
+      {
+       "code": "2951-2",
+       "display": "Sodium [Moles/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50971",
+     "display": "Potassium",
+     "target": [
+      {
+       "code": "2823-3",
+       "display": "Potassium [Moles/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50902",
+     "display": "Chloride",
+     "target": [
+      {
+       "code": "2075-0",
+       "display": "Chloride [Moles/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50882",
+     "display": "Bicarbonate",
+     "target": [
+      {
+       "code": "2028-9",
+       "display": "Carbon dioxide, total [Moles/volume] in Serum or Plasma",
+       "equivalence": "equivalent",
+       "comment": "Judgment call: chemistry panel 'bicarbonate' is measured as total CO2, so it maps to 2028-9 (same code Synthea uses), not 1963-8"
+      }
+     ]
+    },
+    {
+     "code": "50868",
+     "display": "Anion Gap",
+     "target": [
+      {
+       "code": "33037-3",
+       "display": "Anion gap in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51006",
+     "display": "Urea Nitrogen",
+     "target": [
+      {
+       "code": "3094-0",
+       "display": "Urea nitrogen [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50912",
+     "display": "Creatinine",
+     "target": [
+      {
+       "code": "2160-0",
+       "display": "Creatinine [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50931",
+     "display": "Glucose",
+     "target": [
+      {
+       "code": "2345-7",
+       "display": "Glucose [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent",
+       "comment": "Serum/plasma glucose. Synthea uses 2339-0 (whole blood), a different LOINC for a different specimen"
+      }
+     ]
+    },
+    {
+     "code": "50893",
+     "display": "Calcium, Total",
+     "target": [
+      {
+       "code": "17861-6",
+       "display": "Calcium [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50960",
+     "display": "Magnesium",
+     "target": [
+      {
+       "code": "19123-9",
+       "display": "Magnesium [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50970",
+     "display": "Phosphate",
+     "target": [
+      {
+       "code": "2777-1",
+       "display": "Phosphate [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51221",
+     "display": "Hematocrit",
+     "target": [
+      {
+       "code": "4544-3",
+       "display": "Hematocrit [Volume Fraction] of Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51222",
+     "display": "Hemoglobin",
+     "target": [
+      {
+       "code": "718-7",
+       "display": "Hemoglobin [Mass/volume] in Blood",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51248",
+     "display": "MCH",
+     "target": [
+      {
+       "code": "785-6",
+       "display": "MCH [Entitic mass] by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51249",
+     "display": "MCHC",
+     "target": [
+      {
+       "code": "786-4",
+       "display": "MCHC [Mass/volume] by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51250",
+     "display": "MCV",
+     "target": [
+      {
+       "code": "787-2",
+       "display": "MCV [Entitic volume] by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51265",
+     "display": "Platelet Count",
+     "target": [
+      {
+       "code": "777-3",
+       "display": "Platelets [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51277",
+     "display": "RDW",
+     "target": [
+      {
+       "code": "788-0",
+       "display": "Erythrocyte distribution width [Ratio] by Automated count",
+       "equivalence": "equivalent",
+       "comment": "MIMIC RDW is a percent (RDW-CV), so 788-0. Synthea's fL value is RDW-SD (21000-5), a different measurement"
+      }
+     ]
+    },
+    {
+     "code": "51279",
+     "display": "Red Blood Cells",
+     "target": [
+      {
+       "code": "789-8",
+       "display": "Erythrocytes [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51301",
+     "display": "White Blood Cells",
+     "target": [
+      {
+       "code": "6690-2",
+       "display": "Leukocytes [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51256",
+     "display": "Neutrophils",
+     "target": [
+      {
+       "code": "770-8",
+       "display": "Neutrophils/100 leukocytes in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51244",
+     "display": "Lymphocytes",
+     "target": [
+      {
+       "code": "736-9",
+       "display": "Lymphocytes/100 leukocytes in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51254",
+     "display": "Monocytes",
+     "target": [
+      {
+       "code": "5905-5",
+       "display": "Monocytes/100 leukocytes in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51200",
+     "display": "Eosinophils",
+     "target": [
+      {
+       "code": "713-8",
+       "display": "Eosinophils/100 leukocytes in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51146",
+     "display": "Basophils",
+     "target": [
+      {
+       "code": "706-2",
+       "display": "Basophils/100 leukocytes in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51237",
+     "display": "INR(PT)",
+     "target": [
+      {
+       "code": "6301-6",
+       "display": "INR in Platelet poor plasma by Coagulation assay",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51274",
+     "display": "PT",
+     "target": [
+      {
+       "code": "5902-2",
+       "display": "Prothrombin time (PT)",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51275",
+     "display": "PTT",
+     "target": [
+      {
+       "code": "14979-9",
+       "display": "aPTT in Platelet poor plasma by Coagulation assay",
+       "equivalence": "equivalent",
+       "comment": "Judgment call: PTT runs on plasma, so 14979-9 rather than the blood code 3173-2"
+      }
+     ]
+    },
+    {
+     "code": "50820",
+     "display": "pH",
+     "target": [
+      {
+       "code": "11558-4",
+       "display": "pH of Blood",
+       "equivalence": "equivalent",
+       "comment": "Judgment call: MIMIC stores arterial vs venous in a separate specimen row, so this maps to the unspecified blood code, not arterial 2744-1"
+      }
+     ]
+    },
+    {
+     "code": "50818",
+     "display": "pCO2",
+     "target": [
+      {
+       "code": "11557-6",
+       "display": "Carbon dioxide [Partial pressure] in Blood",
+       "equivalence": "equivalent",
+       "comment": "Same specimen reasoning as pH"
+      }
+     ]
+    },
+    {
+     "code": "50821",
+     "display": "pO2",
+     "target": [
+      {
+       "code": "11556-8",
+       "display": "Oxygen [Partial pressure] in Blood",
+       "equivalence": "equivalent",
+       "comment": "Same specimen reasoning as pH"
+      }
+     ]
+    },
+    {
+     "code": "50802",
+     "display": "Base Excess",
+     "target": [
+      {
+       "code": "11555-0",
+       "display": "Base excess in Blood by calculation",
+       "equivalence": "equivalent",
+       "comment": "Same specimen reasoning as pH"
+      }
+     ]
+    },
+    {
+     "code": "50813",
+     "display": "Lactate",
+     "target": [
+      {
+       "code": "32693-4",
+       "display": "Lactate [Moles/volume] in Blood",
+       "equivalence": "equivalent",
+       "comment": "Blood gas analyzer lactate (whole blood)"
+      }
+     ]
+    },
+    {
+     "code": "50809",
+     "display": "Glucose",
+     "target": [
+      {
+       "code": "2339-0",
+       "display": "Glucose [Mass/volume] in Blood",
+       "equivalence": "equivalent",
+       "comment": "Blood gas analyzer glucose (whole blood), which is why it matches Synthea's 2339-0 while 50931 does not"
+      }
+     ]
+    },
+    {
+     "code": "50822",
+     "display": "Potassium, Whole Blood",
+     "target": [
+      {
+       "code": "6298-4",
+       "display": "Potassium [Moles/volume] in Blood",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50824",
+     "display": "Sodium, Whole Blood",
+     "target": [
+      {
+       "code": "2947-0",
+       "display": "Sodium [Moles/volume] in Blood",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50806",
+     "display": "Chloride, Whole Blood",
+     "target": [
+      {
+       "code": "2069-3",
+       "display": "Chloride [Moles/volume] in Blood",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50861",
+     "display": "Alanine Aminotransferase (ALT)",
+     "target": [
+      {
+       "code": "1742-6",
+       "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50878",
+     "display": "Asparate Aminotransferase (AST)",
+     "target": [
+      {
+       "code": "1920-8",
+       "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+       "equivalence": "equivalent",
+       "comment": "MIMIC's display has the typo 'Asparate'; source data is never as clean as the spec"
+      }
+     ]
+    },
+    {
+     "code": "50863",
+     "display": "Alkaline Phosphatase",
+     "target": [
+      {
+       "code": "6768-6",
+       "display": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50885",
+     "display": "Bilirubin, Total",
+     "target": [
+      {
+       "code": "1975-2",
+       "display": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50862",
+     "display": "Albumin",
+     "target": [
+      {
+       "code": "1751-7",
+       "display": "Albumin [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50910",
+     "display": "Creatine Kinase (CK)",
+     "target": [
+      {
+       "code": "2157-6",
+       "display": "Creatine kinase [Enzymatic activity/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51003",
+     "display": "Troponin T",
+     "target": [
+      {
+       "code": "6598-7",
+       "display": "Troponin T.cardiac [Mass/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "52172",
+     "display": "RDW-SD",
+     "target": [
+      {
+       "code": "21000-5",
+       "display": "Erythrocyte distribution width [Entitic volume] by Automated count",
+       "equivalence": "equivalent",
+       "comment": "RDW-SD in fL: the same code Synthea uses"
+      }
+     ]
+    },
+    {
+     "code": "52075",
+     "display": "Absolute Neutrophil Count",
+     "target": [
+      {
+       "code": "751-8",
+       "display": "Neutrophils [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "51133",
+     "display": "Absolute Lymphocyte Count",
+     "target": [
+      {
+       "code": "731-0",
+       "display": "Lymphocytes [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "52074",
+     "display": "Absolute Monocyte Count",
+     "target": [
+      {
+       "code": "742-7",
+       "display": "Monocytes [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "52073",
+     "display": "Absolute Eosinophil Count",
+     "target": [
+      {
+       "code": "711-2",
+       "display": "Eosinophils [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "52069",
+     "display": "Absolute Basophil Count",
+     "target": [
+      {
+       "code": "704-7",
+       "display": "Basophils [#/volume] in Blood by Automated count",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50954",
+     "display": "Lactate Dehydrogenase (LD)",
+     "target": [
+      {
+       "code": "2532-0",
+       "display": "Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma",
+       "equivalence": "equivalent"
+      }
+     ]
+    },
+    {
+     "code": "50808",
+     "display": "Free Calcium",
+     "target": [
+      {
+       "code": "1994-3",
+       "display": "Calcium.ionized [Moles/volume] in Blood",
+       "equivalence": "equivalent",
+       "comment": "MIMIC calls ionized calcium 'Free Calcium'"
+      }
+     ]
+    },
+    {
+     "code": "50920",
+     "display": "Estimated GFR (MDRD equation)",
+     "target": [
+      {
+       "code": "33914-3",
+       "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)",
+       "equivalence": "equivalent",
+       "comment": "Calculated value, not measured. Formula matters: MDRD and CKD-EPI have different LOINC codes"
+      }
+     ]
+    },
+    {
+     "code": "50852",
+     "display": "% Hemoglobin A1c",
+     "target": [
+      {
+       "code": "4548-4",
+       "display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+       "equivalence": "equivalent",
+       "comment": "Added for the diabetes HbA1c measure (mart_quality_monthly, mart_quality_period). MIMIC reports HbA1c as a percent (NGSP), which is what 4548-4 means; 17856-6 is the HPLC method specific code and 4549-2 is electrophoresis, neither of which MIMIC states"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

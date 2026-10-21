@@ -1,0 +1,2 @@
+pyjwt==2.15.1  # SMART backend services auth for analytics/bulk.py only (analytics/smart_auth.py); not needed without BULK_CLIENT_ID
+cryptography==50.0.2

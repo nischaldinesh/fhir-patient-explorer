@@ -1,0 +1,31 @@
+match_type,match,loinc,loinc_display,note
+code,GLU,2345-7,Glucose [Mass/volume] in Serum or Plasma,Local code from the lab system
+code,GLUC,2345-7,Glucose [Mass/volume] in Serum or Plasma,Second local code for the same test from another sender
+text,glucose,2345-7,Glucose [Mass/volume] in Serum or Plasma,
+text,glucose serum,2345-7,Glucose [Mass/volume] in Serum or Plasma,
+text,blood sugar,2345-7,Glucose [Mass/volume] in Serum or Plasma,"Judgment call: 'blood sugar' names no specimen. It arrives in the basic metabolic panel, which runs on serum, so serum glucose, not whole blood 2339-0"
+code,NA,2951-2,Sodium [Moles/volume] in Serum or Plasma,
+text,sodium,2951-2,Sodium [Moles/volume] in Serum or Plasma,
+text,na,2951-2,Sodium [Moles/volume] in Serum or Plasma,Element symbol used as a name
+code,K,2823-3,Potassium [Moles/volume] in Serum or Plasma,
+text,potassium,2823-3,Potassium [Moles/volume] in Serum or Plasma,
+text,k,2823-3,Potassium [Moles/volume] in Serum or Plasma,"'K+' normalizes to 'k' once punctuation is removed"
+code,CREA,2160-0,Creatinine [Mass/volume] in Serum or Plasma,
+text,creatinine,2160-0,Creatinine [Mass/volume] in Serum or Plasma,
+text,creat,2160-0,Creatinine [Mass/volume] in Serum or Plasma,Abbreviation
+code,BUN,3094-0,Urea nitrogen [Mass/volume] in Serum or Plasma,
+text,bun,3094-0,Urea nitrogen [Mass/volume] in Serum or Plasma,
+text,urea nitrogen,3094-0,Urea nitrogen [Mass/volume] in Serum or Plasma,
+code,HGB,718-7,Hemoglobin [Mass/volume] in Blood,
+text,hemoglobin,718-7,Hemoglobin [Mass/volume] in Blood,
+text,hgb,718-7,Hemoglobin [Mass/volume] in Blood,
+code,WBC,6690-2,Leukocytes [#/volume] in Blood by Automated count,
+text,wbc count,6690-2,Leukocytes [#/volume] in Blood by Automated count,
+text,white blood cells,6690-2,Leukocytes [#/volume] in Blood by Automated count,
+code,LACT,2524-7,Lactate [Moles/volume] in Serum or Plasma,
+text,lactate,2524-7,Lactate [Moles/volume] in Serum or Plasma,
+text,lactic acid,2524-7,Lactate [Moles/volume] in Serum or Plasma,"Lactic acid and lactate are the same measurement"
+code,TROP,6598-7,Troponin T.cardiac [Mass/volume] in Serum or Plasma,
+text,troponin t,6598-7,Troponin T.cardiac [Mass/volume] in Serum or Plasma,
+text,body height,8302-2,Body height,"Free text from nursing with no code at all: 'Body Height' means LOINC 8302-2"
+text,body weight,29463-7,Body weight,

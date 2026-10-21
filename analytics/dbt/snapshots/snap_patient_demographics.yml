@@ -1,0 +1,27 @@
+snapshots:
+  - name: snap_patient_demographics
+    description: >
+      Slowly changing dimension type 2 of each patient record's address, sex and deceased flag. Every dbt build
+      compares the extract with the current version; a change closes it (dbt_valid_to) and adds a new one. Versions
+      are dated with the extract time (loaded_at), so the history says when a change was first seen in the data,
+      not when it happened. A record gone from the server is closed (hard_deletes invalidate). Holds the address
+      (identifying): read it through dim_patient_history.
+    relation: ref('int_patient_demographics')
+    config:
+      unique_key: patient_id
+      strategy: check
+      check_cols: [address_line, city, state, postal_code, sex, is_deceased]
+      updated_at: loaded_at
+      hard_deletes: invalidate
+    columns:
+      - name: patient_id
+        description: FHIR Patient id of the record. With dbt_valid_from, the key of a version.
+        data_tests: [not_null]
+      - name: dbt_scd_id
+        description: Unique id of the version.
+        data_tests: [unique, not_null]
+      - name: dbt_valid_from
+        description: Extract time the version was first seen.
+        data_tests: [not_null]
+      - name: dbt_valid_to
+        description: Extract time it was replaced; NULL for the current version.

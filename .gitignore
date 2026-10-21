@@ -1,0 +1,12 @@
+data/
+__pycache__/
+.pytest_cache/
+*.part
+.env
+.venv/
+.DS_Store
+*.dump
+.claude/
+analytics/dbt/target/
+analytics/dbt/logs/
+analytics/dbt/dbt_packages/

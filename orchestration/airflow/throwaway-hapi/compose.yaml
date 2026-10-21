@@ -1,0 +1,38 @@
+# A throwaway HAPI FHIR on http://localhost:8090/fhir for testing the Airflow DAG, so your local HAPI on 8080 is
+# never written to. Its own Postgres volume; seed it from a dump of the local database with seed.sh.
+#
+#   docker compose -f orchestration/airflow/throwaway-hapi/compose.yaml up -d
+#   docker compose -f orchestration/airflow/throwaway-hapi/compose.yaml down -v    # throw it away
+name: fhir-throwaway
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: hapi
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  fhir:
+    # The image the local data was built with (docker image ls --digests hapiproject/hapi), so the schema matches
+    image: ${HAPI_IMAGE:-hapiproject/hapi@sha256:0ff86aac4c7bd13a1ee226444a70263bb46ed1c28ef543c30a44f865b80ca04e}
+    ports:
+      - "127.0.0.1:8090:8080"
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xms512m -Xmx2g"
+      # FHIR Bulk Data $export for testing analytics/bulk.py (the local HAPI on 8080 leaves it off)
+      SPRING_APPLICATION_JSON: '{"hapi":{"fhir":{"bulk_export_enabled":true}}}'
+    volumes:
+      - ../../../hapi.application.yaml:/app/config/application.yaml:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

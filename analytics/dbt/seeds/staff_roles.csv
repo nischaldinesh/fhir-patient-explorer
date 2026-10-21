@@ -1,0 +1,12 @@
+practitioner_id,role,specialty,service_name
+riverside-pract-1234,doctor,Hospitalist,Inpatient Medicine
+riverside-pract-2211,doctor,Hospitalist,Inpatient Medicine
+riverside-pract-3307,doctor,Hospitalist,Inpatient Medicine
+riverside-pract-4415,doctor,Emergency physician,Emergency Department
+riverside-pract-5120,doctor,Cardiologist,Cardiology Clinic
+riverside-pract-6034,doctor,Intensivist,Inpatient Medicine
+riverside-pract-7101,nurse,Registered nurse,Inpatient Medicine
+riverside-pract-7102,nurse,Registered nurse,Inpatient Medicine
+riverside-pract-7103,nurse,Registered nurse,Emergency Department
+riverside-pract-8001,care manager,RN Care Manager,Discharge Follow Up Clinic
+riverside-pract-8002,care manager,RN Care Manager,Discharge Follow Up Clinic

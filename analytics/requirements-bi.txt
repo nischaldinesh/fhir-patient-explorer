@@ -1,0 +1,4 @@
+# The BI export to Google Sheets (analytics/export_bi.py --target sheets). Not needed for csv or the build.
+# Install with: python3 -m pip install -r analytics/requirements-bi.txt
+gspread==6.2.1
+google-auth==2.62.0

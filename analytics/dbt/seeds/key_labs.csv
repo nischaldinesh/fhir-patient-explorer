@@ -1,0 +1,13 @@
+loinc,lab,unit,note
+2951-2,sodium,mmol/L,Serum or plasma
+2947-0,sodium,mmol/L,Whole blood (blood gas analyzer)
+2823-3,potassium,mmol/L,Serum or plasma
+6298-4,potassium,mmol/L,Whole blood (blood gas analyzer)
+2160-0,creatinine,mg/dL,Serum or plasma
+3094-0,urea_nitrogen,mg/dL,Serum or plasma
+2345-7,glucose,mg/dL,Serum or plasma
+2339-0,glucose,mg/dL,Whole blood
+718-7,hemoglobin,g/dL,Blood
+6690-2,wbc,10*3/uL,Blood
+32693-4,lactate,mmol/L,Whole blood
+2524-7,lactate,mmol/L,Serum or plasma

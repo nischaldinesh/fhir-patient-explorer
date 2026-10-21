@@ -1,0 +1,785 @@
+icd9,icd9_display,rows,category,needs_review,icd10,icd10_display
+4019,Unspecified essential hypertension,89,one_to_many,yes,I10 | I169,"Essential (primary) hypertension | Hypertensive crisis, unspecified"
+2724,Other and unspecified hyperlipidemia,56,one_to_many,yes,E784 | E785,"Other hyperlipidemia | Hyperlipidemia, unspecified"
+25000,"Diabetes mellitus without mention of complication, type II or unspecified type, not stated as uncontrolled",45,approximate,no,E119,Type 2 diabetes mellitus without complications
+42731,Atrial fibrillation,39,approximate,no,I4891,Unspecified atrial fibrillation
+V1582,Personal history of tobacco use,31,approximate,no,Z87891,Personal history of nicotine dependence
+311,"Depressive disorder, not elsewhere classified",31,approximate,no,F329,"Major depressive disorder, single episode, unspecified"
+5849,"Acute kidney failure, unspecified",31,exact,no,N179,"Acute kidney failure, unspecified"
+4280,"Congestive heart failure, unspecified",31,one_to_many,yes,I50814 | I509,"Right heart failure due to left heart failure | Heart failure, unspecified"
+V5867,Long-term (current) use of insulin,30,exact,no,Z794,Long term (current) use of insulin
+V5861,Long-term (current) use of anticoagulants,28,exact,no,Z7901,Long term (current) use of anticoagulants
+41401,Coronary atherosclerosis of native coronary artery,28,approximate,no,I2510,Atherosclerotic heart disease of native coronary artery without angina pectoris
+40390,"Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage I through stage IV, or unspecified",27,approximate,no,I129,"Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
+5990,"Urinary tract infection, site not specified",26,exact,no,N390,"Urinary tract infection, site not specified"
+2720,Pure hypercholesterolemia,25,one_to_many,yes,E7800 | E7801,"Pure hypercholesterolemia, unspecified | Familial hypercholesterolemia"
+3051,Tobacco use disorder,24,approximate,no,F17200,"Nicotine dependence, unspecified, uncomplicated"
+2859,"Anemia, unspecified",24,exact,no,D649,"Anemia, unspecified"
+53081,Esophageal reflux,22,exact,no,K219,Gastro-esophageal reflux disease without esophagitis
+27800,"Obesity, unspecified",21,approximate,no,E669,"Obesity, unspecified"
+2761,Hyposmolality and/or hyponatremia,18,exact,no,E871,Hypo-osmolality and hyponatremia
+5853,"Chronic kidney disease, Stage III (moderate)",16,exact,no,N183,"Chronic kidney disease, stage 3 (moderate)"
+V5866,Long-term (current) use of aspirin,15,exact,no,Z7982,Long term (current) use of aspirin
+5859,"Chronic kidney disease, unspecified",15,exact,no,N189,"Chronic kidney disease, unspecified"
+E8497,Accidents occurring in residential institution,15,approximate,no,Y92199,Unspecified place in other specified residential institution as the place of occurrence of the external cause
+51881,Acute respiratory failure,15,one_to_many,yes,J9600 | J9690,"Acute respiratory failure, unspecified whether with hypoxia or hypercapnia | Respiratory failure, unspecified, unspecified whether with hypoxia or hypercapnia"
+V08,Asymptomatic human immunodeficiency virus [HIV] infection status,14,exact,no,Z21,Asymptomatic human immunodeficiency virus [HIV] infection status
+V4582,Percutaneous transluminal coronary angioplasty status,14,approximate,no,Z9861,Coronary angioplasty status
+2449,Unspecified acquired hypothyroidism,14,exact,no,E039,"Hypothyroidism, unspecified"
+49390,"Asthma, unspecified type, unspecified",13,one_to_many,yes,J45909 | J45998,"Unspecified asthma, uncomplicated | Other asthma"
+2762,Acidosis,13,exact,no,E872,Acidosis
+78959,Other ascites,12,exact,no,R188,Other ascites
+V707,Examination of participant in clinical trial,12,exact,no,Z006,Encounter for examination for normal comparison and control in clinical research program
+30500,"Alcohol abuse, unspecified",12,approximate,no,F1010,"Alcohol abuse, uncomplicated"
+486,"Pneumonia, organism unspecified",12,approximate,no,J189,"Pneumonia, unspecified organism"
+30000,"Anxiety state, unspecified",12,exact,no,F419,"Anxiety disorder, unspecified"
+E8798,"Other specified procedures as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at time of procedure",11,approximate,no,Y848,"Other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+4240,Mitral valve disorders,11,one_to_many,yes,I340 | I348,Nonrheumatic mitral (valve) insufficiency | Other nonrheumatic mitral valve disorders
+V4986,Do not resuscitate status,10,exact,no,Z66,Do not resuscitate
+2875,"Thrombocytopenia, unspecified",10,exact,no,D696,"Thrombocytopenia, unspecified"
+2767,Hyperpotassemia,10,exact,no,E875,Hyperkalemia
+E8889,Unspecified fall,10,approximate,no,W19XXXA,"Unspecified fall, initial encounter"
+4589,"Hypotension, unspecified",10,exact,no,I959,"Hypotension, unspecified"
+V8741,Personal history of antineoplastic chemotherapy,10,exact,no,Z9221,Personal history of antineoplastic chemotherapy
+2749,"Gout, unspecified",10,approximate,no,M109,"Gout, unspecified"
+496,"Chronic airway obstruction, not elsewhere classified",9,approximate,no,J449,"Chronic obstructive pulmonary disease, unspecified"
+07070,Unspecified viral hepatitis C without hepatic coma,9,exact,no,B1920,Unspecified viral hepatitis C without hepatic coma
+78820,"Retention of urine, unspecified",9,exact,no,R339,"Retention of urine, unspecified"
+2760,Hyperosmolality and/or hypernatremia,9,exact,no,E870,Hyperosmolality and hypernatremia
+V103,Personal history of malignant neoplasm of breast,9,exact,no,Z853,Personal history of malignant neoplasm of breast
+99592,Severe sepsis,9,approximate,no,R6520,Severe sepsis without septic shock
+78097,Altered mental status,9,approximate,no,R4182,"Altered mental status, unspecified"
+78791,Diarrhea,8,one_to_many,yes,K5229 | K5289 | R197,"Other allergic and dietetic gastroenteritis and colitis | Other specified noninfective gastroenteritis and colitis | Diarrhea, unspecified"
+34830,"Encephalopathy, unspecified",8,exact,no,G9340,"Encephalopathy, unspecified"
+70715,Ulcer of other part of foot,8,approximate,no,L97509,Non-pressure chronic ulcer of other part of unspecified foot with unspecified severity
+412,Old myocardial infarction,8,exact,no,I252,Old myocardial infarction
+2809,"Iron deficiency anemia, unspecified",8,exact,no,D509,"Iron deficiency anemia, unspecified"
+5845,Acute kidney failure with lesion of tubular necrosis,8,exact,no,N170,Acute kidney failure with tubular necrosis
+5715,Cirrhosis of liver without mention of alcohol,7,one_to_many,yes,K740 | K7460 | K7469,Hepatic fibrosis | Unspecified cirrhosis of liver | Other cirrhosis of liver
+04149,Other and unspecified Escherichia coli [E. coli],7,one_to_many,yes,B9620 | B9629,Unspecified Escherichia coli [E. coli] as the cause of diseases classified elsewhere | Other Escherichia coli [E. coli] as the cause of diseases classified elsewhere
+V1581,"Personal history of noncompliance with medical treatment, presenting hazards to health",7,approximate,no,Z9119,Patient's noncompliance with other medical treatment and regimen
+28860,"Leukocytosis, unspecified",7,exact,no,D72829,"Elevated white blood cell count, unspecified"
+33829,Other chronic pain,7,exact,no,G8929,Other chronic pain
+5180,Pulmonary collapse,7,one_to_many,yes,J9811 | J9819,Atelectasis | Other pulmonary collapse
+00845,Intestinal infection due to Clostridium difficile,7,one_to_many,yes,A0471 | A0472,"Enterocolitis due to Clostridium difficile, recurrent | Enterocolitis due to Clostridium difficile, not specified as recurrent"
+5119,Unspecified pleural effusion,7,approximate,no,J918,Pleural effusion in other conditions classified elsewhere
+V1046,Personal history of malignant neoplasm of prostate,7,exact,no,Z8546,Personal history of malignant neoplasm of prostate
+2768,Hypopotassemia,7,exact,no,E876,Hypokalemia
+E8490,Home accidents,7,approximate,no,Y92099,Unspecified place in other non-institutional residence as the place of occurrence of the external cause
+79092,Abnormal coagulation profile,7,exact,no,R791,Abnormal coagulation profile
+20300,"Multiple myeloma, without mention of having achieved remission",7,exact,no,C9000,Multiple myeloma not having achieved remission
+99591,Sepsis,6,approximate,no,A419,"Sepsis, unspecified organism"
+28529,Anemia of other chronic disease,6,approximate,no,D638,Anemia in other chronic diseases classified elsewhere
+2930,Delirium due to conditions classified elsewhere,6,approximate,no,F05,Delirium due to known physiological condition
+5789,"Hemorrhage of gastrointestinal tract, unspecified",6,exact,no,K922,"Gastrointestinal hemorrhage, unspecified"
+7904,Nonspecific elevation of levels of transaminase or lactic acid dehydrogenase [LDH],6,exact,no,R740,Nonspecific elevation of levels of transaminase and lactic acid dehydrogenase [LDH]
+32723,Obstructive sleep apnea (adult)(pediatric),6,exact,no,G4733,Obstructive sleep apnea (adult) (pediatric)
+V4987,Physical restraints status,6,exact,no,Z781,Physical restraint status
+5770,Acute pancreatitis,6,one_to_many,yes,K8590 | K8591 | K8592,"Acute pancreatitis without necrosis or infection, unspecified | Acute pancreatitis with uninfected necrosis, unspecified | Acute pancreatitis with infected necrosis, unspecified"
+4241,Aortic valve disorders,6,one_to_many,yes,I350 | I351 | I352 | I358 | I359,"Nonrheumatic aortic (valve) stenosis | Nonrheumatic aortic (valve) insufficiency | Nonrheumatic aortic (valve) stenosis with insufficiency | Other nonrheumatic aortic valve disorders | Nonrheumatic aortic valve disorder, unspecified"
+5601,Paralytic ileus,6,one_to_many,yes,K560 | K567,"Paralytic ileus | Ileus, unspecified"
+78552,Septic shock,6,approximate,no,R6521,Severe sepsis with septic shock
+79902,Hypoxemia,6,exact,no,R0902,Hypoxemia
+99859,Other postoperative infection,6,one_to_many,yes,K6811 | T814XXA,"Postprocedural retroperitoneal abscess | Infection following a procedure, initial encounter"
+E8782,"Surgical operation with anastomosis, bypass, or graft, with natural or artificial tissues used as implant causing abnormal patient reaction, or later complication, without mention of misadventure at time of operation",6,exact,no,Y832,"Surgical operation with anastomosis, bypass or graft as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+78052,"Insomnia, unspecified",6,exact,no,G4700,"Insomnia, unspecified"
+V1001,Personal history of malignant neoplasm of tongue,6,exact,no,Z85810,Personal history of malignant neoplasm of tongue
+V6284,Suicidal ideation,6,exact,no,R45851,Suicidal ideations
+5723,Portal hypertension,5,exact,no,K766,Portal hypertension
+V1254,"Personal history of transient ischemic attack (TIA), and cerebral infarction without residual deficits",5,exact,no,Z8673,"Personal history of transient ischemic attack (TIA), and cerebral infarction without residual deficits"
+78720,"Dysphagia, unspecified",5,one_to_many,yes,R130 | R1310,"Aphagia | Dysphagia, unspecified"
+5070,Pneumonitis due to inhalation of food or vomitus,5,exact,no,J690,Pneumonitis due to inhalation of food and vomit
+56400,"Constipation, unspecified",5,exact,no,K5900,"Constipation, unspecified"
+431,Intracerebral hemorrhage,5,approximate,no,I619,"Nontraumatic intracerebral hemorrhage, unspecified"
+0389,Unspecified septicemia,5,approximate,no,A419,"Sepsis, unspecified organism"
+2851,Acute posthemorrhagic anemia,5,exact,no,D62,Acute posthemorrhagic anemia
+41400,"Coronary atherosclerosis of unspecified type of vessel, native or graft",5,approximate,no,I2510,Atherosclerotic heart disease of native coronary artery without angina pectoris
+56210,Diverticulosis of colon (without mention of hemorrhage),5,approximate,no,K5730,Diverticulosis of large intestine without perforation or abscess without bleeding
+27651,Dehydration,5,exact,no,E860,Dehydration
+5772,Cyst and pseudocyst of pancreas,5,one_to_many,yes,K862 | K863,Cyst of pancreas | Pseudocyst of pancreas
+04109,"Streptococcus infection in conditions classified elsewhere and of unspecified site, other streptococcus",5,approximate,no,B954,Other streptococcus as the cause of diseases classified elsewhere
+7245,"Backache, unspecified",5,one_to_many,yes,M5489 | M549,"Other dorsalgia | Dorsalgia, unspecified"
+56722,Peritoneal abscess,5,exact,no,K651,Peritoneal abscess
+2639,Unspecified protein-calorie malnutrition,5,approximate,no,E46,Unspecified protein-calorie malnutrition
+20500,"Acute myeloid leukemia, without mention of having achieved remission",5,one_to_many,yes,C9200 | C9240 | C9250,"Acute myeloblastic leukemia, not having achieved remission | Acute promyelocytic leukemia, not having achieved remission | Acute myelomonocytic leukemia, not having achieved remission"
+4254,Other primary cardiomyopathies,5,one_to_many,yes,I425 | I428,Other restrictive cardiomyopathy | Other cardiomyopathies
+78830,"Urinary incontinence, unspecified",5,exact,no,R32,Unspecified urinary incontinence
+2989,Unspecified psychosis,5,approximate,no,F29,Unspecified psychosis not due to a substance or known physiological condition
+E9289,Unspecified accident,5,approximate,no,X58XXXA,"Exposure to other specified factors, initial encounter"
+42833,Acute on chronic diastolic heart failure,5,approximate,no,I5033,Acute on chronic diastolic (congestive) heart failure
+4168,Other chronic pulmonary heart diseases,5,one_to_many,yes,I2720 | I2721 | I2722 | I2723 | I2724 | I2729 | I2789,"Pulmonary hypertension, unspecified | Secondary pulmonary arterial hypertension | Pulmonary hypertension due to left heart disease | Pulmonary hypertension due to lung diseases and hypoxia | Chronic thromboembolic pulmonary hypertension | Other secondary pulmonary hypertension | Other specified pulmonary heart diseases"
+4439,"Peripheral vascular disease, unspecified",5,exact,no,I739,"Peripheral vascular disease, unspecified"
+4271,Paroxysmal ventricular tachycardia,5,approximate,no,I472,Ventricular tachycardia
+V153,"Personal history of irradiation, presenting hazards to health",5,exact,no,Z923,Personal history of irradiation
+V8532,"Body Mass Index 32.0-32.9, adult",5,exact,no,Z6832,"Body mass index (BMI) 32.0-32.9, adult"
+29570,"Schizoaffective disorder, unspecified",5,approximate,no,F259,"Schizoaffective disorder, unspecified"
+25002,"Diabetes mellitus without mention of complication, type II or unspecified type, uncontrolled",5,approximate,no,E1165,Type 2 diabetes mellitus with hyperglycemia
+V1552,Personal history of traumatic brain injury,5,exact,no,Z87820,Personal history of traumatic brain injury
+7102,Sicca syndrome,5,one_to_many,yes,M3500 | M3501,"Sicca syndrome, unspecified | Sicca syndrome with keratoconjunctivitis"
+25001,DIABETES UNCOMPL JUVEN,5,approximate,no,E109,Type 1 diabetes mellitus without complications
+45829,Other iatrogenic hypotension,4,one_to_many,yes,I952 | I9581,Hypotension due to drugs | Postprocedural hypotension
+30390,"Other and unspecified alcohol dependence, unspecified",4,approximate,no,F1020,"Alcohol dependence, uncomplicated"
+78321,Loss of weight,4,exact,no,R634,Abnormal weight loss
+3383,Neoplasm related pain (acute) (chronic),4,exact,no,G893,Neoplasm related pain (acute) (chronic)
+V667,Encounter for palliative care,4,exact,no,Z515,Encounter for palliative care
+3485,Cerebral edema,4,approximate,no,G936,Cerebral edema
+25062,"Diabetes with neurological manifestations, type II or unspecified type, uncontrolled",4,combination,yes,E1140 | E1165,"Type 2 diabetes mellitus with diabetic neuropathy, unspecified | Type 2 diabetes mellitus with hyperglycemia"
+6827,"Cellulitis and abscess of foot, except toes",4,one_to_many,yes,L03119 | L03129,Cellulitis of unspecified part of limb | Acute lymphangitis of unspecified part of limb
+42789,Other specified cardiac dysrhythmias,4,one_to_many,yes,I498 | R001,"Other specified cardiac arrhythmias | Bradycardia, unspecified"
+5579,VASC INSUFF INTEST NOS,4,approximate,no,K559,"Vascular disorder of intestine, unspecified"
+V443,Colostomy status,4,exact,no,Z933,Colostomy status
+5184,"Acute edema of lung, unspecified",4,exact,no,J810,Acute pulmonary edema
+V1083,Personal history of other malignant neoplasm of skin,4,approximate,no,Z85828,Personal history of other malignant neoplasm of skin
+27669,Other fluid overload,4,one_to_many,yes,E8770 | E8779,"Fluid overload, unspecified | Other fluid overload"
+7850,"Tachycardia, unspecified",4,exact,no,R000,"Tachycardia, unspecified"
+6822,Cellulitis and abscess of trunk,4,one_to_many,yes,L03319 | L03329,"Cellulitis of trunk, unspecified | Acute lymphangitis of trunk, unspecified"
+V4572,Acquired absence of intestine (large) (small),4,approximate,no,Z9049,Acquired absence of other specified parts of digestive tract
+8054,FX LUMBAR VERTEBRA-CLOSE,4,approximate,no,S32009A,"Unspecified fracture of unspecified lumbar vertebra, initial encounter for closed fracture"
+29181,Alcohol withdrawal,4,approximate,no,F10239,"Alcohol dependence with withdrawal, unspecified"
+2763,Alkalosis,4,exact,no,E873,Alkalosis
+7919,Other nonspecific findings on examination of urine,4,one_to_many,yes,R825 | R8271 | R8279 | R8299,"Elevated urine levels of drugs, medicaments and biological substances | Bacteriuria | Other abnormal findings on microbiological examination of urine | Other abnormal findings in urine"
+42823,Acute on chronic systolic heart failure,4,approximate,no,I5023,Acute on chronic systolic (congestive) heart failure
+V1204,Personal history of Methicillin resistant Staphylococcus aureus,4,exact,no,Z8614,Personal history of Methicillin resistant Staphylococcus aureus infection
+27652,Hypovolemia,4,exact,no,E861,Hypovolemia
+V4501,Cardiac pacemaker in situ,4,exact,no,Z950,Presence of cardiac pacemaker
+30560,"Cocaine abuse, unspecified",4,approximate,no,F1410,"Cocaine abuse, uncomplicated"
+78039,Other convulsions,4,approximate,no,R569,Unspecified convulsions
+73300,"Osteoporosis, unspecified",4,approximate,no,M810,Age-related osteoporosis without current pathological fracture
+V462,"Other dependence on machines, supplemental oxygen",3,exact,no,Z9981,Dependence on supplemental oxygen
+07054,Chronic hepatitis C without mention of hepatic coma,3,approximate,no,B182,Chronic viral hepatitis C
+30981,Posttraumatic stress disorder,3,one_to_many,yes,F4310 | F4312,"Post-traumatic stress disorder, unspecified | Post-traumatic stress disorder, chronic"
+5531,Umbilical hernia without mention of obstruction or gangrene,3,exact,no,K429,Umbilical hernia without obstruction or gangrene
+5712,Alcoholic cirrhosis of liver,3,approximate,no,K7030,Alcoholic cirrhosis of liver without ascites
+30503,"Alcohol abuse, in remission",3,exact,no,F1011,"Alcohol abuse, in remission"
+56409,Other constipation,3,one_to_many,yes,K5903 | K5904 | K5909,Drug induced constipation | Chronic idiopathic constipation | Other constipation
+1120,Candidiasis of mouth,3,one_to_many,yes,B370 | B3783,Candidal stomatitis | Candidal cheilitis
+E8809,FALL ON STAIR/STEP NEC,3,approximate,no,W108XXA,"Fall (on) (from) other stairs and steps, initial encounter"
+V1042,Personal history of malignant neoplasm of other parts of uterus,3,exact,no,Z8542,Personal history of malignant neoplasm of other parts of uterus
+43820,"Late effects of cerebrovascular disease, hemiplegia affecting unspecified side",3,approximate,no,I69959,Hemiplegia and hemiparesis following unspecified cerebrovascular disease affecting unspecified side
+1985,Secondary malignant neoplasm of bone and bone marrow,3,one_to_many,yes,C7951 | C7952,Secondary malignant neoplasm of bone | Secondary malignant neoplasm of bone marrow
+3572,Polyneuropathy in diabetes,3,one_to_many,yes,E0842 | E0942 | E1042 | E1142 | E1342,Diabetes mellitus due to underlying condition with diabetic polyneuropathy | Drug or chemical induced diabetes mellitus with neurological complications with diabetic polyneuropathy | Type 1 diabetes mellitus with diabetic polyneuropathy | Type 2 diabetes mellitus with diabetic polyneuropathy | Other specified diabetes mellitus with diabetic polyneuropathy
+25012,"Diabetes with ketoacidosis, type II or unspecified type, uncontrolled",3,combination,yes,E1110 | E1165 | E1169 | E1310,Type 2 diabetes mellitus with ketoacidosis without coma | Type 2 diabetes mellitus with hyperglycemia | Type 2 diabetes mellitus with other specified complication | Other specified diabetes mellitus with ketoacidosis without coma
+6826,"Cellulitis and abscess of leg, except foot",3,one_to_many,yes,L03119 | L03129,Cellulitis of unspecified part of limb | Acute lymphangitis of unspecified part of limb
+V0481,Need for prophylactic vaccination and inoculation against influenza,3,approximate,no,Z23,Encounter for immunization
+25080,"Diabetes with other specified manifestations, type II or unspecified type, not stated as uncontrolled",3,one_to_many,yes,E11618 | E11620 | E11621 | E11622 | E11628 | E11630 | E11638 | E11649 | E1165 | E1169,Type 2 diabetes mellitus with other diabetic arthropathy | Type 2 diabetes mellitus with diabetic dermatitis | Type 2 diabetes mellitus with foot ulcer | Type 2 diabetes mellitus with other skin ulcer | Type 2 diabetes mellitus with other skin complications | Type 2 diabetes mellitus with periodontal disease | Type 2 diabetes mellitus with other oral complications | Type 2 diabetes mellitus with hypoglycemia without coma | Type 2 diabetes mellitus with hyperglycemia | Type 2 diabetes mellitus with other specified complication
+78701,Nausea with vomiting,3,approximate,no,R112,"Nausea with vomiting, unspecified"
+42822,Chronic systolic heart failure,3,approximate,no,I5022,Chronic systolic (congestive) heart failure
+85221,"Subdural hemorrhage following injury without mention of open intracranial wound, with no loss of consciousness",3,approximate,no,S065X0A,"Traumatic subdural hemorrhage without loss of consciousness, initial encounter"
+34831,Metabolic encephalopathy,3,exact,no,G9341,Metabolic encephalopathy
+29420,"Dementia, unspecified, without behavioral disturbance",3,exact,no,F0390,Unspecified dementia without behavioral disturbance
+V173,Family history of ischemic heart disease,3,approximate,no,Z8249,Family history of ischemic heart disease and other diseases of the circulatory system
+53550,"Unspecified gastritis and gastroduodenitis, without mention of hemorrhage",3,one_to_many,yes,K2970 | K2990,"Gastritis, unspecified, without bleeding | Gastroduodenitis, unspecified, without bleeding"
+V1272,Personal history of colonic polyps,3,exact,no,Z86010,Personal history of colonic polyps
+V4571,Acquired absence of breast and nipple,3,approximate,no,Z9010,Acquired absence of unspecified breast and nipple
+24900,"Secondary diabetes mellitus without mention of complication, not stated as uncontrolled, or unspecified",3,one_to_many,yes,E089 | E099 | E139,Diabetes mellitus due to underlying condition without complications | Drug or chemical induced diabetes mellitus without complications | Other specified diabetes mellitus without complications
+30393,"Other and unspecified alcohol dependence, in remission",3,exact,no,F1021,"Alcohol dependence, in remission"
+7907,Bacteremia,3,approximate,no,R7881,Bacteremia
+V4589,Other postprocedural status,3,one_to_many,yes,Z974 | Z98890 | Z98891,Presence of external hearing-aid | Other specified postprocedural states | History of uterine scar from previous surgery
+9971,"Cardiac complications, not elsewhere classified",3,one_to_many,yes,I97710 | I97790 | I9788 | I9789,"Intraoperative cardiac arrest during cardiac surgery | Other intraoperative cardiac functional disturbances during cardiac surgery | Other intraoperative complications of the circulatory system, not elsewhere classified | Other postprocedural complications and disorders of the circulatory system, not elsewhere classified"
+3569,Unspecified hereditary and idiopathic peripheral neuropathy,3,approximate,no,G609,"Hereditary and idiopathic neuropathy, unspecified"
+2753,Disorders of phosphorus metabolism,3,one_to_many,yes,E8330 | E8331 | E8332 | E8339,"Disorder of phosphorus metabolism, unspecified | Familial hypophosphatemia | Hereditary vitamin D-dependent rickets (type 1) (type 2) | Other disorders of phosphorus metabolism"
+2752,Disorders of magnesium metabolism,3,one_to_many,yes,E8340 | E8341 | E8342 | E8349,"Disorders of magnesium metabolism, unspecified | Hypermagnesemia | Hypomagnesemia | Other disorders of magnesium metabolism"
+V4365,Knee joint replacement,3,approximate,no,Z96659,Presence of unspecified artificial knee joint
+9982,"Accidental puncture or laceration during a procedure, not elsewhere classified",3,one_to_many,yes,D7811 | D7812 | E3611 | E3612 | G9748 | G9749 | H59219 | H59229 | H9531 | H9532 | I9751 | I9752 | J9571 | J9572 | K9171 | K9172 | L7611 | L7612 | M96820 | M96821 | N9971 | N9972 | T888XXA,"Accidental puncture and laceration of the spleen during a procedure on the spleen | Accidental puncture and laceration of the spleen during other procedure | Accidental puncture and laceration of an endocrine system organ or structure during an endocrine system procedure | Accidental puncture and laceration of an endocrine system organ or structure during other procedure | Accidental puncture and laceration of other nervous system organ or structure during a nervous system procedure | Accidental puncture and laceration of other nervous system organ or structure during other procedure | Accidental puncture and laceration of unspecified eye and adnexa during an ophthalmic procedure | Accidental puncture and laceration of unspecified eye and adnexa during other procedure | Accidental puncture and laceration of the ear and mastoid process during a procedure on the ear and mastoid process | Accidental puncture and laceration of the ear and mastoid process during other procedure | Accidental puncture and laceration of a circulatory system organ or structure during a circulatory system procedure | Accidental puncture and laceration of a circulatory system organ or structure during other procedure | Accidental puncture and laceration of a respiratory system organ or structure during a respiratory system procedure | Accidental puncture and laceration of a respiratory system organ or structure during other procedure | Accidental puncture and laceration of a digestive system organ or structure during a digestive system procedure | Accidental puncture and laceration of a digestive system organ or structure during other procedure | Accidental puncture and laceration of skin and subcutaneous tissue during a dermatologic procedure | Accidental puncture and laceration of skin and subcutaneous tissue during other procedure | Accidental puncture and laceration of a musculoskeletal structure during a musculoskeletal system procedure | Accidental puncture and laceration of a musculoskeletal structure during other procedure | Accidental puncture and laceration of a genitourinary system organ or structure during a genitourinary system procedure | Accidental puncture and laceration of a genitourinary system organ or structure during other procedure | Other specified complications of surgical and medical care, not elsewhere classified, initial encounter"
+03842,Septicemia due to escherichia coli [E. coli],3,approximate,no,A4151,Sepsis due to Escherichia coli [E. coli]
+34982,Toxic encephalopathy,3,approximate,no,G92,Toxic encephalopathy
+0088,"Intestinal infection due to other organism, not elsewhere classified",3,approximate,no,A088,Other specified intestinal infections
+E8150,Other motor vehicle traffic accident involving collision on the highway injuring driver of motor vehicle other than motorcycle,3,approximate,no,V8609XA,"Driver of other special all-terrain or other off-road motor vehicle injured in traffic accident, initial encounter"
+5720,Abscess of liver,3,exact,no,K750,Abscess of liver
+5680,Peritoneal adhesions (postoperative) (postinfection),3,approximate,no,K660,Peritoneal adhesions (postprocedural) (postinfection)
+570,Acute and subacute necrosis of liver,3,one_to_many,yes,K7200 | K762,Acute and subacute hepatic failure without coma | Central hemorrhagic necrosis of liver
+8052,FX DORSAL VERTEBRA-CLOSE,3,approximate,no,S22009A,"Unspecified fracture of unspecified thoracic vertebra, initial encounter for closed fracture"
+99811,Hemorrhage complicating a procedure,3,one_to_many,yes,D7801 | D7802 | D7821 | D7822 | E3601 | E3602 | E89810 | E89811 | G9731 | G9732 | G9751 | G9752 | H59111 | H59112 | H59113 | H59119 | H59121 | H59122 | H59123 | H59129 | H59311 | H59312 | H59313 | H59319 | H59321 | H59322 | H59323 | H59329 | H9521 | H9522 | H9541 | H9542 | I97410 | I97411 | I97418 | I9742 | I97610 | I97611 | I97618 | I97620 | J9561 | J9562 | J95830 | J95831 | K9161 | K9162 | K91840 | K91841 | L7601 | L7602 | L7621 | L7622 | M96810 | M96811 | M96830 | M96831 | N9961 | N9962 | N99820 | N99821,"Intraoperative hemorrhage and hematoma of the spleen complicating a procedure on the spleen | Intraoperative hemorrhage and hematoma of the spleen complicating other procedure | Postprocedural hemorrhage of the spleen following a procedure on the spleen | Postprocedural hemorrhage of the spleen following other procedure | Intraoperative hemorrhage and hematoma of an endocrine system organ or structure complicating an endocrine system procedure | Intraoperative hemorrhage and hematoma of an endocrine system organ or structure complicating other procedure | Postprocedural hemorrhage of an endocrine system organ or structure following an endocrine system procedure | Postprocedural hemorrhage of an endocrine system organ or structure following other procedure | Intraoperative hemorrhage and hematoma of a nervous system organ or structure complicating a nervous system procedure | Intraoperative hemorrhage and hematoma of a nervous system organ or structure complicating other procedure | Postprocedural hemorrhage of a nervous system organ or structure following a nervous system procedure | Postprocedural hemorrhage of a nervous system organ or structure following other procedure | Intraoperative hemorrhage and hematoma of right eye and adnexa complicating an ophthalmic procedure | Intraoperative hemorrhage and hematoma of left eye and adnexa complicating an ophthalmic procedure | Intraoperative hemorrhage and hematoma of eye and adnexa complicating an ophthalmic procedure, bilateral | Intraoperative hemorrhage and hematoma of unspecified eye and adnexa complicating an ophthalmic procedure | Intraoperative hemorrhage and hematoma of right eye and adnexa complicating other procedure | Intraoperative hemorrhage and hematoma of left eye and adnexa complicating other procedure | Intraoperative hemorrhage and hematoma of eye and adnexa complicating other procedure, bilateral | Intraoperative hemorrhage and hematoma of unspecified eye and adnexa complicating other procedure | Postprocedural hemorrhage of right eye and adnexa following an ophthalmic procedure | Postprocedural hemorrhage of left eye and adnexa following an ophthalmic procedure | Postprocedural hemorrhage of eye and adnexa following an ophthalmic procedure, bilateral | Postprocedural hemorrhage of unspecified eye and adnexa following an ophthalmic procedure | Postprocedural hemorrhage of right eye and adnexa following other procedure | Postprocedural hemorrhage of left eye and adnexa following other procedure | Postprocedural hemorrhage of eye and adnexa following other procedure, bilateral | Postprocedural hemorrhage of unspecified eye and adnexa following other procedure | Intraoperative hemorrhage and hematoma of ear and mastoid process complicating a procedure on the ear and mastoid process | Intraoperative hemorrhage and hematoma of ear and mastoid process complicating other procedure | Postprocedural hemorrhage of ear and mastoid process following a procedure on the ear and mastoid process | Postprocedural hemorrhage of ear and mastoid process following other procedure | Intraoperative hemorrhage and hematoma of a circulatory system organ or structure complicating a cardiac catheterization | Intraoperative hemorrhage and hematoma of a circulatory system organ or structure complicating a cardiac bypass | Intraoperative hemorrhage and hematoma of a circulatory system organ or structure complicating other circulatory system procedure | Intraoperative hemorrhage and hematoma of a circulatory system organ or structure complicating other procedure | Postprocedural hemorrhage of a circulatory system organ or structure following a cardiac catheterization | Postprocedural hemorrhage of a circulatory system organ or structure following cardiac bypass | Postprocedural hemorrhage of a circulatory system organ or structure following other circulatory system procedure | Postprocedural hemorrhage of a circulatory system organ or structure following other procedure | Intraoperative hemorrhage and hematoma of a respiratory system organ or structure complicating a respiratory system procedure | Intraoperative hemorrhage and hematoma of a respiratory system organ or structure complicating other procedure | Postprocedural hemorrhage of a respiratory system organ or structure following a respiratory system procedure | Postprocedural hemorrhage of a respiratory system organ or structure following other procedure | Intraoperative hemorrhage and hematoma of a digestive system organ or structure complicating a digestive system procedure | Intraoperative hemorrhage and hematoma of a digestive system organ or structure complicating other procedure | Postprocedural hemorrhage of a digestive system organ or structure following a digestive system procedure | Postprocedural hemorrhage of a digestive system organ or structure following other procedure | Intraoperative hemorrhage and hematoma of skin and subcutaneous tissue complicating a dermatologic procedure | Intraoperative hemorrhage and hematoma of skin and subcutaneous tissue complicating other procedure | Postprocedural hemorrhage of skin and subcutaneous tissue following a dermatologic procedure | Postprocedural hemorrhage of skin and subcutaneous tissue following other procedure | Intraoperative hemorrhage and hematoma of a musculoskeletal structure complicating a musculoskeletal system procedure | Intraoperative hemorrhage and hematoma of a musculoskeletal structure complicating other procedure | Postprocedural hemorrhage of a musculoskeletal structure following a musculoskeletal system procedure | Postprocedural hemorrhage of a musculoskeletal structure following other procedure | Intraoperative hemorrhage and hematoma of a genitourinary system organ or structure complicating a genitourinary system procedure | Intraoperative hemorrhage and hematoma of a genitourinary system organ or structure complicating other procedure | Postprocedural hemorrhage of a genitourinary system organ or structure following a genitourinary system procedure | Postprocedural hemorrhage of a genitourinary system organ or structure following other procedure"
+5641,Irritable bowel syndrome,3,one_to_many,yes,K581 | K582 | K588 | K589,Irritable bowel syndrome with constipation | Mixed irritable bowel syndrome | Other irritable bowel syndrome | Irritable bowel syndrome without diarrhea
+31401,Attention deficit disorder with hyperactivity,3,one_to_many,yes,F901 | F902 | F909,"Attention-deficit hyperactivity disorder, predominantly hyperactive type | Attention-deficit hyperactivity disorder, combined type | Attention-deficit hyperactivity disorder, unspecified type"
+1173,Aspergillosis,3,approximate,no,B449,"Aspergillosis, unspecified"
+78609,RESPIRATORY ABNORM NEC,3,one_to_many,yes,R0600 | R0609 | R063 | R0683 | R0689,"Dyspnea, unspecified | Other forms of dyspnea | Periodic breathing | Snoring | Other abnormalities of breathing"
+3453,Grand mal status,3,approximate,no,G40301,"Generalized idiopathic epilepsy and epileptic syndromes, not intractable, with status epilepticus"
+71690,"Arthropathy, unspecified, site unspecified",3,approximate,no,M129,"Arthropathy, unspecified"
+7843,Aphasia,3,exact,no,R4701,Aphasia
+40391,"Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage V or end stage renal disease",3,approximate,no,I120,Hypertensive chronic kidney disease with stage 5 chronic kidney disease or end stage renal disease
+85220,TRAUMATIC SUBDURAL HEM,3,approximate,no,S065X0A,"Traumatic subdural hemorrhage without loss of consciousness, initial encounter"
+34690,"Migraine, unspecified, without mention of intractable migraine without mention of status migrainosus",3,exact,no,G43909,"Migraine, unspecified, not intractable, without status migrainosus"
+5730,Chronic passive congestion of liver,3,exact,no,K761,Chronic passive congestion of liver
+34839,Other encephalopathy,3,one_to_many,yes,G9349 | I6783,Other encephalopathy | Posterior reversible encephalopathy syndrome
+71596,"Osteoarthrosis, unspecified whether generalized or localized, lower leg",3,approximate,no,M179,"Osteoarthritis of knee, unspecified"
+1543,"Malignant neoplasm of anus, unspecified site",3,exact,no,C210,"Malignant neoplasm of anus, unspecified"
+2800,Iron deficiency anemia secondary to blood loss (chronic),3,exact,no,D500,Iron deficiency anemia secondary to blood loss (chronic)
+5693,RECTAL & ANAL HEMORRHAGE,3,exact,no,K625,Hemorrhage of anus and rectum
+E9342,Anticoagulants causing adverse effects in therapeutic use,3,no_map,yes,,
+78079,Other malaise and fatigue,3,one_to_many,yes,G933 | R531 | R5381 | R5383,Postviral fatigue syndrome | Weakness | Other malaise | Other fatigue
+E9478,Other drugs and medicinal substances causing adverse effects in therapeutic use,3,no_map,yes,,
+41071,"Subendocardial infarction, initial episode of care",3,approximate,no,I214,Non-ST elevation (NSTEMI) myocardial infarction
+8600,Traumatic pneumothorax without mention of open wound into thorax,3,approximate,no,S270XXA,"Traumatic pneumothorax, initial encounter"
+78009,SEMICOMA/STUPOR,3,one_to_many,yes,R400 | R401,Somnolence | Stupor
+5781,Blood in stool,3,exact,no,K921,Melena
+30590,"Other, mixed, or unspecified drug abuse, unspecified",3,one_to_many,yes,F1810 | F1910,"Inhalant abuse, uncomplicated | Other psychoactive substance abuse, uncomplicated"
+53085,Barrett's esophagus,3,approximate,no,K2270,Barrett's esophagus without dysplasia
+42732,Atrial flutter,3,approximate,no,I4892,Unspecified atrial flutter
+V600,Lack of housing,3,approximate,no,Z590,Homelessness
+E8495,Street and highway accidents,3,approximate,no,Y92410,Unspecified street and highway as the place of occurrence of the external cause
+E8120,Other motor vehicle traffic accident involving collision with motor vehicle injuring driver of motor vehicle other than motorcycle,3,approximate,no,V4988XA,"Car occupant (driver) (passenger) injured in other specified transport accidents, initial encounter"
+25081,IDDM W SPEC MANIFESTATION,3,one_to_many,yes,E10618 | E10620 | E10621 | E10622 | E10628 | E10630 | E10638 | E10649 | E1065 | E1069,Type 1 diabetes mellitus with other diabetic arthropathy | Type 1 diabetes mellitus with diabetic dermatitis | Type 1 diabetes mellitus with foot ulcer | Type 1 diabetes mellitus with other skin ulcer | Type 1 diabetes mellitus with other skin complications | Type 1 diabetes mellitus with periodontal disease | Type 1 diabetes mellitus with other oral complications | Type 1 diabetes mellitus with hypoglycemia without coma | Type 1 diabetes mellitus with hyperglycemia | Type 1 diabetes mellitus with other specified complication
+78060,"FEVER, UNSPECIFIED",3,one_to_many,yes,R502 | R509,"Drug induced fever | Fever, unspecified"
+29680,"Bipolar disorder, unspecified",2,approximate,no,F319,"Bipolar disorder, unspecified"
+7994,Cachexia,2,exact,no,R64,Cachexia
+V4364,Hip joint replacement,2,approximate,no,Z96649,Presence of unspecified artificial hip joint
+2910,Alcohol withdrawal delirium,2,approximate,no,F10231,Alcohol dependence with withdrawal delirium
+46400,Acute laryngitis without mention of obstruction,2,exact,no,J040,Acute laryngitis
+1987,Secondary malignant neoplasm of adrenal gland,2,approximate,no,C7970,Secondary malignant neoplasm of unspecified adrenal gland
+70703,"Pressure ulcer, lower back",2,one_to_many,yes,L89139 | L89149 | L89159,"Pressure ulcer of right lower back, unspecified stage | Pressure ulcer of left lower back, unspecified stage | Pressure ulcer of sacral region, unspecified stage"
+1991,Other malignant neoplasm without specification of site,2,approximate,no,C801,"Malignant (primary) neoplasm, unspecified"
+1970,Secondary malignant neoplasm of lung,2,approximate,no,C7800,Secondary malignant neoplasm of unspecified lung
+E9331,Antineoplastic and immunosuppressive drugs causing adverse effects in therapeutic use,2,no_map,yes,,
+6929,"Contact dermatitis and other eczema, unspecified cause",2,approximate,no,L259,"Unspecified contact dermatitis, unspecified cause"
+1123,Candidiasis of skin and nails,2,exact,no,B372,Candidiasis of skin and nail
+0380,Streptococcal septicemia,2,approximate,no,A409,"Streptococcal sepsis, unspecified"
+73027,"Unspecified osteomyelitis, ankle and foot",2,approximate,no,M869,"Osteomyelitis, unspecified"
+25082,"Diabetes with other specified manifestations, type II or unspecified type, uncontrolled",2,combination,yes,E1165 | E1169,Type 2 diabetes mellitus with hyperglycemia | Type 2 diabetes mellitus with other specified complication
+7318,Other bone involvement in diseases classified elsewhere,2,approximate,no,M9080,"Osteopathy in diseases classified elsewhere, unspecified site"
+2252,Benign neoplasm of cerebral meninges,2,one_to_many,yes,D320 | D329,"Benign neoplasm of cerebral meninges | Benign neoplasm of meninges, unspecified"
+60000,Hypertrophy (benign) of prostate without urinary obstruction and other lower urinary tract symptom (LUTS),2,approximate,no,N400,Benign prostatic hyperplasia without lower urinary tract symptoms
+58389,"Nephritis and nephropathy, not specified as acute or chronic, with other specified pathological lesion in kidney",2,approximate,no,N058,Unspecified nephritic syndrome with other morphologic changes
+V4502,Automatic implantable cardiac defibrillator in situ,2,exact,no,Z95810,Presence of automatic (implantable) cardiac defibrillator
+44489,Embolism and thrombosis of other specified artery,2,exact,no,I748,Embolism and thrombosis of other arteries
+V1271,Personal history of peptic ulcer disease,2,exact,no,Z8711,Personal history of peptic ulcer disease
+99674,"Other complications due to other vascular device, implant, and graft",2,one_to_many,yes,T82818A | T82828A | T82838A | T82848A | T82856A | T82858A | T82868A | T82898A | T829XXA,"Embolism due to vascular prosthetic devices, implants and grafts, initial encounter | Fibrosis due to vascular prosthetic devices, implants and grafts, initial encounter | Hemorrhage due to vascular prosthetic devices, implants and grafts, initial encounter | Pain due to vascular prosthetic devices, implants and grafts, initial encounter | Stenosis of peripheral vascular stent, initial encounter | Stenosis of other vascular prosthetic devices, implants and grafts, initial encounter | Thrombosis due to vascular prosthetic devices, implants and grafts, initial encounter | Other specified complication of vascular prosthetic devices, implants and grafts, initial encounter | Unspecified complication of cardiac and vascular prosthetic device, implant and graft, initial encounter"
+7824,"Jaundice, unspecified, not of newborn",2,exact,no,R17,Unspecified jaundice
+99731,Ventilator associated pneumonia,2,exact,no,J95851,Ventilator associated pneumonia
+V163,Family history of malignant neoplasm of breast,2,exact,no,Z803,Family history of malignant neoplasm of breast
+78909,"Abdominal pain, other specified site",2,one_to_many,yes,R1010 | R102 | R1030,"Upper abdominal pain, unspecified | Pelvic and perineal pain | Lower abdominal pain, unspecified"
+1179,Other and unspecified mycoses,2,one_to_many,yes,B488 | B49,Other specified mycoses | Unspecified mycosis
+V851,"Body Mass Index between 19-24, adult",2,one_to_many,yes,Z6820 | Z6821 | Z6822 | Z6823 | Z6824,"Body mass index (BMI) 20.0-20.9, adult | Body mass index (BMI) 21.0-21.9, adult | Body mass index (BMI) 22.0-22.9, adult | Body mass index (BMI) 23.0-23.9, adult | Body mass index (BMI) 24.0-24.9, adult"
+2869,Other and unspecified coagulation defects,2,one_to_many,yes,D688 | D689,"Other specified coagulation defects | Coagulation defect, unspecified"
+6930,Dermatitis due to drugs and medicines taken internally,2,one_to_many,yes,L270 | L271,Generalized skin eruption due to drugs and medicaments taken internally | Localized skin eruption due to drugs and medicaments taken internally
+5711,Acute alcoholic hepatitis,2,approximate,no,K7010,Alcoholic hepatitis without ascites
+11289,Other candidiasis of other specified sites,2,approximate,no,B3789,Other sites of candidiasis
+79311,Solitary pulmonary nodule,2,exact,no,R911,Solitary pulmonary nodule
+E9319,Other and unspecified anti-infectives causing adverse effects in therapeutic use,2,no_map,yes,,
+4580,Orthostatic hypotension,2,exact,no,I951,Orthostatic hypotension
+71594,"Osteoarthrosis, unspecified whether generalized or localized, hand",2,approximate,no,M189,"Osteoarthritis of first carpometacarpal joint, unspecified"
+42612,Mobitz (type) II atrioventricular block,2,approximate,no,I441,"Atrioventricular block, second degree"
+V113,Personal history of alcoholism,2,approximate,no,Z658,Other specified problems related to psychosocial circumstances
+E8781,"Surgical operation with implant of artificial internal device causing abnormal patient reaction, or later complication,without mention of misadventure at time of operation",2,exact,no,Y831,"Surgical operation with implant of artificial internal device as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+4400,Atherosclerosis of aorta,2,exact,no,I700,Atherosclerosis of aorta
+3659,Unspecified glaucoma,2,exact,no,H409,Unspecified glaucoma
+4139,Other and unspecified angina pectoris,2,one_to_many,yes,I208 | I209,"Other forms of angina pectoris | Angina pectoris, unspecified"
+2662,Other B-complex deficiencies,2,approximate,no,E538,Deficiency of other specified B group vitamins
+33818,Other acute postoperative pain,2,exact,no,G8918,Other acute postprocedural pain
+99749,Other digestive system complications,2,one_to_many,yes,K9130 | K9131 | K9132 | K9181 | K9182 | K9183 | K9189,"Postprocedural intestinal obstruction, unspecified as to partial versus complete | Postprocedural partial intestinal obstruction | Postprocedural complete intestinal obstruction | Other intraoperative complications of digestive system | Postprocedural hepatic failure | Postprocedural hepatorenal syndrome | Other postprocedural complications and disorders of digestive system"
+7802,Syncope and collapse,2,exact,no,R55,Syncope and collapse
+5570,Acute vascular insufficiency of intestine,2,one_to_many,yes,K55011 | K55012 | K55019 | K55021 | K55022 | K55029 | K55031 | K55032 | K55039 | K55041 | K55042 | K55049 | K55051 | K55052 | K55059 | K55061 | K55062 | K55069 | K5530 | K5531 | K5532 | K5533,"Focal (segmental) acute (reversible) ischemia of small intestine | Diffuse acute (reversible) ischemia of small intestine | Acute (reversible) ischemia of small intestine, extent unspecified | Focal (segmental) acute infarction of small intestine | Diffuse acute infarction of small intestine | Acute infarction of small intestine, extent unspecified | Focal (segmental) acute (reversible) ischemia of large intestine | Diffuse acute (reversible) ischemia of large intestine | Acute (reversible) ischemia of large intestine, extent unspecified | Focal (segmental) acute infarction of large intestine | Diffuse acute infarction of large intestine | Acute infarction of large intestine, extent unspecified | Focal (segmental) acute (reversible) ischemia of intestine, part unspecified | Diffuse acute (reversible) ischemia of intestine, part unspecified | Acute (reversible) ischemia of intestine, part and extent unspecified | Focal (segmental) acute infarction of intestine, part unspecified | Diffuse acute infarction of intestine, part unspecified | Acute infarction of intestine, part and extent unspecified | Necrotizing enterocolitis, unspecified | Stage 1 necrotizing enterocolitis | Stage 2 necrotizing enterocolitis | Stage 3 necrotizing enterocolitis"
+86121,LUNG CONTUSION-CLOSED,2,approximate,no,S27329A,"Contusion of lung, unspecified, initial encounter"
+04185,"Other specified bacterial infections in conditions classified elsewhere and of unspecified site, other gram-negative organisms",2,approximate,no,B9689,Other specified bacterial agents as the cause of diseases classified elsewhere
+86801,"Injury to other intra-abdominal organs without mention of open wound into cavity, adrenal gland",2,approximate,no,S37819A,"Unspecified injury of adrenal gland, initial encounter"
+86405,LIVER INJURY NOS,2,approximate,no,S36113A,"Laceration of liver, unspecified degree, initial encounter"
+80704,Closed fracture of four ribs,2,approximate,no,S2249XA,"Multiple fractures of ribs, unspecified side, initial encounter for closed fracture"
+V1551,Personal history of traumatic fracture,2,exact,no,Z8781,Personal history of (healed) traumatic fracture
+V453,Intestinal bypass or anastomosis status,2,exact,no,Z980,Intestinal bypass and anastomosis status
+56981,"Fistula of intestine, excluding rectum and anus",2,approximate,no,K632,Fistula of intestine
+80506,FX C6 VERTEBRA-CLOSED,2,one_to_many,yes,S12500A | S12501A,"Unspecified displaced fracture of sixth cervical vertebra, initial encounter for closed fracture | Unspecified nondisplaced fracture of sixth cervical vertebra, initial encounter for closed fracture"
+4111,Intermediate coronary syndrome,2,approximate,no,I200,Unstable angina
+71941,"Pain in joint, shoulder region",2,approximate,no,M25519,Pain in unspecified shoulder
+45182,Phlebitis and thrombophlebitis of superficial veins of upper extremities,2,approximate,no,I808,Phlebitis and thrombophlebitis of other sites
+E9352,Other opiates and related narcotics causing adverse effects in therapeutic use,2,no_map,yes,,
+28419,Other pancytopenia,2,exact,no,D61818,Other pancytopenia
+V4281,Bone marrow replaced by transplant,2,approximate,no,Z9481,Bone marrow transplant status
+V161,"Family history of malignant neoplasm of trachea, bronchus, and lung",2,exact,no,Z801,"Family history of malignant neoplasm of trachea, bronchus and lung"
+1629,"Malignant neoplasm of bronchus and lung, unspecified",2,approximate,no,C3490,Malignant neoplasm of unspecified part of unspecified bronchus or lung
+4846,Pneumonia in aspergillosis,2,approximate,no,B440,Invasive pulmonary aspergillosis
+99931,Other and unspecified infection due to central venous catheter,2,approximate,no,T80219A,"Unspecified infection due to central venous catheter, initial encounter"
+7905,Other nonspecific abnormal serum enzyme levels,2,approximate,no,R748,Abnormal levels of other serum enzymes
+4142,Chronic total occlusion of coronary artery,2,exact,no,I2582,Chronic total occlusion of coronary artery
+V4586,Bariatric surgery status,2,exact,no,Z9884,Bariatric surgery status
+29900,"Autistic disorder, current or active state",2,approximate,no,F840,Autistic disorder
+V1253,Personal history of sudden cardiac arrest,2,exact,no,Z8674,Personal history of sudden cardiac arrest
+78062,Postprocedural fever,2,exact,no,R5082,Postprocedural fever
+5939,Unspecified disorder of kidney and ureter,2,approximate,no,N289,"Disorder of kidney and ureter, unspecified"
+28749,Other secondary thrombocytopenia,2,exact,no,D6959,Other secondary thrombocytopenia
+43491,"Cerebral artery occlusion, unspecified with cerebral infarction",2,approximate,no,I6350,Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebral artery
+43889,Other late effects of cerebrovascular disease,2,one_to_many,yes,I69898 | I69998,Other sequelae of other cerebrovascular disease | Other sequelae following unspecified cerebrovascular disease
+4380,"Late effects of cerebrovascular disease, cognitive deficits",2,one_to_many,yes,I69910 | I69911 | I69912 | I69913 | I69914 | I69915 | I69918 | I69919,Attention and concentration deficit following unspecified cerebrovascular disease | Memory deficit following unspecified cerebrovascular disease | Visuospatial deficit and spatial neglect following unspecified cerebrovascular disease | Psychomotor deficit following unspecified cerebrovascular disease | Frontal lobe and executive function deficit following unspecified cerebrovascular disease | Cognitive social or emotional deficit following unspecified cerebrovascular disease | Other symptoms and signs involving cognitive functions following unspecified cerebrovascular disease | Unspecified symptoms and signs involving cognitive functions following unspecified cerebrovascular disease
+44102,"Dissection of aorta, abdominal",2,exact,no,I7102,Dissection of abdominal aorta
+78451,Dysarthria,2,exact,no,R471,Dysarthria and anarthria
+78194,Facial weakness,2,exact,no,R29810,Facial weakness
+5855,"Chronic kidney disease, Stage V",2,exact,no,N185,"Chronic kidney disease, stage 5"
+60001,Hypertrophy (benign) of prostate with urinary obstruction and other lower urinary tract symptoms (LUTS),2,approximate,no,N401,Benign prostatic hyperplasia with lower urinary tract symptoms
+515,Postinflammatory pulmonary fibrosis,2,one_to_many,yes,J8410 | J8489,"Pulmonary fibrosis, unspecified | Other specified interstitial pulmonary diseases"
+45981,"Venous (peripheral) insufficiency, unspecified",2,approximate,no,I872,Venous insufficiency (chronic) (peripheral)
+5533,Diaphragmatic hernia without mention of obstruction or gangrene,2,exact,no,K449,Diaphragmatic hernia without obstruction or gangrene
+2764,Mixed acid-base balance disorder,2,exact,no,E874,Mixed disorder of acid-base balance
+53140,"Chronic or unspecified gastric ulcer with hemorrhage, without mention of obstruction",2,approximate,no,K254,Chronic or unspecified gastric ulcer with hemorrhage
+53240,"Chronic or unspecified duodenal ulcer with hemorrhage, without mention of obstruction",2,approximate,no,K264,Chronic or unspecified duodenal ulcer with hemorrhage
+71590,"Osteoarthrosis, unspecified whether generalized or localized, site unspecified",2,one_to_many,yes,M159 | M1990,"Polyosteoarthritis, unspecified | Unspecified osteoarthritis, unspecified site"
+E8499,Accidents occurring in unspecified place,2,approximate,no,Y929,Unspecified place or not applicable
+E8786,"Removal of other organ (partial) (total) causing abnormal patient reaction, or later complication, without mention of misadventure at time of operation",2,exact,no,Y836,"Removal of other organ (partial) (total) as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+0417,Pseudomonas infection in conditions classified elsewhere and of unspecified site,2,exact,no,B965,Pseudomonas (aeruginosa) (mallei) (pseudomallei) as the cause of diseases classified elsewhere
+2866,Defibrination syndrome,2,exact,no,D65,Disseminated intravascular coagulation [defibrination syndrome]
+1541,Malignant neoplasm of rectum,2,exact,no,C20,Malignant neoplasm of rectum
+E9320,Adrenal cortical steroids causing adverse effects in therapeutic use,2,no_map,yes,,
+99832,Disruption of external operation (surgical) wound,2,approximate,no,T8131XA,"Disruption of external operation (surgical) wound, not elsewhere classified, initial encounter"
+1122,Candidiasis of other urogenital sites,2,one_to_many,yes,B3742 | B3749,Candidal balanitis | Other urogenital candidiasis
+42832,Chronic diastolic heart failure,2,approximate,no,I5032,Chronic diastolic (congestive) heart failure
+28412,Other drug-induced pancytopenia,2,exact,no,D61811,Other drug-induced pancytopenia
+V8531,"Body Mass Index 31.0-31.9, adult",2,exact,no,Z6831,"Body mass index (BMI) 31.0-31.9, adult"
+4820,Pneumonia due to Klebsiella pneumoniae,2,exact,no,J150,Pneumonia due to Klebsiella pneumoniae
+03849,Other septicemia due to gram-negative organisms,2,approximate,no,A4159,Other Gram-negative sepsis
+7823,Edema,2,one_to_many,yes,R600 | R601 | R609,"Localized edema | Generalized edema | Edema, unspecified"
+E9444,Other diuretics causing adverse effects in therapeutic use,2,no_map,yes,,
+4148,Other specified forms of chronic ischemic heart disease,2,one_to_many,yes,I255 | I2589 | I259,"Ischemic cardiomyopathy | Other forms of chronic ischemic heart disease | Chronic ischemic heart disease, unspecified"
+57450,"Calculus of bile duct without mention of cholecystitis, without mention of obstruction",2,approximate,no,K8050,Calculus of bile duct without cholangitis or cholecystitis without obstruction
+7840,Headache,2,one_to_many,yes,G441 | R51,"Vascular headache, not elsewhere classified | Headache"
+V4577,"Acquired absence of organ, genital organs",2,approximate,no,Z9079,Acquired absence of other genital organ(s)
+78722,"Dysphagia, oropharyngeal phase",2,exact,no,R1312,"Dysphagia, oropharyngeal phase"
+28521,Anemia in chronic kidney disease,2,approximate,no,D631,Anemia in chronic kidney disease
+4739,Unspecified sinusitis (chronic),2,exact,no,J329,"Chronic sinusitis, unspecified"
+3575,Alcoholic polyneuropathy,2,exact,no,G621,Alcoholic polyneuropathy
+30391,"Other and unspecified alcohol dependence, continuous",2,approximate,no,F1020,"Alcohol dependence, uncomplicated"
+41189,"Other acute and subacute forms of ischemic heart disease, other",2,approximate,no,I248,Other forms of acute ischemic heart disease
+34590,"Epilepsy, unspecified, without mention of intractable epilepsy",2,one_to_many,yes,G40901 | G40909,"Epilepsy, unspecified, not intractable, with status epilepticus | Epilepsy, unspecified, not intractable, without status epilepticus"
+7847,Epistaxis,2,exact,no,R040,Epistaxis
+514,Pulmonary congestion and hypostasis,2,one_to_many,yes,J182 | J811,"Hypostatic pneumonia, unspecified organism | Chronic pulmonary edema"
+V1052,Personal history of malignant neoplasm of kidney,2,approximate,no,Z85528,Personal history of other malignant neoplasm of kidney
+29530,"Paranoid type schizophrenia, unspecified",2,approximate,no,F200,Paranoid schizophrenia
+V620,Unemployment,2,approximate,no,Z560,"Unemployment, unspecified"
+340,Multiple sclerosis,2,exact,no,G35,Multiple sclerosis
+3240,Intracranial abscess,2,approximate,no,G060,Intracranial abscess and granuloma
+30301,"Acute alcoholic intoxication in alcoholism, continuous",2,approximate,no,F10229,"Alcohol dependence with intoxication, unspecified"
+V1255,Personal history of pulmonary embolism,2,exact,no,Z86711,Personal history of pulmonary embolism
+5989,"Urethral stricture, unspecified",2,exact,no,N359,"Urethral stricture, unspecified"
+51889,"Other diseases of lung, not elsewhere classified",2,exact,no,J984,Other disorders of lung
+6820,Cellulitis and abscess of face,2,one_to_many,yes,K122 | L03211 | L03212 | L03213,Cellulitis and abscess of mouth | Cellulitis of face | Acute lymphangitis of face | Periorbital cellulitis
+25040,"Diabetes with renal manifestations, type II or unspecified type, not stated as uncontrolled",2,approximate,no,E1129,Type 2 diabetes mellitus with other diabetic kidney complication
+78900,"Abdominal pain, unspecified site",2,approximate,no,R109,Unspecified abdominal pain
+5856,End stage renal disease,2,exact,no,N186,End stage renal disease
+V1079,Personal history of other lymphatic and hematopoietic neoplasms,2,approximate,no,Z8579,"Personal history of other malignant neoplasms of lymphoid, hematopoietic and related tissues"
+4373,"Cerebral aneurysm, nonruptured",2,approximate,no,I671,"Cerebral aneurysm, nonruptured"
+4239,Unspecified disease of pericardium,2,approximate,no,I319,"Disease of pericardium, unspecified"
+9986,Persistent postoperative fistula,2,approximate,no,T8183XA,"Persistent postprocedural fistula, initial encounter"
+9010,Injury to thoracic aorta,2,approximate,no,S2500XA,"Unspecified injury of thoracic aorta, initial encounter"
+04104,"Streptococcus infection in conditions classified elsewhere and of unspecified site, streptococcus, group D [Enterococcus]",2,exact,no,B952,Enterococcus as the cause of diseases classified elsewhere
+8020,NASAL BONE FX-CLOSED,2,approximate,no,S022XXA,"Fracture of nasal bones, initial encounter for closed fracture"
+E8859,"Fall from other slipping, tripping, or stumbling",2,approximate,no,W1849XA,"Other slipping, tripping and stumbling without falling, initial encounter"
+V441,Gastrostomy status,2,exact,no,Z931,Gastrostomy status
+4940,Bronchiectasis without acute exacerbation,2,exact,no,J479,"Bronchiectasis, uncomplicated"
+3310,Alzheimer's disease,2,approximate,no,G309,"Alzheimer's disease, unspecified"
+51189,"Other specified forms of effusion, except tuberculous",2,one_to_many,yes,J90 | J942 | J948,"Pleural effusion, not elsewhere classified | Hemothorax | Other specified pleural conditions"
+7804,VERTIGO/DIZZINESS,2,exact,no,R42,Dizziness and giddiness
+2411,Nontoxic multinodular goiter,2,approximate,no,E042,Nontoxic multinodular goiter
+5589,Other and unspecified noninfectious gastroenteritis and colitis,2,one_to_many,yes,K523 | K5289 | K529,"Indeterminate colitis | Other specified noninfective gastroenteritis and colitis | Noninfective gastroenteritis and colitis, unspecified"
+V1302,"Personal history, urinary (tract) infection",2,exact,no,Z87440,Personal history of urinary (tract) infections
+38010,"Infective otitis externa, unspecified",2,one_to_many,yes,H6000 | H6010 | H60319 | H60329 | H60399,"Abscess of external ear, unspecified ear | Cellulitis of external ear, unspecified ear | Diffuse otitis externa, unspecified ear | Hemorrhagic otitis externa, unspecified ear | Other infective otitis externa, unspecified ear"
+1419,"Malignant neoplasm of tongue, unspecified",2,exact,no,C029,"Malignant neoplasm of tongue, unspecified"
+80709,FX MULT RIBS NOS-CLOSED,2,approximate,no,S2249XA,"Multiple fractures of ribs, unspecified side, initial encounter for closed fracture"
+8208,FX NECK OF FEMUR NOS-CL,2,approximate,no,S72009A,"Fracture of unspecified part of neck of unspecified femur, initial encounter for closed fracture"
+E8888,OTHER FALL,2,approximate,no,W1830XA,"Fall on same level, unspecified, initial encounter"
+E9479,ADV EFF MEDICINAL NOS,2,no_map,yes,,
+25011,DIAB KETOACIDOSIS IDDM,2,approximate,no,E1010,Type 1 diabetes mellitus with ketoacidosis without coma
+07044,Chronic hepatitis C with hepatic coma,1,approximate,no,B182,Chronic viral hepatitis C
+07071,Unspecified viral hepatitis C with hepatic coma,1,exact,no,B1921,Unspecified viral hepatitis C with hepatic coma
+56789,Other specified peritonitis,1,approximate,no,K658,Other peritonitis
+72403,"Spinal stenosis, lumbar region, with neurogenic claudication",1,exact,no,M48062,"Spinal stenosis, lumbar region with neurogenic claudication"
+75612,Spondylolisthesis,1,approximate,no,Q762,Congenital spondylolisthesis
+73730,"Scoliosis [and kyphoscoliosis], idiopathic",1,approximate,no,M4120,"Other idiopathic scoliosis, site unspecified"
+85186,"Other and unspecified cerebral laceration and contusion, without mention of open intracranial wound, with loss of consciousness of unspecified duration",1,approximate,no,S06339A,"Contusion and laceration of cerebrum, unspecified, with loss of consciousness of unspecified duration, initial encounter"
+27542,Hypercalcemia,1,exact,no,E8352,Hypercalcemia
+2853,Antineoplastic chemotherapy induced anemia,1,exact,no,D6481,Anemia due to antineoplastic chemotherapy
+70723,"Pressure ulcer, stage III",1,no_map,yes,,
+1983,Secondary malignant neoplasm of brain and spinal cord,1,approximate,no,C7931,Secondary malignant neoplasm of brain
+70722,"Pressure ulcer, stage II",1,no_map,yes,,
+1980,Secondary malignant neoplasm of kidney,1,approximate,no,C7900,Secondary malignant neoplasm of unspecified kidney and renal pelvis
+78652,Painful respiration,1,one_to_many,yes,R071 | R0781,Chest pain on breathing | Pleurodynia
+1968,Secondary and unspecified malignant neoplasm of lymph nodes of multiple sites,1,exact,no,C778,Secondary and unspecified malignant neoplasm of lymph nodes of multiple regions
+04111,Methicillin susceptible Staphylococcus aureus in conditions classified elsewhere and of unspecified site,1,approximate,no,B9561,Methicillin susceptible Staphylococcus aureus infection as the cause of diseases classified elsewhere
+V180,Family history of diabetes mellitus,1,exact,no,Z833,Family history of diabetes mellitus
+25060,"Diabetes with neurological manifestations, type II or unspecified type, not stated as uncontrolled",1,approximate,no,E1140,"Type 2 diabetes mellitus with diabetic neuropathy, unspecified"
+V4972,Other toe(s) amputation status,1,approximate,no,Z89429,"Acquired absence of other toe(s), unspecified side"
+85201,"Subarachnoid hemorrhage following injury without mention of open intracranial wound, with no loss of consciousness",1,approximate,no,S066X0A,"Traumatic subarachnoid hemorrhage without loss of consciousness, initial encounter"
+3898,Other specified forms of hearing loss,1,approximate,no,H918X9,"Other specified hearing loss, unspecified ear"
+78729,Other dysphagia,1,approximate,no,R1319,Other dysphagia
+3682,Diplopia,1,exact,no,H532,Diplopia
+30501,"Alcohol abuse, continuous",1,approximate,no,F1010,"Alcohol abuse, uncomplicated"
+2819,Unspecified deficiency anemia,1,approximate,no,D539,"Nutritional anemia, unspecified"
+81342,Other closed fractures of distal end of radius (alone),1,approximate,no,S52509A,"Unspecified fracture of the lower end of unspecified radius, initial encounter for closed fracture"
+4556,Unspecified hemorrhoids without mention of complication,1,approximate,no,K649,Unspecified hemorrhoids
+2127,Benign neoplasm of heart,1,exact,no,D151,Benign neoplasm of heart
+V4611,"Dependence on respirator, status",1,approximate,no,Z9911,Dependence on respirator [ventilator] status
+E9358,Other specified analgesics and antipyretics causing adverse effects in therapeutic use,1,no_map,yes,,
+1571,Malignant neoplasm of body of pancreas,1,exact,no,C251,Malignant neoplasm of body of pancreas
+56889,Other specified disorders of peritoneum,1,one_to_many,yes,K668 | K689,Other specified disorders of peritoneum | Other disorders of retroperitoneum
+4568,Varices of other sites,1,approximate,no,I868,Varicose veins of other specified sites
+78094,Early satiety,1,exact,no,R6881,Early satiety
+4471,Stricture of artery,1,exact,no,I771,Stricture of artery
+1977,"Malignant neoplasm of liver, secondary",1,approximate,no,C787,Secondary malignant neoplasm of liver and intrahepatic bile duct
+4149,"Chronic ischemic heart disease, unspecified",1,approximate,no,I259,"Chronic ischemic heart disease, unspecified"
+1741,Malignant neoplasm of central portion of female breast,1,approximate,no,C50119,Malignant neoplasm of central portion of unspecified female breast
+4558,Unspecified hemorrhoids with other complication,1,approximate,no,K648,Other hemorrhoids
+3314,Obstructive hydrocephalus,1,approximate,no,G911,Obstructive hydrocephalus
+33819,Other acute pain,1,approximate,no,R52,"Pain, unspecified"
+5778,Other specified diseases of pancreas,1,one_to_many,yes,K861 | K8681 | K8689,Other chronic pancreatitis | Exocrine pancreatic insufficiency | Other specified diseases of pancreas
+V1279,Personal history of other diseases of digestive system,1,approximate,no,Z8719,Personal history of other diseases of the digestive system
+5771,Chronic pancreatitis,1,approximate,no,K861,Other chronic pancreatitis
+45385,Acute venous embolism and thrombosis of subclavian veins,1,approximate,no,I82B19,Acute embolism and thrombosis of unspecified subclavian vein
+5121,Iatrogenic pneumothorax,1,approximate,no,J95811,Postprocedural pneumothorax
+7873,"Flatulence, eructation, and gas pain",1,one_to_many,yes,R140 | R141 | R142 | R143,Abdominal distension (gaseous) | Gas pain | Eructation | Flatulence
+V1011,Personal history of malignant neoplasm of bronchus and lung,1,approximate,no,Z85118,Personal history of other malignant neoplasm of bronchus and lung
+4370,Cerebral atherosclerosis,1,exact,no,I672,Cerebral atherosclerosis
+78442,Dysphonia,1,exact,no,R490,Dysphonia
+7213,Lumbosacral spondylosis without myelopathy,1,approximate,no,M47817,"Spondylosis without myelopathy or radiculopathy, lumbosacral region"
+1625,"Malignant neoplasm of lower lobe, bronchus or lung",1,approximate,no,C3430,"Malignant neoplasm of lower lobe, unspecified bronchus or lung"
+7210,Cervical spondylosis without myelopathy,1,approximate,no,M47812,"Spondylosis without myelopathy or radiculopathy, cervical region"
+79022,Impaired glucose tolerance test (oral),1,exact,no,R7302,Impaired glucose tolerance (oral)
+72252,Degeneration of lumbar or lumbosacral intervertebral disc,1,one_to_many,yes,M5136 | M5137,"Other intervertebral disc degeneration, lumbar region | Other intervertebral disc degeneration, lumbosacral region"
+7224,Degeneration of cervical intervertebral disc,1,approximate,no,M5030,"Other cervical disc degeneration, unspecified cervical region"
+70400,"Alopecia, unspecified",1,approximate,no,L659,"Nonscarring hair loss, unspecified"
+V8541,"Body Mass Index 40.0-44.9, adult",1,exact,no,Z6841,"Body mass index (BMI) 40.0-44.9, adult"
+79021,Impaired fasting glucose,1,exact,no,R7301,Impaired fasting glucose
+E8708,"Accidental cut, puncture, perforation or hemorrhage during other specified medical care",1,no_map,yes,,
+2410,Nontoxic uninodular goiter,1,approximate,no,E041,Nontoxic single thyroid nodule
+1551,Malignant neoplasm of intrahepatic bile ducts,1,exact,no,C221,Intrahepatic bile duct carcinoma
+44329,Dissection of other artery,1,one_to_many,yes,I7775 | I7776 | I7777 | I7779,Dissection of other precerebral arteries | Dissection of artery of upper extremity | Dissection of artery of lower extremity | Dissection of other specified artery
+86100,Unspecified injury of heart without mention of open wound into thorax,1,one_to_many,yes,S2610XA | S2690XA | S2699XA,"Unspecified injury of heart without hemopericardium, initial encounter | Unspecified injury of heart, unspecified with or without hemopericardium, initial encounter | Other injury of heart, unspecified with or without hemopericardium, initial encounter"
+83908,"Closed dislocation, multiple cervical vertebrae",1,approximate,no,S13101A,"Dislocation of unspecified cervical vertebrae, initial encounter"
+8602,Traumatic hemothorax without mention of open wound into thorax,1,approximate,no,S271XXA,"Traumatic hemothorax, initial encounter"
+6926,Contact dermatitis and other eczema due to plants [except food],1,approximate,no,L255,"Unspecified contact dermatitis due to plants, except food"
+60886,Edema of male genital organs,1,approximate,no,N5089,Other specified disorders of the male genital organs
+48241,Methicillin susceptible pneumonia due to Staphylococcus aureus,1,exact,no,J15211,Pneumonia due to Methicillin susceptible Staphylococcus aureus
+5718,Other chronic nonalcoholic liver disease,1,one_to_many,yes,K760 | K7689,"Fatty (change of) liver, not elsewhere classified | Other specified diseases of liver"
+9585,Traumatic anuria,1,approximate,no,T795XXA,"Traumatic anuria, initial encounter"
+86803,"Injury to other intra-abdominal organs without mention of open wound into cavity, peritoneum",1,approximate,no,S3681XA,"Injury of peritoneum, initial encounter"
+9584,Traumatic shock,1,approximate,no,T794XXA,"Traumatic shock, initial encounter"
+51851,Acute respiratory failure following trauma and surgery,1,one_to_many,yes,J95821 | J9600,"Acute postprocedural respiratory failure | Acute respiratory failure, unspecified whether with hypoxia or hypercapnia"
+7837,Adult failure to thrive,1,exact,no,R627,Adult failure to thrive
+5762,Obstruction of bile duct,1,exact,no,K831,Obstruction of bile duct
+86401,"Injury to liver without mention of open wound into cavity, hematoma and contusion",1,approximate,no,S36112A,"Contusion of liver, initial encounter"
+V140,Personal history of allergy to penicillin,1,exact,no,Z880,Allergy status to penicillin
+E8654,Accidental poisoning from other specified plants,1,no_map,yes,,
+86389,"Injury to other gastrointestinal sites, without mention of open wound into cavity",1,approximate,no,S36899A,"Unspecified injury of other intra-abdominal organs, initial encounter"
+04119,"Staphylococcus infection in conditions classified elsewhere and of unspecified site, other staphylococcus",1,approximate,no,B957,Other staphylococcus as the cause of diseases classified elsewhere
+4264,Right bundle branch block,1,approximate,no,I4510,Unspecified right bundle-branch block
+E8788,"Other specified surgical operations and procedures causing abnormal patient reaction, or later complication, without mention of misadventure at time of operation",1,exact,no,Y838,"Other surgical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+56989,Other specified disorders of intestine,1,one_to_many,yes,K634 | K6389,Enteroptosis | Other specified diseases of intestine
+72888,Rhabdomyolysis,1,exact,no,M6282,Rhabdomyolysis
+E8844,Accidental fall from bed,1,approximate,no,W06XXXA,"Fall from bed, initial encounter"
+V1041,Personal history of malignant neoplasm of cervix uteri,1,exact,no,Z8541,Personal history of malignant neoplasm of cervix uteri
+3331,Essential and other specified forms of tremor,1,one_to_many,yes,G250 | G251 | G252,Essential tremor | Drug-induced tremor | Other specified forms of tremor
+4571,Other lymphedema,1,exact,no,I890,"Lymphedema, not elsewhere classified"
+6186,"Vaginal enterocele, congenital or acquired",1,exact,no,N815,Vaginal enterocele
+78829,Other specified retention of urine,1,approximate,no,R338,Other retention of urine
+9950,Other anaphylactic reaction,1,approximate,no,T782XXA,"Anaphylactic shock, unspecified, initial encounter"
+6185,Prolapse of vaginal vault after hysterectomy,1,exact,no,N993,Prolapse of vaginal vault after hysterectomy
+7291,"Myalgia and myositis, unspecified",1,one_to_many,yes,M609 | M791 | M797,"Myositis, unspecified | Myalgia | Fibromyalgia"
+99932,Bloodstream infection due to central venous catheter,1,approximate,no,T80211A,"Bloodstream infection due to central venous catheter, initial encounter"
+5733,"Hepatitis, unspecified",1,one_to_many,yes,K716 | K759,"Toxic liver disease with hepatitis, not elsewhere classified | Inflammatory liver disease, unspecified"
+E9348,Other agents affecting blood constituents causing adverse effects in therapeutic use,1,no_map,yes,,
+78605,Shortness of breath,1,exact,no,R0602,Shortness of breath
+V160,Family history of malignant neoplasm of gastrointestinal tract,1,exact,no,Z800,Family history of malignant neoplasm of digestive organs
+3393,"Drug induced headache, not elsewhere classified",1,approximate,no,G4441,"Drug-induced headache, not elsewhere classified, intractable"
+61172,Lump or mass in breast,1,one_to_many,yes,N630 | N6310 | N6311 | N6312 | N6313 | N6314 | N6320 | N6321 | N6322 | N6323 | N6324 | N6331 | N6332 | N6341 | N6342,"Unspecified lump in unspecified  breast | Unspecified lump in the right breast, unspecified quadrant | Unspecified lump in the right breast, upper outer quadrant | Unspecified lump in the right breast, upper inner quadrant | Unspecified lump in the right breast, lower outer quadrant | Unspecified lump in the right breast, lower inner quadrant | Unspecified lump in the left breast, unspecified quadrant | Unspecified lump in the left breast, upper outer quadrant | Unspecified lump in the left breast, upper inner quadrant | Unspecified lump in the left breast, lower outer quadrant | Unspecified lump in the left breast, lower inner quadrant | Unspecified lump in axillary tail of the right breast | Unspecified lump in axillary tail of the left breast | Unspecified lump in right breast, subareolar | Unspecified lump in left breast, subareolar"
+78061,Fever presenting with conditions classified elsewhere,1,exact,no,R5081,Fever presenting with conditions classified elsewhere
+28804,Neutropenia due to infection,1,exact,no,D703,Neutropenia due to infection
+4809,"Viral pneumonia, unspecified",1,approximate,no,J129,"Viral pneumonia, unspecified"
+V6402,Vaccination not carried out because of chronic illness or condition,1,exact,no,Z2802,Immunization not carried out because of chronic illness or condition of patient
+99933,Local infection due to central venous catheter,1,approximate,no,T80212A,"Local infection due to central venous catheter, initial encounter"
+78702,Nausea alone,1,exact,no,R110,Nausea
+V141,Personal history of allergy to other antibiotic agent,1,exact,no,Z881,Allergy status to other antibiotic agents status
+V5811,Encounter for antineoplastic chemotherapy,1,exact,no,Z5111,Encounter for antineoplastic chemotherapy
+20501,"Acute myeloid leukemia, in remission",1,one_to_many,yes,C9201 | C9241 | C9251,"Acute myeloblastic leukemia, in remission | Acute promyelocytic leukemia, in remission | Acute myelomonocytic leukemia, in remission"
+1759,Malignant neoplasm of other and unspecified sites of male breast,1,approximate,no,C50929,Malignant neoplasm of unspecified site of unspecified male breast
+2330,Carcinoma in situ of breast,1,approximate,no,D0590,Unspecified type of carcinoma in situ of unspecified breast
+28411,Antineoplastic chemotherapy induced pancytopenia,1,exact,no,D61810,Antineoplastic chemotherapy induced pancytopenia
+V169,Family history of unspecified malignant neoplasm,1,exact,no,Z809,"Family history of malignant neoplasm, unspecified"
+V860,Estrogen receptor positive status [ER+],1,approximate,no,Z170,Estrogen receptor positive status [ER+]
+7830,Anorexia,1,exact,no,R630,Anorexia
+V8739,Contact with and (suspected) exposure to other potentially hazardous substances,1,approximate,no,Z7729,Contact with and (suspected ) exposure to other hazardous substances
+25050,"Diabetes with ophthalmic manifestations, type II or unspecified type, not stated as uncontrolled",1,one_to_many,yes,E11311 | E11319 | E1136 | E1139,Type 2 diabetes mellitus with unspecified diabetic retinopathy with macular edema | Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema | Type 2 diabetes mellitus with diabetic cataract | Type 2 diabetes mellitus with other diabetic ophthalmic complication
+36201,Background diabetic retinopathy,1,approximate,no,E11319,Type 2 diabetes mellitus with unspecified diabetic retinopathy without macular edema
+6961,Other psoriasis,1,one_to_many,yes,L400 | L401 | L402 | L403 | L404 | L408,Psoriasis vulgaris | Generalized pustular psoriasis | Acrodermatitis continua | Pustulosis palmaris et plantaris | Guttate psoriasis | Other psoriasis
+81201,Closed fracture of surgical neck of humerus,1,one_to_many,yes,S42213A | S42216A,"Unspecified displaced fracture of surgical neck of unspecified humerus, initial encounter for closed fracture | Unspecified nondisplaced fracture of surgical neck of unspecified humerus, initial encounter for closed fracture"
+2397,Neoplasm of unspecified nature of endocrine glands and other parts of nervous system,1,exact,no,D497,Neoplasm of unspecified behavior of endocrine glands and other parts of nervous system
+75169,"Other anomalies of gallbladder, bile ducts, and liver",1,one_to_many,yes,Q441 | Q444 | Q445 | Q447,Other congenital malformations of gallbladder | Choledochal cyst | Other congenital malformations of bile ducts | Other congenital malformations of liver
+1978,Secondary malignant neoplasm of other digestive organs and spleen,1,one_to_many,yes,C787 | C7889,Secondary malignant neoplasm of liver and intrahepatic bile duct | Secondary malignant neoplasm of other digestive organs
+1560,Malignant neoplasm of gallbladder,1,exact,no,C23,Malignant neoplasm of gallbladder
+V8535,"Body Mass Index 35.0-35.9, adult",1,exact,no,Z6835,"Body mass index (BMI) 35.0-35.9, adult"
+57512,Acute and chronic cholecystitis,1,exact,no,K812,Acute cholecystitis with chronic cholecystitis
+5761,Cholangitis,1,approximate,no,K830,Cholangitis
+7906,Other abnormal blood chemistry,1,one_to_many,yes,R7889 | R790 | R7989,"Finding of other specified substances, not normally found in blood | Abnormal level of blood mineral | Other specified abnormal findings of blood chemistry"
+42821,Acute systolic heart failure,1,approximate,no,I5021,Acute systolic (congestive) heart failure
+79029,Other abnormal glucose,1,one_to_many,yes,R7303 | R7309,Prediabetes | Other abnormal glucose
+78551,Cardiogenic shock,1,exact,no,R570,Cardiogenic shock
+43310,Occlusion and stenosis of carotid artery without mention of cerebral infarction,1,approximate,no,I6529,Occlusion and stenosis of unspecified carotid artery
+78469,Other symbolic dysfunction,1,one_to_many,yes,R481 | R482 | R488,Agnosia | Apraxia | Other symbolic dysfunctions
+43811,"Late effects of cerebrovascular disease, aphasia",1,approximate,no,I69920,Aphasia following unspecified cerebrovascular disease
+82021,Closed fracture of intertrochanteric section of neck of femur,1,one_to_many,yes,S72143A | S72146A,"Displaced intertrochanteric fracture of unspecified femur, initial encounter for closed fracture | Nondisplaced intertrochanteric fracture of unspecified femur, initial encounter for closed fracture"
+71535,"Osteoarthrosis, localized, not specified whether primary or secondary, pelvic region and thigh",1,approximate,no,M169,"Osteoarthritis of hip, unspecified"
+5110,Pleurisy without mention of effusion or current tuberculosis,1,one_to_many,yes,J869 | J941 | J948 | J949 | R091,"Pyothorax without fistula | Fibrothorax | Other specified pleural conditions | Pleural condition, unspecified | Pleurisy"
+4829,"Bacterial pneumonia, unspecified",1,exact,no,J159,Unspecified bacterial pneumonia
+0388,Other specified septicemias,1,approximate,no,A4189,Other specified sepsis
+8449,Sprains and strains of unspecified site of knee and leg,1,one_to_many,yes,S8390XA | S86919A,"Sprain of unspecified site of unspecified knee, initial encounter | Strain of unspecified muscle(s) and tendon(s) at lower leg level, unspecified leg, initial encounter"
+3940,Mitral stenosis,1,exact,no,I050,Rheumatic mitral stenosis
+V8801,Acquired absence of both cervix and uterus,1,exact,no,Z90710,Acquired absence of both cervix and uterus
+3004,Dysthymic disorder,1,approximate,no,F341,Dysthymic disorder
+9168,"Other and unspecified superficial injury of hip, thigh, leg, and ankle, without mention of infection",1,one_to_many,yes,S70919A | S70929A | S80929A | S90919A,"Unspecified superficial injury of unspecified hip, initial encounter | Unspecified superficial injury of unspecified thigh, initial encounter | Unspecified superficial injury of unspecified lower leg, initial encounter | Unspecified superficial injury of unspecified ankle, initial encounter"
+V8542,"Body Mass Index 45.0-49.9, adult",1,exact,no,Z6842,"Body mass index (BMI) 45.0-49.9, adult"
+5168,Other specified alveolar and parietoalveolar pneumonopathies,1,approximate,no,J8409,Other alveolar and parieto-alveolar conditions
+E8706,"Accidental cut, puncture, perforation or hemorrhage during heart catheterization",1,no_map,yes,,
+2769,Electrolyte and fluid disorders not elsewhere classified,1,exact,no,E878,"Other disorders of electrolyte and fluid balance, not elsewhere classified"
+E9353,Salicylates causing adverse effects in therapeutic use,1,no_map,yes,,
+53010,"Esophagitis, unspecified",1,approximate,no,K209,"Esophagitis, unspecified"
+E8700,"Accidental cut, puncture, perforation or hemorrhage during surgical operation",1,no_map,yes,,
+V1009,Personal history of malignant neoplasm of other gastrointestinal tract,1,one_to_many,yes,Z85068 | Z8507 | Z8509,Personal history of other malignant neoplasm of small intestine | Personal history of malignant neoplasm of pancreas | Personal history of malignant neoplasm of other digestive organs
+1962,Secondary and unspecified malignant neoplasm of intra-abdominal lymph nodes,1,exact,no,C772,Secondary and unspecified malignant neoplasm of intra-abdominal lymph nodes
+V641,Surgical or other procedure not carried out because of contraindication,1,approximate,no,Z5309,Procedure and treatment not carried out because of other contraindication
+4293,Cardiomegaly,1,exact,no,I517,Cardiomegaly
+5262,Other cysts of jaws,1,approximate,no,M2749,Other cysts of jaw
+55320,"Ventral, unspecified, hernia without mention of obstruction or gangrene",1,approximate,no,K439,Ventral hernia without obstruction or gangrene
+45383,"Acute venous embolism and thrombosis of upper extremity, unspecified",1,approximate,no,I82609,Acute embolism and thrombosis of unspecified veins of unspecified upper extremity
+56089,Other specified intestinal obstruction,1,one_to_many,yes,K56690 | K56691 | K56699,Other partial intestinal obstruction | Other complete intestinal obstruction | Other intestinal obstruction unspecified as to partial versus complete obstruction
+99594,Systemic inflammatory response syndrome due to noninfectious process with acute organ dysfunction,1,exact,no,R6511,Systemic inflammatory response syndrome (SIRS) of non-infectious origin with acute organ dysfunction
+V8533,"Body Mass Index 33.0-33.9, adult",1,exact,no,Z6833,"Body mass index (BMI) 33.0-33.9, adult"
+99809,"Postoperative shock, other",1,approximate,no,T8119XA,"Other postprocedural shock, initial encounter"
+E887,"Fracture, cause unspecified",1,approximate,no,W19XXXA,"Unspecified fall, initial encounter"
+V6441,Laparoscopic surgical procedure converted to open procedure,1,exact,no,Z5331,Laparoscopic surgical procedure converted to open procedure
+5921,Calculus of ureter,1,approximate,no,N201,Calculus of ureter
+V1351,Personal history of pathologic fracture,1,approximate,no,Z87311,Personal history of (healed) other pathological fracture
+V446,Other artificial opening of urinary tract status,1,exact,no,Z936,Other artificial openings of urinary tract status
+56942,Anal or rectal pain,1,approximate,no,K6289,Other specified diseases of anus and rectum
+5934,Other ureteric obstruction,1,approximate,no,N138,Other obstructive and reflux uropathy
+81600,"Closed fracture of phalanx or phalanges of hand, unspecified",1,one_to_many,yes,S62509A | S62609A,"Fracture of unspecified phalanx of unspecified thumb, initial encounter for closed fracture | Fracture of unspecified phalanx of unspecified finger, initial encounter for closed fracture"
+2555,Other adrenal hypofunction,1,approximate,no,E2749,Other adrenocortical insufficiency
+59972,Microscopic hematuria,1,one_to_many,yes,R311 | R3121 | R3129,Benign essential microscopic hematuria | Asymptomatic microscopic hematuria | Other microscopic hematuria
+1548,"Malignant neoplasm of other sites of rectum, rectosigmoid junction, and anus",1,approximate,no,C218,"Malignant neoplasm of overlapping sites of rectum, anus and anal canal"
+71536,"Osteoarthrosis, localized, not specified whether primary or secondary, lower leg",1,approximate,no,M179,"Osteoarthritis of knee, unspecified"
+2536,Other disorders of neurohypophysis,1,exact,no,E222,Syndrome of inappropriate secretion of antidiuretic hormone
+33520,Amyotrophic lateral sclerosis,1,approximate,no,G1221,Amyotrophic lateral sclerosis
+V454,Arthrodesis status,1,one_to_many,yes,M960 | Z981,Pseudarthrosis after fusion or arthrodesis | Arthrodesis status
+V1202,Personal history of poliomyelitis,1,exact,no,Z8612,Personal history of poliomyelitis
+72402,"Spinal stenosis, lumbar region, without neurogenic claudication",1,exact,no,M48061,"Spinal stenosis, lumbar region without neurogenic claudication"
+7851,Palpitations,1,exact,no,R002,Palpitations
+1369,Unspecified infectious and parasitic diseases,1,one_to_many,yes,B89 | B999,Unspecified parasitic disease | Unspecified infectious disease
+V1005,Personal history of malignant neoplasm of large intestine,1,approximate,no,Z85038,Personal history of other malignant neoplasm of large intestine
+5559,Regional enteritis of unspecified site,1,approximate,no,K5090,"Crohn's disease, unspecified, without complications"
+V090,Infection with microorganisms resistant to penicillins,1,exact,no,Z1611,Resistance to penicillins
+59970,"Hematuria, unspecified",1,exact,no,R319,"Hematuria, unspecified"
+5920,Calculus of kidney,1,approximate,no,N200,Calculus of kidney
+80707,Closed fracture of seven ribs,1,approximate,no,S2249XA,"Multiple fractures of ribs, unspecified side, initial encounter for closed fracture"
+29574,"Schizoaffective disorder, chronic with acute exacerbation",1,approximate,no,F259,"Schizoaffective disorder, unspecified"
+29660,"Bipolar I disorder, most recent episode (or current) mixed, unspecified",1,exact,no,F3160,"Bipolar disorder, current episode mixed, unspecified"
+7892,Splenomegaly,1,approximate,no,R161,"Splenomegaly, not elsewhere classified"
+75310,"Cystic kidney disease, unspecified",1,one_to_many,yes,Q6100 | Q619,"Congenital renal cyst, unspecified | Cystic kidney disease, unspecified"
+4592,Compression of vein,1,exact,no,I871,Compression of vein
+E912,Inhalation and ingestion of other object causing obstruction of respiratory tract or suffocation,1,no_map,yes,,
+29520,"Catatonic type schizophrenia, unspecified",1,approximate,no,F202,Catatonic schizophrenia
+9331,Foreign body in larynx,1,one_to_many,yes,T17300A | T17308A | T17310A | T17318A | T17320A | T17328A | T17390A | T17398A,"Unspecified foreign body in larynx causing asphyxiation, initial encounter | Unspecified foreign body in larynx causing other injury, initial encounter | Gastric contents in larynx causing asphyxiation, initial encounter | Gastric contents in larynx causing other injury, initial encounter | Food in larynx causing asphyxiation, initial encounter | Food in larynx causing other injury, initial encounter | Other foreign object in larynx causing asphyxiation, initial encounter | Other foreign object in larynx causing other injury, initial encounter"
+V1082,Personal history of malignant melanoma of skin,1,exact,no,Z85820,Personal history of malignant melanoma of skin
+5400,Acute appendicitis with generalized peritonitis,1,exact,no,K352,Acute appendicitis with generalized peritonitis
+48249,Other Staphylococcus pneumonia,1,exact,no,J1529,Pneumonia due to other staphylococcus
+5829,Chronic glomerulonephritis with unspecified pathological lesion in kidney,1,approximate,no,N039,Chronic nephritic syndrome with unspecified morphologic changes
+E9383,Intravenous anesthetics causing adverse effects in therapeutic use,1,no_map,yes,,
+34290,"Hemiplegia, unspecified, affecting unspecified side",1,approximate,no,G8190,"Hemiplegia, unspecified affecting unspecified side"
+40300,"Hypertensive chronic kidney disease, malignant, with chronic kidney disease stage I through stage IV, or unspecified",1,approximate,no,I129,"Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
+0416,Proteus (mirabilis) (morganii) infection in conditions classified elsewhere and of unspecified site,1,exact,no,B964,Proteus (mirabilis) (morganii) as the cause of diseases classified elsewhere
+3129,Unspecified disturbance of conduct,1,exact,no,F919,"Conduct disorder, unspecified"
+2651,Other and unspecified manifestations of thiamine deficiency,1,one_to_many,yes,E518 | E519,"Other manifestations of thiamine deficiency | Thiamine deficiency, unspecified"
+41519,Other pulmonary embolism and infarction,1,approximate,no,I2699,Other pulmonary embolism without acute cor pulmonale
+7295,Pain in limb,1,approximate,no,M79609,Pain in unspecified limb
+4238,Other specified diseases of pericardium,1,approximate,no,I318,Other specified diseases of pericardium
+E9290,Late effects of motor vehicle accident,1,one_to_many,yes,V870XXS | V871XXS | V872XXS | V873XXS | V874XXS | V875XXS | V876XXS | V877XXS | V878XXS | V879XXS | V892XXS | V893XXS | V899XXS,"Person injured in collision between car and two- or three-wheeled powered vehicle (traffic), sequela | Person injured in collision between other motor vehicle and two- or three-wheeled motor vehicle (traffic), sequela | Person injured in collision between car and pick-up truck or van (traffic), sequela | Person injured in collision between car and bus (traffic), sequela | Person injured in collision between car and heavy transport vehicle (traffic), sequela | Person injured in collision between heavy transport vehicle and bus (traffic), sequela | Person injured in collision between railway train or railway vehicle and car (traffic), sequela | Person injured in collision between other specified motor vehicles (traffic), sequela | Person injured in other specified noncollision transport accidents involving motor vehicle (traffic), sequela | Person injured in other specified (collision)(noncollision) transport accidents involving nonmotor vehicle (traffic), sequela | Person injured in unspecified motor-vehicle accident, traffic, sequela | Person injured in unspecified nonmotor-vehicle accident, traffic, sequela | Person injured in unspecified vehicle accident, sequela"
+34550,"Localization-related (focal) (partial) epilepsy and epileptic syndromes with simple partial seizures, without mention of intractable epilepsy",1,one_to_many,yes,G40101 | G40109,"Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with simple partial seizures, not intractable, with status epilepticus | Localization-related (focal) (partial) symptomatic epilepsy and epileptic syndromes with simple partial seizures, not intractable, without status epilepticus"
+07032,Chronic viral hepatitis B without mention of hepatic coma without mention of hepatitis delta,1,approximate,no,B181,Chronic viral hepatitis B without delta-agent
+9086,Late effect of certain complications of trauma,1,approximate,no,T799XXS,"Unspecified early complication of trauma, sequela"
+49121,Obstructive chronic bronchitis with (acute) exacerbation,1,approximate,no,J441,Chronic obstructive pulmonary disease with (acute) exacerbation
+E8881,Fall resulting in striking against other object,1,approximate,no,W01198A,"Fall on same level from slipping, tripping and stumbling with subsequent striking against other object, initial encounter"
+80702,Closed fracture of two ribs,1,approximate,no,S2249XA,"Multiple fractures of ribs, unspecified side, initial encounter for closed fracture"
+1971,Secondary malignant neoplasm of mediastinum,1,exact,no,C781,Secondary malignant neoplasm of mediastinum
+7885,Oliguria and anuria,1,exact,no,R34,Anuria and oliguria
+V7283,Other specified pre-operative examination,1,approximate,no,Z01818,Encounter for other preprocedural examination
+5370,Acquired hypertrophic pyloric stenosis,1,exact,no,K311,Adult hypertrophic pyloric stenosis
+56723,Spontaneous bacterial peritonitis,1,exact,no,K652,Spontaneous bacterial peritonitis
+78606,Tachypnea,1,exact,no,R0682,"Tachypnea, not elsewhere classified"
+E9347,Natural blood and blood products causing adverse effects in therapeutic use,1,no_map,yes,,
+53789,Other specified disorders of stomach and duodenum,1,approximate,no,K3189,Other diseases of stomach and duodenum
+4561,Esophageal varices without mention of bleeding,1,exact,no,I8500,Esophageal varices without bleeding
+5187,Transfusion related acute lung injury (TRALI),1,exact,no,J9584,Transfusion-related acute lung injury (TRALI)
+72889,"Other disorders of muscle, ligament, and fascia",1,approximate,no,M6289,Other specified disorders of muscle
+25541,Glucocorticoid deficiency,1,one_to_many,yes,E271 | E272 | E2740,Primary adrenocortical insufficiency | Addisonian crisis | Unspecified adrenocortical insufficiency
+4928,Other emphysema,1,approximate,no,J439,"Emphysema, unspecified"
+6202,Other and unspecified ovarian cyst,1,one_to_many,yes,N83201 | N83202 | N83209 | N83291 | N83292 | N83299,"Unspecified ovarian cyst, right side | Unspecified ovarian cyst, left side | Unspecified ovarian cyst, unspecified side | Other ovarian cyst, right side | Other ovarian cyst, left side | Other ovarian cyst, unspecified side"
+3970,Diseases of tricuspid valve,1,one_to_many,yes,I071 | I072 | I078,Rheumatic tricuspid insufficiency | Rheumatic tricuspid stenosis and insufficiency | Other rheumatic tricuspid valve diseases
+V8523,"Body Mass Index 27.0-27.9, adult",1,exact,no,Z6827,"Body mass index (BMI) 27.0-27.9, adult"
+40491,"Hypertensive heart and chronic kidney disease, unspecified, with heart failure and with chronic kidney disease stage I through stage IV, or unspecified",1,approximate,no,I130,"Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease"
+V5331,Fitting and adjustment of cardiac pacemaker,1,one_to_many,yes,Z45010 | Z45018,Encounter for checking and testing of cardiac pacemaker pulse generator [battery] | Encounter for adjustment and management of other part of cardiac pacemaker
+7530,Renal agenesis and dysgenesis,1,one_to_many,yes,Q602 | Q605,"Renal agenesis, unspecified | Renal hypoplasia, unspecified"
+7852,Undiagnosed cardiac murmurs,1,approximate,no,R011,"Cardiac murmur, unspecified"
+4259,"Secondary cardiomyopathy, unspecified",1,approximate,no,I427,Cardiomyopathy due to drug and external agent
+99604,Mechanical complication of automatic implantable cardiac defibrillator,1,one_to_many,yes,T82110A | T82111A | T82120A | T82121A | T82190A | T82191A,"Breakdown (mechanical) of cardiac electrode, initial encounter | Breakdown (mechanical) of cardiac pulse generator (battery), initial encounter | Displacement of cardiac electrode, initial encounter | Displacement of cardiac pulse generator (battery), initial encounter | Other mechanical complication of cardiac electrode, initial encounter | Other mechanical complication of cardiac pulse generator (battery), initial encounter"
+E8498,Accidents occurring in other specified places,1,approximate,no,Y9289,Other specified places as the place of occurrence of the external cause
+E8768,Other specified misadventures during medical care,1,approximate,no,Y658,Other specified misadventures during surgical and medical care
+29532,"Paranoid type schizophrenia, chronic",1,approximate,no,F200,Paranoid schizophrenia
+9961,"Mechanical complication of other vascular device, implant, and graft",1,one_to_many,yes,T82390A | T82391A | T82392A | T8249XA | T82590A | T82591A | T82593A | T82595A | T82598A,"Other mechanical complication of aortic (bifurcation) graft (replacement), initial encounter | Other mechanical complication of carotid arterial graft (bypass), initial encounter | Other mechanical complication of femoral arterial graft (bypass), initial encounter | Other complication of vascular dialysis catheter, initial encounter | Other mechanical complication of surgically created arteriovenous fistula, initial encounter | Other mechanical complication of surgically created arteriovenous shunt, initial encounter | Other mechanical complication of balloon (counterpulsation) device, initial encounter | Other mechanical complication of umbrella device, initial encounter | Other mechanical complication of other cardiac and vascular devices and implants, initial encounter"
+4263,Other left bundle branch block,1,approximate,no,I447,"Left bundle-branch block, unspecified"
+V5863,Long-term (current) use of antiplatelet/antithrombotic,1,exact,no,Z7902,Long term (current) use of antithrombotics/antiplatelets
+V1006,"Personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus",1,approximate,no,Z85048,"Personal history of other malignant neoplasm of rectum, rectosigmoid junction, and anus"
+04110,"Staphylococcus infection in conditions classified elsewhere and of unspecified site, staphylococcus, unspecified",1,approximate,no,B958,Unspecified staphylococcus as the cause of diseases classified elsewhere
+1505,Malignant neoplasm of lower third of esophagus,1,approximate,no,C155,Malignant neoplasm of lower third of esophagus
+7801,Hallucinations,1,one_to_many,yes,R440 | R442 | R443,"Auditory hallucinations | Other hallucinations | Hallucinations, unspecified"
+30001,Panic disorder without agoraphobia,1,exact,no,F410,Panic disorder [episodic paroxysmal anxiety]
+3559,Mononeuritis of unspecified site,1,approximate,no,G589,"Mononeuropathy, unspecified"
+6253,Dysmenorrhea,1,approximate,no,N946,"Dysmenorrhea, unspecified"
+29284,Drug-induced mood disorder,1,approximate,no,F1994,"Other psychoactive substance use, unspecified with psychoactive substance-induced mood disorder"
+2511,Other specified hypoglycemia,1,one_to_many,yes,E160 | E161,Drug-induced hypoglycemia without coma | Other hypoglycemia
+37950,"Nystagmus, unspecified",1,exact,no,H5500,Unspecified nystagmus
+30553,"Opioid abuse, in remission",1,exact,no,F1111,"Opioid abuse, in remission"
+29633,"Major depressive affective disorder, recurrent episode, severe, without mention of psychotic behavior",1,exact,no,F332,"Major depressive disorder, recurrent severe without psychotic features"
+04184,"Other specified bacterial infections in conditions classified elsewhere and of unspecified site, other anaerobes",1,approximate,no,B9689,Other specified bacterial agents as the cause of diseases classified elsewhere
+3484,Compression of brain,1,exact,no,G935,Compression of brain
+V168,Family history of other specified malignant neoplasm,1,exact,no,Z808,Family history of malignant neoplasm of other organs or systems
+04102,"Streptococcus infection in conditions classified elsewhere and of unspecified site, streptococcus, group B",1,exact,no,B951,"Streptococcus, group B, as the cause of diseases classified elsewhere"
+45620,"Esophageal varices in diseases classified elsewhere, with bleeding",1,exact,no,I8511,Secondary esophageal varices with bleeding
+5722,Hepatic encephalopathy,1,one_to_many,yes,K7290 | K7291,"Hepatic failure, unspecified without coma | Hepatic failure, unspecified with coma"
+45989,Other specified disorders of circulatory system,1,approximate,no,I998,Other disorder of circulatory system
+75261,Hypospadias,1,approximate,no,Q549,"Hypospadias, unspecified"
+20210,"Mycosis fungoides, unspecified site, extranodal and solid organ sites",1,one_to_many,yes,C8400 | C8409,"Mycosis fungoides, unspecified site | Mycosis fungoides, extranodal and solid organ sites"
+1540,Malignant neoplasm of rectosigmoid junction,1,exact,no,C19,Malignant neoplasm of rectosigmoid junction
+73010,"Chronic osteomyelitis, site unspecified",1,approximate,no,M8660,"Other chronic osteomyelitis, unspecified site"
+3489,Unspecified condition of brain,1,approximate,no,G939,"Disorder of brain, unspecified"
+7810,Abnormal involuntary movements,1,one_to_many,yes,R250 | R251 | R252 | R253 | R259,"Abnormal head movements | Tremor, unspecified | Cramp and spasm | Fasciculation | Unspecified abnormal involuntary movements"
+V8536,"Body Mass Index 36.0-36.9, adult",1,exact,no,Z6836,"Body mass index (BMI) 36.0-36.9, adult"
+30521,"Cannabis abuse, continuous",1,one_to_many,yes,F1210 | F1290,"Cannabis abuse, uncomplicated | Cannabis use, unspecified, uncomplicated"
+4401,Atherosclerosis of renal artery,1,exact,no,I701,Atherosclerosis of renal artery
+42830,"Diastolic heart failure, unspecified",1,approximate,no,I5030,Unspecified diastolic (congestive) heart failure
+4473,Hyperplasia of renal artery,1,approximate,no,I773,Arterial fibromuscular dysplasia
+30183,Borderline personality disorder,1,approximate,no,F603,Borderline personality disorder
+36230,"Retinal vascular occlusion, unspecified",1,exact,no,H349,Unspecified retinal vascular occlusion
+71940,"Pain in joint, site unspecified",1,approximate,no,M2550,Pain in unspecified joint
+V0179,Contact with or exposure to other viral diseases,1,one_to_many,yes,Z206 | Z20828,Contact with and (suspected) exposure to human immunodeficiency virus [HIV] | Contact with and (suspected) exposure to other viral communicable diseases
+V8537,"Body Mass Index 37.0-37.9, adult",1,exact,no,Z6837,"Body mass index (BMI) 37.0-37.9, adult"
+587,"Renal sclerosis, unspecified",1,approximate,no,N269,"Renal sclerosis, unspecified"
+V4511,Renal dialysis status,1,exact,no,Z992,Dependence on renal dialysis
+V4512,Noncompliance with renal dialysis,1,exact,no,Z9115,Patient's noncompliance with renal dialysis
+79319,Other nonspecific abnormal finding of lung field,1,exact,no,R918,Other nonspecific abnormal finding of lung field
+E8790,"Cardiac catheterization as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at time of procedure",1,exact,no,Y840,"Cardiac catheterization as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+41402,Coronary atherosclerosis of autologous vein bypass graft,1,approximate,no,I25810,Atherosclerosis of coronary artery bypass graft(s) without angina pectoris
+99702,Iatrogenic cerebrovascular infarction or hemorrhage,1,one_to_many,yes,I97811 | I97821,Intraoperative cerebrovascular infarction during other surgery | Postprocedural cerebrovascular infarction following other surgery
+V4579,Other acquired absence of organ,1,approximate,no,Z9089,Acquired absence of other organs
+V1072,Personal history of hodgkin's disease,1,exact,no,Z8571,Personal history of Hodgkin lymphoma
+3968,Multiple involvement of mitral and aortic valves,1,approximate,no,I088,Other rheumatic multiple valve diseases
+V4581,Aortocoronary bypass status,1,exact,no,Z951,Presence of aortocoronary bypass graft
+V422,Heart valve replaced by transplant,1,approximate,no,Z953,Presence of xenogenic heart valve
+20190,"Hodgkin's disease, unspecified type, unspecified site, extranodal and solid organ sites",1,one_to_many,yes,C8190 | C8199,"Hodgkin lymphoma, unspecified, unspecified site | Hodgkin lymphoma, unspecified, extranodal and solid organ sites"
+72989,Other musculoskeletal symptoms referable to limbs,1,approximate,no,R29898,Other symptoms and signs involving the musculoskeletal system
+99657,Mechanical complication due to insulin pump,1,approximate,no,T85694A,"Other mechanical complication of insulin pump, initial encounter"
+7916,Acetonuria,1,exact,no,R824,Acetonuria
+4779,"Allergic rhinitis, cause unspecified",1,one_to_many,yes,J300 | J309,"Vasomotor rhinitis | Allergic rhinitis, unspecified"
+V1301,Personal history of urinary calculi,1,exact,no,Z87442,Personal history of urinary calculi
+4260,"Atrioventricular block, complete",1,exact,no,I442,"Atrioventricular block, complete"
+4588,Other specified hypotension,1,approximate,no,I9589,Other hypotension
+3899,Unspecified hearing loss,1,approximate,no,H9190,"Unspecified hearing loss, unspecified ear"
+71696,"Arthropathy, unspecified, lower leg",1,approximate,no,M129,"Arthropathy, unspecified"
+42842,Chronic combined systolic and diastolic heart failure,1,approximate,no,I5042,Chronic combined systolic (congestive) and diastolic (congestive) heart failure
+42769,Other premature beats,1,one_to_many,yes,I493 | I4949,Ventricular premature depolarization | Other premature depolarization
+99830,"Disruption of wound, unspecified",1,approximate,no,T8130XA,"Disruption of wound, unspecified, initial encounter"
+53012,Acute esophagitis,1,approximate,no,K209,"Esophagitis, unspecified"
+V552,Attention to ileostomy,1,exact,no,Z432,Encounter for attention to ileostomy
+V5832,Encounter for removal of sutures,1,exact,no,Z4802,Encounter for removal of sutures
+53290,"Duodenal ulcer, unspecified as acute or chronic, without hemorrhage or perforation, without mention of obstruction",1,approximate,no,K269,"Duodenal ulcer, unspecified as acute or chronic, without hemorrhage or perforation"
+53190,"Gastric ulcer, unspecified as acute or chronic, without mention of hemorrhage or perforation, without mention of obstruction",1,approximate,no,K259,"Gastric ulcer, unspecified as acute or chronic, without hemorrhage or perforation"
+55329,Other ventral hernia without mention of obstruction or gangrene,1,one_to_many,yes,K439 | K469,Ventral hernia without obstruction or gangrene | Unspecified abdominal hernia without obstruction or gangrene
+78838,Overflow incontinence,1,exact,no,N39490,Overflow incontinence
+82111,Open fracture of shaft of femur,1,one_to_many,yes,S72309B | S72309C,"Unspecified fracture of shaft of unspecified femur, initial encounter for open fracture type I or II | Unspecified fracture of shaft of unspecified femur, initial encounter for open fracture type IIIA, IIIB, or IIIC"
+E9600,Unarmed fight or brawl,1,approximate,no,Y040XXA,"Assault by unarmed brawl or fight, initial encounter"
+29281,Drug-induced delirium,1,approximate,no,F19921,"Other psychoactive substance use, unspecified with intoxication with delirium"
+E9393,"Other antipsychotics, neuroleptics, and major tranquilizers causing adverse effects in therapeutic use",1,no_map,yes,,
+V1261,Personal history of pneumonia (recurrent),1,exact,no,Z8701,Personal history of pneumonia (recurrent)
+2469,Unspecified disorder of thyroid,1,exact,no,E079,"Disorder of thyroid, unspecified"
+82009,Other closed transcervical fracture of neck of femur,1,approximate,no,S72099A,"Other fracture of head and neck of unspecified femur, initial encounter for closed fracture"
+42843,Acute on chronic combined systolic and diastolic heart failure,1,approximate,no,I5043,Acute on chronic combined systolic (congestive) and diastolic (congestive) heart failure
+03843,Septicemia due to pseudomonas,1,approximate,no,A4152,Sepsis due to Pseudomonas
+0383,Septicemia due to anaerobes,1,approximate,no,A414,Sepsis due to anaerobes
+5768,Other specified disorders of biliary tract,1,one_to_many,yes,K835 | K838,Biliary cyst | Other specified diseases of biliary tract
+5809,Acute glomerulonephritis with unspecified pathological lesion in kidney,1,approximate,no,N009,Acute nephritic syndrome with unspecified morphologic changes
+53560,"Duodenitis, without mention of hemorrhage",1,exact,no,K2980,Duodenitis without bleeding
+7200,Ankylosing spondylitis,1,approximate,no,M459,Ankylosing spondylitis of unspecified sites in spine
+48242,Methicillin resistant pneumonia due to Staphylococcus aureus,1,exact,no,J15212,Pneumonia due to Methicillin resistant Staphylococcus aureus
+430,Subarachnoid hemorrhage,1,approximate,no,I609,"Nontraumatic subarachnoid hemorrhage, unspecified"
+V643,Procedure not carried out for other reasons,1,approximate,no,Z538,Procedure and treatment not carried out for other reasons
+29411,Dementia in conditions classified elsewhere with behavioral disturbance,1,exact,no,F0281,Dementia in other diseases classified elsewhere with behavioral disturbance
+2810,Pernicious anemia,1,approximate,no,D510,Vitamin B12 deficiency anemia due to intrinsic factor deficiency
+71650,"Unspecified polyarthropathy or polyarthritis, site unspecified",1,approximate,no,M130,"Polyarthritis, unspecified"
+78057,Unspecified sleep apnea,1,approximate,no,G4730,"Sleep apnea, unspecified"
+E9063,Bite of other animal except arthropod,1,approximate,no,W5501XA,"Bitten by cat, initial encounter"
+5305,Dyskinesia of esophagus,1,exact,no,K224,Dyskinesia of esophagus
+59960,"Urinary obstruction, unspecified",1,approximate,no,N139,"Obstructive and reflux uropathy, unspecified"
+92320,Contusion of hand(s),1,approximate,no,S60229A,"Contusion of unspecified hand, initial encounter"
+7197,Difficulty in walking,1,exact,no,R262,"Difficulty in walking, not elsewhere classified"
+5109,Empyema without mention of fistula,1,approximate,no,J869,Pyothorax without fistula
+04112,Methicillin resistant Staphylococcus aureus in conditions classified elsewhere and of unspecified site,1,approximate,no,B9562,Methicillin resistant Staphylococcus aureus infection as the cause of diseases classified elsewhere
+33812,Acute post-thoracotomy pain,1,exact,no,G8912,Acute post-thoracotomy pain
+9962,"Mechanical complication of nervous system device, implant, and graft",1,one_to_many,yes,T8509XA | T85190A | T85192A | T85193A | T85199A,"Other mechanical complication of ventricular intracranial (communicating) shunt, initial encounter | Other mechanical complication of implanted electronic neurostimulator of brain electrode (lead), initial encounter | Other mechanical complication of implanted electronic neurostimulator of spinal cord electrode (lead), initial encounter | Other mechanical complication of implanted electronic neurostimulator, generator, initial encounter | Other mechanical complication of other implanted electronic stimulator of nervous system, initial encounter"
+V151,"Personal history of surgery to heart and great vessels, presenting hazards to health",1,approximate,no,Z98890,Other specified postprocedural states
+34600,"Migraine with aura, without mention of intractable migraine without mention of status migrainosus",1,exact,no,G43109,"Migraine with aura, not intractable, without status migrainosus"
+V4561,Cataract extraction status,1,approximate,no,Z9849,"Cataract extraction status, unspecified eye"
+V431,Lens replaced by other means,1,exact,no,Z961,Presence of intraocular lens
+36250,"Macular degeneration (senile), unspecified",1,exact,no,H3530,Unspecified macular degeneration
+1622,Malignant neoplasm of main bronchus,1,approximate,no,C3400,Malignant neoplasm of unspecified main bronchus
+V1642,Family history of malignant neoplasm of prostate,1,exact,no,Z8042,Family history of malignant neoplasm of prostate
+0413,Friedländer's bacillus infection in conditions classified elsewhere and of unspecified site,1,exact,no,B961,Klebsiella pneumoniae [K. pneumoniae] as the cause of diseases classified elsewhere
+7842,"Swelling, mass, or lump in head and neck",1,one_to_many,yes,R220 | R221,"Localized swelling, mass and lump, head | Localized swelling, mass and lump, neck"
+4150,Acute cor pulmonale,1,approximate,no,I2609,Other pulmonary embolism with acute cor pulmonale
+V8521,"Body Mass Index 25.0-25.9, adult",1,exact,no,Z6825,"Body mass index (BMI) 25.0-25.9, adult"
+59654,Neurogenic bladder NOS,1,approximate,no,N319,"Neuromuscular dysfunction of bladder, unspecified"
+4414,Abdominal aneurysm without mention of rupture,1,exact,no,I714,"Abdominal aortic aneurysm, without rupture"
+23871,Essential thrombocythemia,1,approximate,no,D473,Essential (hemorrhagic) thrombocythemia
+9243,Contusion of toe,1,one_to_many,yes,S90119A | S90129A | S90229A,"Contusion of unspecified great toe without damage to nail, initial encounter | Contusion of unspecified lesser toe(s) without damage to nail, initial encounter | Contusion of unspecified lesser toe(s) with damage to nail, initial encounter"
+38531,Cholesteatoma of attic,1,approximate,no,H7103,"Cholesteatoma of attic, bilateral"
+6824,"Cellulitis and abscess of hand, except fingers and thumb",1,one_to_many,yes,L03119 | L03129,Cellulitis of unspecified part of limb | Acute lymphangitis of unspecified part of limb
+1121,Candidiasis of vulva and vagina,1,exact,no,B373,Candidiasis of vulva and vagina
+4870,Influenza with pneumonia,1,one_to_many,yes,J1100 | J129,"Influenza due to unidentified influenza virus with unspecified type of pneumonia | Viral pneumonia, unspecified"
+E8580,Accidental poisoning by hormones and synthetic substitutes,1,no_map,yes,,
+78065,Hypothermia not associated with low environmental temperature,1,exact,no,R680,"Hypothermia, not associated with low environmental temperature"
+75249,"Other anomalies of cervix, vagina, and external female genitalia",1,one_to_many,yes,Q510 | Q515 | Q51821 | Q51828 | Q5210 | Q522 | Q524 | Q525 | Q526 | Q5270 | Q5271 | Q5279 | Q528,"Agenesis and aplasia of uterus | Agenesis and aplasia of cervix | Hypoplasia of cervix | Other congenital malformations of cervix | Doubling of vagina, unspecified | Congenital rectovaginal fistula | Other congenital malformations of vagina | Fusion of labia | Congenital malformation of clitoris | Unspecified congenital malformations of vulva | Congenital absence of vulva | Other congenital malformations of vulva | Other specified congenital malformations of female genitalia"
+9623,Poisoning by insulins and antidiabetic agents,1,one_to_many,yes,T383X1A | T383X2A | T383X3A | T383X4A,"Poisoning by insulin and oral hypoglycemic [antidiabetic] drugs, accidental (unintentional), initial encounter | Poisoning by insulin and oral hypoglycemic [antidiabetic] drugs, intentional self-harm, initial encounter | Poisoning by insulin and oral hypoglycemic [antidiabetic] drugs, assault, initial encounter | Poisoning by insulin and oral hypoglycemic [antidiabetic] drugs, undetermined, initial encounter"
+61650,"Ulceration of vulva, unspecified",1,exact,no,N766,Ulceration of vulva
+25022,"Diabetes with hyperosmolarity, type II or unspecified type, uncontrolled",1,combination,yes,E1100 | E1165,Type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC) | Type 2 diabetes mellitus with hyperglycemia
+6273,Postmenopausal atrophic vaginitis,1,exact,no,N952,Postmenopausal atrophic vaginitis
+V1588,History of fall,1,exact,no,Z9181,History of falling
+7260,Adhesive capsulitis of shoulder,1,approximate,no,M7500,Adhesive capsulitis of unspecified shoulder
+7813,Lack of coordination,1,one_to_many,yes,R270 | R278 | R279,"Ataxia, unspecified | Other lack of coordination | Unspecified lack of coordination"
+4660,Acute bronchitis,1,approximate,no,J209,"Acute bronchitis, unspecified"
+59969,"Urinary obstruction, not elsewhere classified",1,approximate,no,N139,"Obstructive and reflux uropathy, unspecified"
+5728,"OTH SEQUELA, CHR LIV DIS",1,one_to_many,yes,K7210 | K7290,"Chronic hepatic failure without coma | Hepatic failure, unspecified without coma"
+34889,OTHER CONDITIONS OF BRAIN,1,approximate,no,G9389,Other specified disorders of brain
+72981,SWELLING OF LIMB,1,approximate,no,M7989,Other specified soft tissue disorders
+6869,LOCAL SKIN INFECTION NOS,1,exact,no,L089,"Local infection of the skin and subcutaneous tissue, unspecified"
+8920,OPEN WOUND OF FOOT,1,approximate,no,S91309A,"Unspecified open wound, unspecified foot, initial encounter"
+E9425,ADV EFF VASODILATORS NEC,1,no_map,yes,,
+85200,TRAUM SUBARACHNOID HEM,1,approximate,no,S066X0A,"Traumatic subarachnoid hemorrhage without loss of consciousness, initial encounter"
+78904,ABDOMINAL PAIN LLQ,1,exact,no,R1032,Left lower quadrant pain
+25010,DIAB KETOACIDOSIS ADULT,1,one_to_many,yes,E1110 | E1169 | E1310,Type 2 diabetes mellitus with ketoacidosis without coma | Type 2 diabetes mellitus with other specified complication | Other specified diabetes mellitus with ketoacidosis without coma
+7231,CERVICALGIA,1,exact,no,M542,Cervicalgia
+78550,SHOCK NOS,1,exact,no,R579,"Shock, unspecified"
+5780,HEMATEMESIS,1,exact,no,K920,Hematemesis
+56941,RECTAL & ANAL ULCER,1,exact,no,K626,Ulcer of anus and rectum
+81344,FX LOW RADIUS W ULNA-CL,1,combination,yes,S52509A | S52609A,"Unspecified fracture of the lower end of unspecified radius, initial encounter for closed fracture | Unspecified fracture of lower end of unspecified ulna, initial encounter for closed fracture"
+5409,ACUTE APPENDICITIS NOS,1,one_to_many,yes,K3580 | K3589,Unspecified acute appendicitis | Other acute appendicitis
+V7189,OBSERVATION FOR OTHER SPECIFIED CONDITIONS NOT FOUND,1,one_to_many,yes,Z036 | Z0389,Encounter for observation for suspected toxic effect from ingested substance ruled out | Encounter for observation for other suspected diseases and conditions ruled out
+80703,FRACTURE THREE RIBS-CLOS,1,approximate,no,S2249XA,"Multiple fractures of ribs, unspecified side, initial encounter for closed fracture"
+2512,HYPOGLYCEMIA NOS,1,exact,no,E162,"Hypoglycemia, unspecified"
+V5881,REMOVAL VASCULAR CATHETER,1,exact,no,Z452,Encounter for adjustment and management of vascular access device
+80701,FRACTURE ONE RIB-CLOSED,1,approximate,no,S2239XA,"Fracture of one rib, unspecified side, initial encounter for closed fracture"
+9953,"ALLERGY, UNSPECIFIED",1,approximate,no,T7840XA,"Allergy, unspecified, initial encounter"
+37272,CONJUNCTIVAL HEMORRHAGE,1,approximate,no,H1133,"Conjunctival hemorrhage, bilateral"
+79439,ABN CARDIOVASC STUDY NEC,1,exact,no,R9439,Abnormal result of other cardiovascular function study
+99679,COMP D/TO GRAFT/IMPLANT,1,one_to_many,yes,T85818A | T85828A | T85838A | T85848A | T85858A | T85868A | T85898A,"Embolism due to other internal prosthetic devices, implants and grafts, initial encounter | Fibrosis due to other internal prosthetic devices, implants and grafts, initial encounter | Hemorrhage due to other internal prosthetic devices, implants and grafts, initial encounter | Pain due to other internal prosthetic devices, implants and grafts, initial encounter | Stenosis due to other internal prosthetic devices, implants and grafts, initial encounter | Thrombosis due to other internal prosthetic devices, implants and grafts, initial encounter | Other specified complication of other internal prosthetic devices, implants and grafts, initial encounter"
+E8799,ABN REACT-PROCEDURE NOS,1,approximate,no,Y848,"Other medical procedures as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+7242,LUMBAGO,1,exact,no,M545,Low back pain
+30300,AC ALCOHOL INTOX-UNSPEC,1,approximate,no,F10229,"Alcohol dependence with intoxication, unspecified"
+E9688,ASSAULT NEC,1,approximate,no,Y0889XA,"Assault by other specified means, initial encounter"
+7862,COUGH,1,exact,no,R05,Cough
+7991,RESPIRATORY FAILURE,1,exact,no,R092,Respiratory arrest
+29410,DEMENTIA IN CONDITIONS CLASSIFIED ELSEWHERE WITHOUT BEHAVIROAL DISTURBANCE,1,exact,no,F0280,Dementia in other diseases classified elsewhere without behavioral disturbance
+99676,COMP D/TO GU DEVICE/GRAFT,1,one_to_many,yes,T8381XA | T8382XA | T8383XA | T8384XA | T8385XA | T8386XA | T8389XA | T839XXA,"Embolism due to genitourinary prosthetic devices, implants and grafts, initial encounter | Fibrosis due to genitourinary prosthetic devices, implants and grafts, initial encounter | Hemorrhage due to genitourinary prosthetic devices, implants and grafts, initial encounter | Pain due to genitourinary prosthetic devices, implants and grafts, initial encounter | Stenosis due to genitourinary prosthetic devices, implants and grafts, initial encounter | Thrombosis due to genitourinary prosthetic devices, implants and grafts, initial encounter | Other specified complication of genitourinary prosthetic devices, implants and grafts, initial encounter | Unspecified complication of genitourinary prosthetic device, implant and graft, initial encounter"
+4659,ACUTE URI NOS,1,approximate,no,J069,"Acute upper respiratory infection, unspecified"
+9916,HYPOTHERMIA,1,approximate,no,T68XXXA,"Hypothermia, initial encounter"
+95901,HEAD INJURY UNSPECIFIED,1,one_to_many,yes,S098XXA | S0990XA,"Other specified injuries of head, initial encounter | Unspecified injury of head, initial encounter"
+E9019,EXCESSIVE COLD NOS,1,approximate,no,X31XXXA,"Exposure to excessive natural cold, initial encounter"

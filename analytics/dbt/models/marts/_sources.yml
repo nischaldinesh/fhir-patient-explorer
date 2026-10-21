@@ -1,0 +1,34 @@
+version: 2
+
+# The landing files the extract writes (data/analytics/landing/*.ndjson), declared as a source so that
+# `python3 analytics/build.py freshness` (dbt source freshness) can say how current the data is. DuckDB reads each file
+# in place (dbt-duckdb external_location). The freshness time is the newest FHIR meta.lastUpdated, the time the server
+# last wrote a resource: the nightly feed writes every day, so a stale value means the feed or the extract stopped.
+# The Bronze model keeps reading the files through macros/bronze.sql, unchanged.
+sources:
+  - name: landing
+    description: FHIR resources as extracted from the server, one NDJSON file per resource type.
+    config:
+      # build.py passes landing_path with forward slashes
+      external_location: "read_ndjson_objects('{{ var('landing_path') }}/{name}.ndjson')"
+      loaded_at_field: "TRY_CAST(SUBSTR(json_extract_string(json, '$.meta.lastUpdated'), 1, 19) AS TIMESTAMP)"
+      # The app warns when the data is older than 36 hours; the job runs every 24.
+      freshness:
+        warn_after: {count: 36, period: hour}
+        error_after: {count: 72, period: hour}
+    tables:
+      - name: Patient
+        description: Patient resources (MIMIC, Synthea, the Riverside General feed).
+        columns:
+          - name: json
+            description: The resource as JSON.
+      - name: Encounter
+        description: Encounter resources; the live feed writes new and updated visits every night.
+        columns:
+          - name: json
+            description: The resource as JSON.
+      - name: Observation
+        description: Observation resources; the live feed writes lab results every night.
+        columns:
+          - name: json
+            description: The resource as JSON.

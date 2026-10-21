@@ -1,0 +1,93 @@
+version: 2
+
+# The Tableau dashboards on the star schema. The first four are planned on the marts directly (none is built; maturity
+# low). tableau_public_bi reads the Google Sheet that analytics/export_bi.py fills with suppressed aggregates (maturity
+# medium: the feed exists, the dashboards are built by hand). Declaring them shows in the dbt docs lineage which marts
+# each one reads, so a change to a mart names the dashboards it can break. The owners are the app's invented demo
+# personas, not real people.
+exposures:
+  - name: hospital_quality_scorecard
+    label: Hospital quality scorecard
+    type: dashboard
+    maturity: low
+    description: >
+      Planned Tableau dashboard (demo): the monthly quality measures by source, readmissions, length of stay, emergency
+      department time, diabetes HbA1c control (HEDIS style, not certified) and abnormal potassium on admission, with
+      suppressed cells shown as suppressed. Quarter, year and all time views (mart_quality_period) for when months are
+      too small to show, and the suppression report to pick the grain.
+    owner:
+      name: Priya Shah, Quality Analyst (invented demo persona)
+    depends_on:
+      - ref('mart_quality_monthly')
+      - ref('mart_quality_period')
+      - ref('mart_suppression_report')
+      - ref('dim_date')
+
+  - name: capacity_and_length_of_stay
+    label: Capacity and length of stay
+    type: dashboard
+    maturity: low
+    description: >
+      Planned Tableau dashboard (demo): occupied bed days per unit against capacity, admissions and discharges per day,
+      and length of stay by attending and unit, for the live Riverside General feed.
+    owner:
+      name: Priya Shah, Quality Analyst (invented demo persona)
+    depends_on:
+      - ref('fact_bed_day')
+      - ref('fact_encounter')
+      - ref('dim_location')
+      - ref('dim_practitioner')
+      - ref('dim_date')
+
+  - name: diagnosis_and_lab_mix
+    label: Diagnosis and lab mix
+    type: dashboard
+    maturity: low
+    description: >
+      Planned Tableau dashboard (demo): diagnoses by ICD 10 chapter and cohort, and lab results by key lab and range flag,
+      per age band and sex, with no names or record ids.
+    owner:
+      name: Priya Shah, Quality Analyst (invented demo persona)
+    depends_on:
+      - ref('fact_diagnosis')
+      - ref('fact_lab_result')
+      - ref('dim_diagnosis')
+      - ref('dim_lab')
+      - ref('dim_patient')
+      - ref('dim_date')
+
+  - name: patient_demographics_history
+    label: Patient demographics history
+    type: dashboard
+    maturity: low
+    description: >
+      Planned Tableau dashboard (demo): how often demographics change (moves, deaths recorded) over time, from the
+      SCD type 2 history, by state.
+    owner:
+      name: Alex Kim, Data Engineer (invented demo persona)
+    depends_on:
+      - ref('dim_patient_history')
+      - ref('dim_patient')
+
+  - name: tableau_public_bi
+    label: Tableau Public BI (Operations, Quality, Population and data quality)
+    type: dashboard
+    maturity: medium
+    description: >
+      Three Tableau Public dashboards (demo, built by hand from docs/tableau/DASHBOARD_SPEC.md) on a Google Sheet that
+      analytics/export_bi.py fills from the serving snapshot, with suppressed aggregates only. Sheet tabs:
+      bi_ops_daily, bi_ops_weekly, bi_ops_monthly (saved query ops_daily, live feed), bi_occupancy_monthly (metric
+      bed_occupancy_rate), bi_quality (mart_quality_period and saved query quality_all_time), bi_population
+      (dim_patient, counts complementary suppressed), bi_suppression (mart_suppression_report, percentages only) and
+      bi_meta. The models below are what those tabs read.
+    owner:
+      name: Priya Shah, Quality Analyst (invented demo persona)
+    depends_on:
+      - ref('fact_encounter')
+      - ref('fact_bed_day')
+      - ref('fact_bed_capacity_day')
+      - ref('dim_patient')
+      - ref('dim_location')
+      - ref('dim_date')
+      - ref('mart_quality_period')
+      - ref('mart_suppression_report')

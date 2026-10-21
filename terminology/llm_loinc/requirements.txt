@@ -1,0 +1,1 @@
+anthropic==1.15.0  # the Claude API SDK, only for terminology/llm_loinc (eval.py, suggest.py); retrieval needs nothing

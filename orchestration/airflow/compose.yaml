@@ -1,0 +1,104 @@
+# Local Airflow for the nightly pipeline (demo). Three containers: Postgres (Airflow's metadata only), the scheduler
+# (LocalExecutor, DAG processor and triggerer) and the API server with the UI on http://localhost:8088.
+#
+#   cd orchestration/airflow
+#   cp .env.example .env          # then set the secrets
+#   mkdir -p ../../data/airflow
+#   docker compose up -d --build
+#
+# The repo is mounted read only at /opt/project; only DATA_DIR is writable, mounted over /opt/project/data, so the
+# CLI steps write data/hl7v2, data/empi and data/analytics there and never touch your local data/ folder.
+x-airflow: &airflow
+  build:
+    context: .
+    additional_contexts:
+      project: ../../analytics       # analytics/requirements.txt and requirements-bi.txt for the project venv
+  image: fhir-explorer-airflow:3.3.2
+  env_file: .env
+  environment: &airflow-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__PARALLELISM: "4"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "True"
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: UTC
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-apiserver:8080/execution/
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${AIRFLOW_DB_PASSWORD:-airflow}@airflow-db/airflow
+    AIRFLOW__API__BASE_URL: http://localhost:8088
+    AIRFLOW__API__WORKERS: "1"
+    # Local demo only, bound to 127.0.0.1: everyone who reaches the UI is an admin, no login
+    AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "True"
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: "True"
+    PYTHONPATH: /opt/airflow/dags
+    # The CLI steps (nightly/steps.py)
+    PROJECT_DIR: /opt/project
+    PROJECT_PYTHON: /opt/project-venv/bin/python
+    FHIR_BASE: ${FHIR_BASE:-http://host.docker.internal:8090/fhir}
+    EMPI_EXTRA_LOCAL_HOSTS: host.docker.internal
+    DBT_TARGET_PATH: /opt/project/data/dbt-target
+    # dbt's DuckDB settings (analytics/dbt/macros/memory.sql): a memory cap with spilling to disk, and 2 threads
+    # (every thread needs its own buffers; with one per core the build ran out of memory)
+    DUCKDB_MEMORY_LIMIT: 1000MB
+    DUCKDB_THREADS: "2"
+  volumes:
+    - ./dags:/opt/airflow/dags:ro
+    - ../..:/opt/project:ro
+    - ${DATA_DIR:-../../data/airflow}:/opt/project/data
+    - ${DATA_DIR:-../../data/airflow}/airflow-logs:/opt/airflow/logs
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  entrypoint: ["/usr/bin/dumb-init", "--", "/opt/start.sh"]
+  restart: unless-stopped
+  depends_on:
+    airflow-db:
+      condition: service_healthy
+
+services:
+  airflow-db:
+    image: postgres:16
+    mem_limit: 192m
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD:-airflow}
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow -d airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  airflow-scheduler:
+    <<: *airflow
+    command: ["scheduler"]
+    # The tasks run here: Airflow itself (about 0.7 GB) plus dbt with DuckDB capped at 1000 MB.
+    # The three limits together are 2880 MiB, under 3 GB.
+    mem_limit: 2304m
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8974/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+
+  airflow-apiserver:
+    <<: *airflow
+    command: ["api-server"]
+    mem_limit: 384m
+    ports:
+      - "127.0.0.1:8088:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/api/v2/monitor/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+      airflow-scheduler:
+        condition: service_healthy
+
+volumes:
+  airflow-db:

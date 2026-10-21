@@ -1,0 +1,407 @@
+version: 2
+
+# The data quality checks listed on the app's Analytics page are the tests with meta check_name; the
+# on-run-end hook saves them to dq_checks in check_order (see macros/dq_checks.sql).
+
+models:
+  - name: silver_patient
+    description: One row per patient, typed, deduplicated on resource id (newest load wins), with the source told apart.
+    columns:
+      - name: patient_id
+        description: FHIR Patient id. Primary key.
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                # failures = extra copies (rows minus distinct ids), as the original check counted them
+                fail_calc: "coalesce(sum(n_records) - count(*), 0)"
+                meta: {check_name: "patient ids are unique", check_order: 1}
+      - name: source
+        description: "mimic (MIMIC IV demo, deidentified), synthea (synthetic) or hl7v2 (the invented Riverside General feed)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [mimic, synthea, hl7v2]
+              config:
+                fail_calc: "coalesce(sum(n_records), 0)"
+                meta: {check_name: "every patient has a known source", check_order: 2}
+      - name: mrn
+        description: Medical record number (Synthea keeps it in its second identifier). Identifying.
+      - name: family_name
+        description: Family name; Synthea's appended digits removed. Identifying.
+      - name: given_name
+        description: Given name. Identifying.
+      - name: gender
+        description: FHIR administrative gender.
+      - name: birth_date
+        description: Date of birth. Identifying.
+      - name: deceased_at
+        description: Time of death, clock time as sent, time zone offset dropped.
+      - name: is_deceased
+        description: True when a death time or deceasedBoolean true is recorded.
+      - name: city
+        description: City. Identifying.
+      - name: state
+        description: State.
+      - name: postal_code
+        description: Postal code. Identifying.
+
+  - name: silver_encounter
+    description: One row per visit (hospital stay, ED visit, ICU stay, outpatient visit).
+    columns:
+      - name: encounter_id
+        description: FHIR Encounter id. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+              config:
+                meta: {check_name: "encounters point to a known patient", check_order: 3}
+      - name: class_code
+        description: Encounter class (IMP, EMER, AMB ...). For MIMIC this is the admission type.
+      - name: part_of_encounter_id
+        description: The encounter this one is part of (an ICU stay inside a hospital stay).
+      - name: identifier_system
+        description: Identifier system; MIMIC tells hospital, ED and ICU stays apart with it.
+      - name: identifier_value
+        description: >
+          First identifier value: the visit number for HL7 v2 (V<yyyymmdd><nn> in the live Riverside General feed,
+          V70000 and up in the original 25 patient feed).
+      - name: priority_code
+        description: "Encounter.priority (v3 ActPriority): EM emergency, UR urgent, EL elective; from HL7 v2 PV1-4."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [EM, UR, EL, A, CR, CS, CSP, CSR, P, PRN, R, RR, S, T, UD]
+      - name: start_at
+        description: Start, clock time as sent.
+      - name: end_at
+        description: End, clock time as sent; NULL while in progress.
+      - name: attending_practitioner_id
+        description: The attending physician, the first Encounter.participant of type ATND that points at a Practitioner.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_practitioner')
+                field: practitioner_id
+      - name: last_location_id
+        description: The last Encounter.location with a Location reference (the bed when beds are given).
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_location')
+                field: location_id
+      - name: bed_moves
+        description: Bed entries in Encounter.location minus one, never below zero.
+        data_tests: [not_null]
+
+  - name: silver_encounter_location
+    description: >
+      One row per Encounter.location entry: unit and bed with status and period. A transfer (HL7 v2 ADT^A02)
+      completes the old entries and adds new ones, so the rows of one visit are its path through the hospital.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "encounter_id || '|' || CAST(entry_index AS VARCHAR)"
+    columns:
+      - name: encounter_id
+        description: The visit.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_encounter')
+                field: encounter_id
+      - name: entry_index
+        description: Position of the entry in Encounter.location, from 0.
+        data_tests: [not_null]
+      - name: location_id
+        description: The Location (unit, bed ...); NULL for a place given as text only.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_location')
+                field: location_id
+      - name: location_display
+        description: The place as displayed, such as "Room 214, bed A".
+      - name: status
+        description: planned, active, reserved or completed; NULL when the source does not say.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [planned, active, reserved, completed]
+      - name: physical_type
+        description: Physical type of the place (wa unit, bd bed ...), as given on the entry.
+      - name: start_at
+        description: When the patient arrived there, clock time as sent.
+      - name: end_at
+        description: When the patient left; NULL while still there.
+
+  - name: silver_location
+    description: >
+      One row per place: hospital site, units, rooms, beds and clinics (the Riverside General reference data),
+      plus the locations other sources send. Rooms and beds carry the unit they belong to.
+    columns:
+      - name: location_id
+        description: FHIR Location id. Primary key.
+        data_tests: [unique, not_null]
+      - name: name
+        description: Name, such as "Medical Unit" or "Room 214, bed A".
+      - name: status
+        description: active, suspended or inactive.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [active, suspended, inactive]
+      - name: physical_type
+        description: "Location physical type: si site, wa unit (ward), ro room, bd bed, wi wing ..."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [si, bu, wi, wa, lvl, co, ro, bd, ve, ho, ca, rd, area, jdn]
+      - name: part_of_location_id
+        description: The location this one is part of (a bed is part of a room, a room of a unit).
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_location')
+                field: location_id
+      - name: unit_location_id
+        description: The unit this location belongs to (itself for a unit); NULL above or outside a unit.
+      - name: managing_organization_id
+        description: The organization that runs it.
+      - name: operational_status
+        description: "Bed status, HL7 v2 table 0116: O occupied, U unoccupied (C closed, H housekeeping ...)."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [C, H, I, K, O, U]
+
+  - name: silver_care_team_member
+    description: >
+      One row per CareTeam.participant: who looks after a visit in which role (attending, primary nurse, care manager),
+      from the Riverside General feed (HL7 v2 PV1-7 and ROL). Members are PractitionerRoles.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "care_team_id || '|' || CAST(member_index AS VARCHAR)"
+    columns:
+      - name: care_team_id
+        description: FHIR CareTeam id.
+        data_tests: [not_null]
+      - name: member_index
+        description: Position in CareTeam.participant, from 0.
+        data_tests: [not_null]
+      - name: encounter_id
+        description: The visit (CareTeam.encounter).
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_encounter')
+                field: encounter_id
+      - name: patient_id
+        description: The patient (CareTeam.subject).
+      - name: role_code
+        description: attending, primary-nurse or care-manager (the feed's local care team roles).
+      - name: member_role_id
+        description: The member's PractitionerRole id; NULL when the member is a name only.
+      - name: member_name
+        description: The member's name as displayed. Staff, not a patient identifier.
+      - name: start_at
+        description: When the member joined the team, clock time as sent.
+      - name: end_at
+        description: When the member left; NULL while still on the team (a care manager stays on after discharge).
+
+  - name: silver_practitioner
+    description: One row per member of staff (Practitioner). Staff names are not patient identifiers.
+    columns:
+      - name: practitioner_id
+        description: FHIR Practitioner id. Primary key.
+        data_tests: [unique, not_null]
+      - name: display_name
+        description: Prefix, given and family name, such as "Dr Dana Morgan"; Synthea's appended digits removed.
+      - name: identifier_value
+        description: First identifier (an invented DEMO staff number for Riverside General).
+
+  - name: silver_condition
+    description: >
+      One row per diagnosis, with a standardized ICD 10 code where one is known: at the source, upgraded by the
+      HL7 v2 pipeline, or from the CMS GEM seed when CMS gives a single target. Otherwise NULL.
+    columns:
+      - name: condition_id
+        description: FHIR Condition id. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+              config:
+                meta: {check_name: "conditions point to a known patient", check_order: 4}
+      - name: encounter_id
+        description: The visit, when given.
+      - name: code_system
+        description: Code system the diagnosis arrived in.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [icd9, icd10, snomed, none, other]
+      - name: code
+        description: The code as it arrived.
+      - name: icd10_code
+        description: Standardized ICD 10 code without the dot, or NULL.
+      - name: icd10_origin
+        description: Where icd10_code came from.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [source, hl7v2_pipeline, cms_gem_exact, cms_gem_approximate]
+      - name: needs_review
+        description: True when a coder has to choose between several ICD 10 options.
+        data_tests: [not_null]
+
+  - name: silver_observation
+    description: One row per result (labs, vitals ...), with a LOINC code where one is known and a range flag.
+    columns:
+      - name: observation_id
+        description: FHIR Observation id. Primary key.
+        data_tests:
+          - not_null
+          - unique:
+              config:
+                meta: {check_name: "bronze has no duplicate copies left in silver", check_order: 7}
+      - name: patient_id
+        description: The patient.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+              config:
+                meta: {check_name: "observations point to a known patient", check_order: 5}
+      - name: category
+        description: First category code (laboratory, vital-signs ...).
+      - name: loinc
+        description: LOINC code, at the source or through the MIMIC lab seed.
+      - name: value_num
+        description: Numeric value, NULL for text results.
+      - name: comparator
+        description: "Comparator for values like <0.01; such values are never flagged."
+      - name: value_text
+        description: Text result (Moderate, Mild ...).
+      - name: range_flag
+        description: high, low or normal against the reference range; NULL without a range or a plain number.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [high, low, normal]
+      - name: effective_at
+        description: When the result applies, clock time as sent.
+
+  - name: silver_patient_link
+    description: >
+      One row per Patient.link: another record of the same person, found by the EMPI (empi/match.py) and written
+      both ways with type seealso. Records are never merged.
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "patient_id || '|' || CAST(link_index AS VARCHAR)"
+    columns:
+      - name: patient_id
+        description: The record that carries the link.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: link_index
+        description: Position in Patient.link, from 0.
+        data_tests: [not_null]
+      - name: other_patient_id
+        description: The linked record.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: link_type
+        description: FHIR link type; the EMPI writes seealso.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [seealso, refer, replaced-by, replaces]
+
+  - name: silver_empi_pair
+    description: >
+      One row per pair in the EMPI review queue (Binary/empi-review): two records the matcher compared, the score
+      from 0 to 100 and the status. Clear no matches are not published.
+    columns:
+      - name: pair_id
+        description: Stable pair id, the same whichever record comes first. Primary key.
+        data_tests: [unique, not_null]
+      - name: patient_a_id
+        description: One record of the pair.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: patient_b_id
+        description: The other record.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('silver_patient')
+                field: patient_id
+      - name: source_a
+        description: Source of record a.
+      - name: source_b
+        description: Source of record b.
+      - name: score
+        description: Match score from 0 to 100 (empi/config.json holds the weights).
+        data_tests: [not_null]
+      - name: status
+        description: auto_link (90 and above), review (70 to 89), or what a person decided, accepted or rejected.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [auto_link, review, accepted, rejected]
+      - name: decided_at
+        description: When a person accepted or rejected the pair; NULL otherwise.
+
+  - name: silver_empi_truth
+    description: >
+      The ground truth of the seeded EMPI test set (Binary/empi-truth, hl7v2/pipeline.py empi-seed, demo): 20
+      Riverside General registrations that are copies of Synthea patients, and 10 that only share a name.
+    columns:
+      - name: seed_patient_id
+        description: The test set record (Riverside General, MRN RV3xxxxx). Unique.
+        data_tests: [unique, not_null]
+      - name: existing_patient_id
+        description: The Synthea patient it was made from.
+        data_tests: [not_null]
+      - name: kind
+        description: match (the same person) or hard_negative (same name, another person).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [match, hard_negative]
+      - name: variations
+        description: What differs, as a JSON list (nickname, typo, new_address ...).
+      - name: note
+        description: The variation in words.

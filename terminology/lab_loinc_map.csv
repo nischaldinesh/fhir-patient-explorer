@@ -1,0 +1,55 @@
+mimic_code,mimic_display,loinc,loinc_display,unit,equivalence,note
+50983,Sodium,2951-2,Sodium [Moles/volume] in Serum or Plasma,mEq/L,equivalent,
+50971,Potassium,2823-3,Potassium [Moles/volume] in Serum or Plasma,mEq/L,equivalent,
+50902,Chloride,2075-0,Chloride [Moles/volume] in Serum or Plasma,mEq/L,equivalent,
+50882,Bicarbonate,2028-9,"Carbon dioxide, total [Moles/volume] in Serum or Plasma",mEq/L,equivalent,"Judgment call: chemistry panel 'bicarbonate' is measured as total CO2, so it maps to 2028-9 (same code Synthea uses), not 1963-8"
+50868,Anion Gap,33037-3,Anion gap in Serum or Plasma,mEq/L,equivalent,
+51006,Urea Nitrogen,3094-0,Urea nitrogen [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+50912,Creatinine,2160-0,Creatinine [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+50931,Glucose,2345-7,Glucose [Mass/volume] in Serum or Plasma,mg/dL,equivalent,"Serum/plasma glucose. Synthea uses 2339-0 (whole blood), a different LOINC for a different specimen"
+50893,"Calcium, Total",17861-6,Calcium [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+50960,Magnesium,19123-9,Magnesium [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+50970,Phosphate,2777-1,Phosphate [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+51221,Hematocrit,4544-3,Hematocrit [Volume Fraction] of Blood by Automated count,%,equivalent,
+51222,Hemoglobin,718-7,Hemoglobin [Mass/volume] in Blood,g/dL,equivalent,
+51248,MCH,785-6,MCH [Entitic mass] by Automated count,pg,equivalent,
+51249,MCHC,786-4,MCHC [Mass/volume] by Automated count,g/dL,equivalent,
+51250,MCV,787-2,MCV [Entitic volume] by Automated count,fL,equivalent,
+51265,Platelet Count,777-3,Platelets [#/volume] in Blood by Automated count,K/uL,equivalent,
+51277,RDW,788-0,Erythrocyte distribution width [Ratio] by Automated count,%,equivalent,"MIMIC RDW is a percent (RDW-CV), so 788-0. Synthea's fL value is RDW-SD (21000-5), a different measurement"
+51279,Red Blood Cells,789-8,Erythrocytes [#/volume] in Blood by Automated count,m/uL,equivalent,
+51301,White Blood Cells,6690-2,Leukocytes [#/volume] in Blood by Automated count,K/uL,equivalent,
+51256,Neutrophils,770-8,Neutrophils/100 leukocytes in Blood by Automated count,%,equivalent,
+51244,Lymphocytes,736-9,Lymphocytes/100 leukocytes in Blood by Automated count,%,equivalent,
+51254,Monocytes,5905-5,Monocytes/100 leukocytes in Blood by Automated count,%,equivalent,
+51200,Eosinophils,713-8,Eosinophils/100 leukocytes in Blood by Automated count,%,equivalent,
+51146,Basophils,706-2,Basophils/100 leukocytes in Blood by Automated count,%,equivalent,
+51237,INR(PT),6301-6,INR in Platelet poor plasma by Coagulation assay,,equivalent,
+51274,PT,5902-2,Prothrombin time (PT),sec,equivalent,
+51275,PTT,14979-9,aPTT in Platelet poor plasma by Coagulation assay,sec,equivalent,"Judgment call: PTT runs on plasma, so 14979-9 rather than the blood code 3173-2"
+50820,pH,11558-4,pH of Blood,units,equivalent,"Judgment call: MIMIC stores arterial vs venous in a separate specimen row, so this maps to the unspecified blood code, not arterial 2744-1"
+50818,pCO2,11557-6,Carbon dioxide [Partial pressure] in Blood,mm Hg,equivalent,Same specimen reasoning as pH
+50821,pO2,11556-8,Oxygen [Partial pressure] in Blood,mm Hg,equivalent,Same specimen reasoning as pH
+50802,Base Excess,11555-0,Base excess in Blood by calculation,mEq/L,equivalent,Same specimen reasoning as pH
+50813,Lactate,32693-4,Lactate [Moles/volume] in Blood,mmol/L,equivalent,Blood gas analyzer lactate (whole blood)
+50809,Glucose,2339-0,Glucose [Mass/volume] in Blood,mg/dL,equivalent,"Blood gas analyzer glucose (whole blood), which is why it matches Synthea's 2339-0 while 50931 does not"
+50822,"Potassium, Whole Blood",6298-4,Potassium [Moles/volume] in Blood,mEq/L,equivalent,
+50824,"Sodium, Whole Blood",2947-0,Sodium [Moles/volume] in Blood,mEq/L,equivalent,
+50806,"Chloride, Whole Blood",2069-3,Chloride [Moles/volume] in Blood,mEq/L,equivalent,
+50861,Alanine Aminotransferase (ALT),1742-6,Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma,IU/L,equivalent,
+50878,Asparate Aminotransferase (AST),1920-8,Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma,IU/L,equivalent,MIMIC's display has the typo 'Asparate'; source data is never as clean as the spec
+50863,Alkaline Phosphatase,6768-6,Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma,IU/L,equivalent,
+50885,"Bilirubin, Total",1975-2,Bilirubin.total [Mass/volume] in Serum or Plasma,mg/dL,equivalent,
+50862,Albumin,1751-7,Albumin [Mass/volume] in Serum or Plasma,g/dL,equivalent,
+50910,Creatine Kinase (CK),2157-6,Creatine kinase [Enzymatic activity/volume] in Serum or Plasma,IU/L,equivalent,
+51003,Troponin T,6598-7,Troponin T.cardiac [Mass/volume] in Serum or Plasma,ng/mL,equivalent,
+52172,RDW-SD,21000-5,Erythrocyte distribution width [Entitic volume] by Automated count,fL,equivalent,RDW-SD in fL: the same code Synthea uses
+52075,Absolute Neutrophil Count,751-8,Neutrophils [#/volume] in Blood by Automated count,K/uL,equivalent,
+51133,Absolute Lymphocyte Count,731-0,Lymphocytes [#/volume] in Blood by Automated count,K/uL,equivalent,
+52074,Absolute Monocyte Count,742-7,Monocytes [#/volume] in Blood by Automated count,K/uL,equivalent,
+52073,Absolute Eosinophil Count,711-2,Eosinophils [#/volume] in Blood by Automated count,K/uL,equivalent,
+52069,Absolute Basophil Count,704-7,Basophils [#/volume] in Blood by Automated count,K/uL,equivalent,
+50954,Lactate Dehydrogenase (LD),2532-0,Lactate dehydrogenase [Enzymatic activity/volume] in Serum or Plasma,IU/L,equivalent,
+50808,Free Calcium,1994-3,Calcium.ionized [Moles/volume] in Blood,mmol/L,equivalent,MIMIC calls ionized calcium 'Free Calcium'
+50920,Estimated GFR (MDRD equation),33914-3,Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD),mL/min/1.73m2,equivalent,"Calculated value, not measured. Formula matters: MDRD and CKD-EPI have different LOINC codes"
+50852,% Hemoglobin A1c,4548-4,Hemoglobin A1c/Hemoglobin.total in Blood,%,equivalent,"Added for the diabetes HbA1c measure (mart_quality_monthly, mart_quality_period). MIMIC reports HbA1c as a percent (NGSP), which is what 4548-4 means; 17856-6 is the HPLC method specific code and 4549-2 is electrophoresis, neither of which MIMIC states"
