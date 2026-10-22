@@ -2,7 +2,7 @@
   on-run-end hook: after `dbt build` or `dbt test`, save the test results in the warehouse.
 
     dq_test_results  every test: name, model, status, failures
-    dq_checks        the named data quality checks shown on the app's Analytics page (check_name, failures),
+    dq_checks        the named data quality checks, also published in the analyst snapshot (check_name, failures),
                      in page order. A test joins this list with config meta {check_name, check_order}.
 
   Nothing is written when the run had no tests (dbt seed, dbt run), so the last results stay in place.

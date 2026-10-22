@@ -350,7 +350,7 @@ def cmd_load(a):
         report["loaded"], report["load_failed"] = ok, fail
         print(f"\nLoaded {ok} resources into {a.base}, failed {fail}")
         http("PUT", f"{a.base}/Binary/{REPORT_ID}", report_binary(report))
-        print(f"Published the run report to {a.base}/Binary/{REPORT_ID} for the app's Ingestion page")
+        print(f"Published the run report to {a.base}/Binary/{REPORT_ID}")
     (out / "load_report.json").write_text(json.dumps(report, indent=1), encoding="utf-8")
     print(f"Wrote {out / 'load_report.json'}")
     return 1 if report.get("load_failed") else 0

@@ -276,7 +276,7 @@ models:
   - name: gold_feed_freshness
     description: >
       One row: how current the live feed data is. The nightly job loads yesterday, so the data date (the "today" of
-      the operational pages) is the day of the last feed event, never later than the extract.
+      the operational tables) is the day of the last feed event, never later than the extract.
     columns:
       - name: first_day
         description: Day of the first live feed event.

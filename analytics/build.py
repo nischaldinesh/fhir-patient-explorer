@@ -15,7 +15,7 @@ Commands:
   status    print table sizes and data quality checks
   freshness how current the landing files are (dbt source freshness on FHIR meta.lastUpdated): warn after 36 hours,
             error after 72
-  publish   save a Gold snapshot to the FHIR server (Binary/analytics-snapshot) for the app's Analytics page,
+  publish   save a Gold snapshot to the FHIR server (Binary/analytics-snapshot) for analysts,
             the care team worklists (Binary/worklist-bedboard, Binary/worklist-readmission) and a record in
             Binary/analytics-history
   snapshot  the slim serving copy of the warehouse for the metrics API (analytics/serving.py): only the tables the
@@ -435,7 +435,7 @@ def cmd_publish(a):
     snap, beds, worklist = snapshot(con, runs), bedboard(con, runs), readmission(con, runs)
     n = publish_all(base, snap, beds, worklist, test_summary(con))
     print(f"Published to {base}:")
-    print("  Binary/analytics-snapshot    aggregates for the Analytics page")
+    print("  Binary/analytics-snapshot    aggregates for analysts")
     print(f"  Binary/worklist-bedboard     {len(beds['beds'])} beds, {sum(1 for b in beds['beds'] if b['encounter_id'])} with a patient (PHI)")
     print(f"  Binary/worklist-readmission  {len(worklist['rows'])} discharges with a LACE score (PHI)")
     print(f"  Binary/analytics-history     {n} record{'' if n == 1 else 's'}")

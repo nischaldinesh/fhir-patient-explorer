@@ -10,7 +10,7 @@ which day was loaded last.
 
 The EMPI's review queue and the ground truth of its test set (Binary/empi-review, Binary/empi-truth, see
 empi/match.py) are FHIR Binaries, so they land as Binary.ndjson and Bronze loads them like any other resource.
-Only these two: the other Binaries are the app's published reports.
+Only these two: the other Binaries are published reports.
 """
 import base64
 import json

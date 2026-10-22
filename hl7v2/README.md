@@ -1,4 +1,4 @@
-# HL7 v2 ingestion (Option B)
+# HL7 v2 ingestion
 
 Hospitals still move most clinical data as HL7 v2 messages: pipe delimited text from the 1980s.
 FHIR usually sits on top as an API layer, so a real pipeline has to translate one into the other.
@@ -178,6 +178,6 @@ python3 empi/match.py run                                      # then match (see
 Any seed other than 42 writes a held out set for `empi/match.py evaluate --truth FILE`: its own MRNs (from `RV310001`
 up, seed 7 gives `RV310701` to `RV310730`), its own control IDs, none of the Synthea patients the tuning set uses, files
 in `data/empi/feed-seed7/` and `data/empi/truth-seed7.json`. Its truth is not published: `Binary/empi-truth`, which
-the warehouse and `/empi` read, stays the tuning set. Load one held out set at a time; two would share people.
+the warehouse reads, stays the tuning set. Load one held out set at a time; two would share people.
 
 The daily feed and the original 25 patient feed do not change.

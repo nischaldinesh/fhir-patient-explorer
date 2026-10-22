@@ -12,7 +12,7 @@ night into a tested **dbt** warehouse on **DuckDB**, and serves suppressed aggre
 | Area | What it shows | Result |
 |---|---|---|
 | Integration | HL7 v2 ADT and ORU feed: parse, route, dedupe by MSH 10, quarantine, map to US Core FHIR | 3,978 messages over 56 nightly runs, 0 load failures |
-| Terminology | Local labs to LOINC, ICD 9 to ICD 10 (CMS GEMs), published as FHIR ConceptMaps | LLM ranker on a 316 item holdout: 66% top 1 against a 53% lexical baseline |
+| Terminology | Local labs to LOINC, ICD 9 to ICD 10 (CMS GEMs), published as FHIR ConceptMaps | LLM ranker on a holdout it never saw: 66% top 1 against a 53% lexical baseline |
 | Patient matching | EMPI with blocking, Jaro Winkler, nicknames; links, never merges | precision 1.0, recall 0.95, 0 of 10 hard negatives linked, same on a held out set |
 | Extract | Paged FHIR search or Bulk Data `$export` (incremental, resumable, SMART Backend Services) | NDJSON landing files with a manifest and a completeness check |
 | Warehouse | dbt: Bronze, Silver, Gold, a star schema (7 dims, 5 facts), SCD2, contracts | 406 data tests, source freshness, a baseline guard; [dbt docs and lineage](https://nischaldinesh.github.io/fhir-patient-explorer/) |
@@ -43,8 +43,9 @@ The diagram reads left to right. Each step has its own folder and README.
   (`$translate`). For the 441 labs nobody mapped yet, `terminology/llm_loinc/` retrieves 20 LOINC candidates (BM25, no
   LLM), Claude picks one or answers NONE, and a validator drops any code that was not a candidate. Every suggestion goes
   to a review queue; only a person's accept adds it to the map. Evaluation: `docs/LLM_LOINC_EVAL.md`.
-* **Patient matching** (`empi/`): finds the same person across systems and links the records with `Patient.link`.
-  Records are never merged or deleted. See the results below.
+* **Patient matching** (`empi/`): a rule based EMPI (blocking, Jaro Winkler, a nickname table, weighted scores)
+  finds the same person across systems and links the records with `Patient.link`. Records are never merged or
+  deleted. See the results below and `empi/README.md`.
 
 ### 3. System of record
 
@@ -131,8 +132,8 @@ Slack or Discord webhook. See `orchestration/airflow/README.md`.
 | Tuning set, seed 42 | 1.0 (19 of 19) | 0.95 (19 of 20) | 0 of 10 | 3 |
 | Held out set, seed 7 | 1.0 (19 of 19) | 0.95 (19 of 20) | 0 of 10 | 3 |
 
-**LLM assisted LOINC mapping** on a holdout of 316 MIMIC III coded lab items that no prompt or retrieval choice saw:
-Claude Sonnet 5.5 reaches 66% top 1 against 53% for a lexical baseline; every suggestion still goes to review. Full
+**LLM assisted LOINC mapping** on a holdout of MIMIC III coded lab items that no prompt or retrieval choice saw:
+on the same 200 pair sample, Claude Sonnet 5.5 reaches 66% top 1 against 53% for a lexical baseline; every suggestion still goes to review. Full
 evaluation with intervals, calibration, cost and latency: `docs/LLM_LOINC_EVAL.md`.
 
 **Coding coverage** (`gold_terminology_quality`): MIMIC labs 85.2% LOINC and diagnoses 88.0% ICD 10 after mapping; the
@@ -192,7 +193,7 @@ docker compose -f orchestration/airflow/compose.yaml exec airflow-scheduler \
 | `hl7v2/` | HL7 v2 feed generator, parser, router, FHIR mapping, hospital master data |
 | `tools.py`, `docker-compose.yml`, `hapi.application.yaml` | HAPI FHIR on Postgres, MIMIC and Synthea loading |
 | `terminology/` | LOINC and ICD 10 maps, ConceptMaps, LLM assisted LOINC mapper |
-| `empi/` | Patient matching |
+| `empi/` | Patient matching (see `empi/README.md`) |
 | `analytics/` | Extract, dbt warehouse, semantic layer, serving snapshot, BI export, Snowflake SQL |
 | `api/` | Metrics API |
 | `orchestration/airflow/` | Nightly Airflow DAG |

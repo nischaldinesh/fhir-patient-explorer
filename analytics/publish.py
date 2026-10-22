@@ -1,10 +1,10 @@
 """Publish Gold results back to the FHIR server, for apps that read it (worklists, snapshots).
 
-The app talks only to the FHIR server, so it needs no database access and still works when deployed.
+Clinical apps read only the FHIR server, so they need no access to the warehouse.
 Everything is saved as a FHIR Binary holding JSON, the same way the HL7 v2 pipeline publishes its run report:
 
-  Binary/analytics-snapshot    aggregates only (no Bronze or Silver data, analyst sample rows by pseudonym), for the
-                               analyst's Analytics page: the archive, plus the live feed's weekly metrics and daily
+  Binary/analytics-snapshot    aggregates only (no Bronze or Silver data, analyst sample rows by pseudonym), for
+                               analysts: the archive, plus the live feed's weekly metrics and daily
                                census for the last 12 weeks and how fresh the data is
   Binary/worklist-bedboard     PHI: the bed board, patient by patient (name, MRN, bed, attending, lab flags)
   Binary/worklist-readmission  PHI: the LACE follow up list, patient by patient (name, MRN, unit, scores, due dates)
@@ -152,7 +152,7 @@ def people_count(con):
     return {"people": people, "records": records}
 
 
-# PHI: patient level rows with name and MRN. Only the clinical roles may read these worklists in the app.
+# PHI: patient level rows with name and MRN. Only clinical roles should read these worklists.
 def bedboard(con, runs=None):
     units = rows(con, "SELECT * FROM gold_unit_occupancy ORDER BY unit_name")
     beds = rows(con, """
@@ -165,7 +165,7 @@ def bedboard(con, runs=None):
             "units": units, "beds": beds}
 
 
-# PHI: patient level rows with name and MRN. Only the clinical roles may read these worklists in the app.
+# PHI: patient level rows with name and MRN. Only clinical roles should read these worklists.
 def readmission(con, runs=None):
     worklist = rows(con, """
         SELECT * FROM gold_readmission_risk

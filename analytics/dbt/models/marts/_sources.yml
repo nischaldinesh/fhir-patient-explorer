@@ -12,7 +12,7 @@ sources:
       # build.py passes landing_path with forward slashes
       external_location: "read_ndjson_objects('{{ var('landing_path') }}/{name}.ndjson')"
       loaded_at_field: "TRY_CAST(SUBSTR(json_extract_string(json, '$.meta.lastUpdated'), 1, 19) AS TIMESTAMP)"
-      # The app warns when the data is older than 36 hours; the job runs every 24.
+      # Data older than 36 hours means a missed nightly run; the job runs every 24.
       freshness:
         warn_after: {count: 36, period: hour}
         error_after: {count: 72, period: hour}

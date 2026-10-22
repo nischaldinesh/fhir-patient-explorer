@@ -1,4 +1,4 @@
-# Analytics warehouse (Option C)
+# Analytics warehouse
 
 The FHIR server answers questions about one patient at a time. Analytics asks questions about everyone
 at once, so the data is copied into a warehouse built for that, in layers:
@@ -40,7 +40,7 @@ MIMIC and Synthea are the archive: their dates are shifted or historical, so the
 "who is in bed 214 tonight". The operational tables use only the live Riverside General feed (`hl7v2/`, invented
 patients on real dates, visit numbers `V<yyyymmdd><nn>`); the original 25 patient feed is archive too. Built on
 `gold_live_encounter` and `gold_feed_freshness`. The nightly job loads yesterday, so "today" is the **data date**, the
-day of the last feed event, and every page shows it.
+day of the last feed event, and every published document carries it.
 
 | Table | What it holds | How a real hospital uses it |
 |---|---|---|
@@ -316,7 +316,7 @@ analytics/dbt/
                        (with the unit of each room and bed), silver_practitioner
   models/gold/         gold_* tables: the archive answers and the live feed's operational tables
   models/marts/        the star schema: dim_*, fact_*, mart_quality_monthly, int_* (internal), _marts.yml (contracts),
-                       _sources.yml (the landing files and their freshness), exposures.yml (planned dashboards)
+                       _sources.yml (the landing files and their freshness), exposures.yml (the Tableau dashboards)
   models/governance/   governance_roles and the analyst_* views
   snapshots/           snap_patient_demographics (SCD type 2, dbt snapshot)
   seeds/               key_labs.csv, cohort_codes.csv, charlson_codes.csv, unmapped_labs.csv, icd10_chapters.csv,
@@ -352,7 +352,7 @@ The same docs are published to GitHub Pages at https://nischaldinesh.github.io/f
 
 Port 8081 because HAPI already uses dbt's default 8080. `build.py build` is the normal way: it fills in the vars.
 
-**Data quality checks on the Analytics page.** The page lists seven named checks. Each is a dbt test with
+**Named data quality checks.** Seven checks have a name and an order. Each is a dbt test with
 `meta: {check_name, check_order}`; an `on-run-end` hook (`macros/dq_checks.sql`) saves the result of every test to
 `dq_test_results` and the named ones to `dq_checks` (check name, failures), which `publish` reads as before. Failures
 count the same way as the old checks: extra copies for duplicate ids, rows for unknown sources and orphan references.

@@ -1,6 +1,6 @@
 version: 2
 
-# The data quality checks listed on the app's Analytics page are the tests with meta check_name; the
+# The named data quality checks are the tests with meta check_name; the
 # on-run-end hook saves them to dq_checks in check_order (see macros/dq_checks.sql).
 
 models:

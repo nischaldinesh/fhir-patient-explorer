@@ -61,7 +61,7 @@ master data with no visit, so occupancy splits by unit and time only.
 
 Components, so the ratios can be built and checked: `index_stays`, `readmissions_30d`, `length_of_stay_days_total`
 (each suppressed as a count, the total as a mean) and `capacity_bed_days` (beds, not people: not suppressed). Owners
-are the app's invented demo personas. The definitions match the quality marts (`int_quality_events`); see
+are invented demo personas. The definitions match the quality marts (`int_quality_events`); see
 `analytics/README.md` for how they differ from the official CMS and HEDIS versions.
 
 A cumulative metric asked for by week or month gives the value on the first day of that week or month (MetricFlow's

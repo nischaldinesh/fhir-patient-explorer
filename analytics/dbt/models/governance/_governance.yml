@@ -48,7 +48,7 @@ models:
                 field: patient_key
 
   - name: analyst_aki_signal
-    description: The kidney injury signal list by pseudonym only. The app's Analytics page reads this view.
+    description: The kidney injury signal list by pseudonym only. It is part of the analyst snapshot.
     columns:
       - name: patient_key
         description: Primary key.

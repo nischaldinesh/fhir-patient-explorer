@@ -1,7 +1,9 @@
-# Terminology mapping (Option A)
+# Terminology mapping
 
 Real clinical data rarely arrives in standard codes. MIMIC labs use local item codes (498 of them), and about
 half of MIMIC diagnoses are still in retired ICD 9 codes. This step maps them to standards.
+
+## Steps 1 and 2: profile and map the codes
 
 * `terminology/lab_loinc_map.csv`: curated MIMIC lab code to LOINC table. Judgment calls are documented in the `note` column.
 * `terminology/build_maps.py`: checks the table against the real data, measures coverage weighted by result count,
@@ -16,7 +18,6 @@ unzip -o -j data/terminology/order.zip "*order*.txt" -d data/terminology
 python3 terminology/profile_codes.py      # what codes are in the data
 python3 terminology/build_maps.py         # map them, writes terminology/out/
 ```
-
 
 ## Step 3: publish as FHIR ConceptMaps
 

@@ -23,7 +23,7 @@ api/run.sh                                   # http://127.0.0.1:8000, docs at ht
 ```
 
 `api/run.sh` starts uvicorn on 127.0.0.1 only, port 8000 (`PORT=8001 api/run.sh` for another). Without
-`METRICS_API_KEY` the app does not start.
+`METRICS_API_KEY` the API does not start.
 
 ## Endpoints
 

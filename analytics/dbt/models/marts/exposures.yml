@@ -3,7 +3,7 @@ version: 2
 # The Tableau dashboards on the star schema. The first four are planned on the marts directly (none is built; maturity
 # low). tableau_public_bi reads the Google Sheet that analytics/export_bi.py fills with suppressed aggregates (maturity
 # medium: the feed exists, the dashboards are built by hand). Declaring them shows in the dbt docs lineage which marts
-# each one reads, so a change to a mart names the dashboards it can break. The owners are the app's invented demo
+# each one reads, so a change to a mart names the dashboards it can break. The owners are invented demo
 # personas, not real people.
 exposures:
   - name: hospital_quality_scorecard
